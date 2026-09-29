@@ -33,8 +33,8 @@ export default function AboutPage() {
             01 / Professional Positioning
           </h2>
           <div className="p-8 bg-[#F4F2EC] border border-[#E6E3DC]">
-            <p className="font-display text-2xl sm:text-3xl text-[#111112] italic leading-relaxed">
-              &ldquo;{profile.positioningStatement}&rdquo;
+            <p className="font-display text-2xl sm:text-3xl text-[#111112] leading-relaxed">
+              {profile.positioningStatement}
             </p>
             <p className="mt-6 font-sans text-sm text-[#6E6D68] leading-relaxed">
               {profile.shortBio}

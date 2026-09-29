@@ -82,7 +82,7 @@ export const projects: Project[] = [
       "Voice-to-text question input",
       "Source page references in responses",
     ],
-    githubUrl: "https://github.com/Syyeda-Aamna/rag-voice-chatbot.git",
+    githubUrl: "https://github.com/Syyeda-Aamna/rag-voice-chatbot",
   },
   {
     id: "netflix-analysis",
@@ -115,7 +115,7 @@ export const projects: Project[] = [
       "Correlation heatmap and popularity visualizations",
       "Genre transformation for analysis",
     ],
-    githubUrl: "https://github.com/Syyeda-Aamna/netflix-movie-data-analysis.git",
+    githubUrl: "https://github.com/Syyeda-Aamna/netflix-movie-data-analysis",
   },
 ];
 

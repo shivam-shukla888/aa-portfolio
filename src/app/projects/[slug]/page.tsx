@@ -4,11 +4,15 @@ import { notFound } from "next/navigation";
 import { projects, getProjectBySlug } from "@/data/projects";
 
 interface ProjectPageProps {
-  params: Promise<{ slug: string }>;
+  params: Promise<{
+    slug: string;
+  }>;
 }
 
 export async function generateStaticParams() {
-  return projects.map((project) => ({ slug: project.slug }));
+  return projects.map((p) => ({
+    slug: p.slug,
+  }));
 }
 
 export async function generateMetadata({
@@ -17,11 +21,19 @@ export async function generateMetadata({
   const { slug } = await params;
   const project = getProjectBySlug(slug);
 
-  if (!project) return { title: "Project Not Found" };
+  if (!project) {
+    return {
+      title: "Project Not Found",
+    };
+  }
 
   return {
-    title: project.title + " — Case Study",
+    title: `${project.title} — Case Study`,
     description: project.oneLineDescription,
+    openGraph: {
+      title: `${project.title} | Syyeda Aamna`,
+      description: project.oneLineDescription,
+    },
   };
 }
 
@@ -29,146 +41,188 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
   const { slug } = await params;
   const project = getProjectBySlug(slug);
 
-  if (!project) notFound();
+  if (!project) {
+    notFound();
+  }
 
-  const currentIndex = projects.findIndex((item) => item.slug === slug);
+  const currentIndex = projects.findIndex((p) => p.slug === slug);
   const nextProject = projects[(currentIndex + 1) % projects.length];
 
   return (
-    <article className="w-full">
-      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
-        <div className="flex items-center justify-between border-b border-[#E6E3DC] pb-4 font-mono text-[10px] uppercase tracking-[0.16em] text-[#6E6D68]">
-          <Link href="/projects" className="transition-colors hover:text-[#111112]">
-            ← Projects
+    <article className="w-full py-12 sm:py-20">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Navigation Breadcrumb */}
+        <div className="mb-8 flex items-center justify-between font-mono text-xs text-[#6E6D68] border-b border-[#E6E3DC] pb-4">
+          <Link
+            href="/projects"
+            className="hover:text-[#111112] transition-colors inline-flex items-center gap-1.5"
+          >
+            &larr; Back to Projects Index
           </Link>
-          <span>
-            {project.number} / 0{projects.length}
-          </span>
+          <span>Project {project.number} of 0{projects.length}</span>
         </div>
 
-        <header className="grid gap-10 border-b border-[#111112] py-12 lg:grid-cols-[minmax(0,1fr)_18rem] lg:gap-16 lg:py-16">
-          <div>
-            <div className="font-mono text-xs uppercase tracking-[0.18em] text-[#D45A2A]">
-              {project.category}
-            </div>
-            <h1 className="mt-4 max-w-4xl font-display text-5xl font-semibold leading-[0.94] tracking-tight text-[#111112] sm:text-7xl">
-              {project.title}
-            </h1>
-            <p className="mt-6 max-w-3xl font-display text-xl italic leading-relaxed text-[#111112] sm:text-2xl">
-              {project.oneLineDescription}
-            </p>
+        {/* Case Study Header */}
+        <header className="mb-12">
+          <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-3 font-semibold">
+            <span>{project.number}</span>
+            <span>&bull;</span>
+            <span>{project.category}</span>
           </div>
 
-          <aside className="border-l border-[#E6E3DC] pl-6 lg:pt-1">
-            <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#6E6D68]">
-              Technologies
-            </p>
-            <div className="mt-4 space-y-2">
-              {project.technologies.map((technology) => (
-                <div key={technology} className="border-b border-[#E6E3DC] pb-2 font-mono text-xs text-[#111112]">
-                  {technology}
-                </div>
+          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-[#111112] leading-[1.05]">
+            {project.title}
+          </h1>
+
+          <p className="mt-4 font-display text-xl sm:text-2xl text-[#111112] leading-snug">
+            {project.oneLineDescription}
+          </p>
+
+          <div className="mt-8 pt-6 border-t border-[#E6E3DC] flex flex-wrap gap-4 items-center justify-between">
+            <div className="flex flex-wrap gap-1.5">
+              {project.technologies.map((t) => (
+                <span
+                  key={t}
+                  className="font-mono text-xs px-2.5 py-1 bg-[#F4F2EC] border border-[#E6E3DC] text-[#111112]"
+                >
+                  {t}
+                </span>
               ))}
             </div>
+
             <a
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-7 inline-flex min-h-11 items-center border border-[#111112] bg-[#111112] px-4 font-mono text-[10px] uppercase tracking-[0.15em] text-[#FAF9F6] transition-colors hover:bg-[#D45A2A]"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#111112] text-[#FAF9F6] font-mono text-xs uppercase tracking-wider hover:bg-[#D45A2A] transition-colors"
             >
-              Open GitHub ↗
+              <span>GitHub Repository</span>
+              <svg className="w-3.5 h-3.5 stroke-current" fill="none" viewBox="0 0 24 24" strokeWidth="2" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+              </svg>
             </a>
-          </aside>
+          </div>
         </header>
 
-        <div className="grid gap-14 py-14 lg:grid-cols-[8rem_minmax(0,1fr)] lg:gap-10">
-          <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#D45A2A]">
-            Case Study
-          </div>
+        {/* Case Study Sections */}
+        <div className="space-y-12 border-t border-[#111112] pt-10">
+          {/* 01 / Overview */}
+          <section>
+            <h2 className="font-mono text-xs uppercase tracking-widest text-[#D45A2A] font-semibold mb-3">
+              01 / Overview
+            </h2>
+            <p className="font-sans text-base text-[#111112] leading-relaxed">
+              {project.overview}
+            </p>
+          </section>
 
-          <div className="space-y-14">
+          {/* 02 / Context / Problem */}
+          <section>
+            <h2 className="font-mono text-xs uppercase tracking-widest text-[#D45A2A] font-semibold mb-3">
+              02 / Context / Problem
+            </h2>
+            <p className="font-sans text-base text-[#111112] leading-relaxed">
+              {project.problemContext}
+            </p>
+          </section>
+
+          {/* 03 / Data or Scope */}
+          {project.datasetOrScope && (
             <section>
-              <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#6E6D68]">
-                01 / Overview
-              </p>
-              <p className="mt-4 max-w-3xl text-base leading-8 text-[#111112] sm:text-lg">
-                {project.overview}
-              </p>
-            </section>
-
-            {project.problemContext && (
-              <section>
-                <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#6E6D68]">
-                  02 / Context
-                </p>
-                <p className="mt-4 max-w-3xl text-base leading-8 text-[#111112]">
-                  {project.problemContext}
-                </p>
-              </section>
-            )}
-
-            {project.datasetOrScope && (
-              <section className="border-y border-[#E6E3DC] py-7">
-                <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#D45A2A]">
-                  03 / Data Scope
-                </p>
-                <p className="mt-3 max-w-3xl text-sm leading-7 text-[#111112]">
+              <h2 className="font-mono text-xs uppercase tracking-widest text-[#D45A2A] font-semibold mb-3">
+                03 / Data or Scope
+              </h2>
+              <div className="p-5 bg-[#F4F2EC] border border-[#E6E3DC]">
+                <p className="font-sans text-base text-[#111112] leading-relaxed">
                   {project.datasetOrScope}
                 </p>
-              </section>
-            )}
-
-            <section>
-              <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#6E6D68]">
-                04 / Implementation
-              </p>
-              <p className="mt-4 max-w-3xl text-base leading-8 text-[#111112]">
-                {project.implementation}
-              </p>
-            </section>
-
-            <section>
-              <div className="border-t border-[#E6E3DC] pt-7">
-                <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#6E6D68]">
-                  05 / Verified Highlights
-                </p>
-                <div className="mt-5 grid gap-x-10 gap-y-4 sm:grid-cols-2">
-                  {project.keyAspects.map((aspect) => (
-                    <div key={aspect} className="border-b border-[#E6E3DC] pb-4 text-sm leading-6 text-[#111112]">
-                      {aspect}
-                    </div>
-                  ))}
-                </div>
               </div>
             </section>
+          )}
 
-            <section className="border-t border-[#111112] pt-7">
-              <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#6E6D68]">
-                06 / Source
-              </p>
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-3 block break-all text-sm underline decoration-[#D45A2A] decoration-1 underline-offset-4"
-              >
-                {project.githubUrl}
-              </a>
-            </section>
-          </div>
+          {/* 04 / Implementation */}
+          <section>
+            <h2 className="font-mono text-xs uppercase tracking-widest text-[#D45A2A] font-semibold mb-3">
+              04 / Implementation
+            </h2>
+            <p className="font-sans text-base text-[#111112] leading-relaxed">
+              {project.implementation}
+            </p>
+          </section>
+
+          {/* 05 / Technologies */}
+          <section>
+            <h2 className="font-mono text-xs uppercase tracking-widest text-[#D45A2A] font-semibold mb-3">
+              05 / Technologies
+            </h2>
+            <div className="flex flex-wrap gap-2">
+              {project.technologies.map((tech) => (
+                <span
+                  key={tech}
+                  className="font-mono text-xs px-3 py-1.5 bg-[#FAF9F6] border border-[#E6E3DC] text-[#111112]"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </section>
+
+          {/* 06 / Verified Highlights */}
+          <section>
+            <h2 className="font-mono text-xs uppercase tracking-widest text-[#D45A2A] font-semibold mb-3">
+              06 / Verified Highlights
+            </h2>
+            <div className="p-6 bg-[#FAF9F6] border border-[#E6E3DC]">
+              <ul className="space-y-2.5 font-sans text-sm text-[#111112]">
+                {project.keyAspects.map((aspect, i) => (
+                  <li key={i} className="flex items-start gap-2.5">
+                    <span className="text-[#D45A2A] font-mono text-xs mt-0.5" aria-hidden="true">&bull;</span>
+                    <span>{aspect}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+
+          {/* 07 / Source / GitHub */}
+          <section className="p-6 bg-[#F4F2EC] border border-[#E6E3DC]">
+            <h2 className="font-mono text-xs uppercase tracking-widest text-[#D45A2A] font-semibold mb-2">
+              07 / Source / GitHub
+            </h2>
+            <p className="font-sans text-xs text-[#6E6D68] leading-relaxed mb-4">
+              Explore the complete project codebase, preprocessing pipelines, and implementation files directly on GitHub.
+            </p>
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-xs font-mono font-medium text-[#111112] hover:text-[#D45A2A] break-all underline underline-offset-4"
+            >
+              {project.githubUrl}
+            </a>
+          </section>
         </div>
 
-        <footer className="border-t border-[#111112] pt-8">
-          <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#6E6D68]">
-            Next case study
-          </p>
+        {/* Next Project Footer */}
+        <div className="mt-16 pt-8 border-t border-[#111112] flex flex-col sm:flex-row items-baseline justify-between gap-4">
+          <div>
+            <span className="font-mono text-xs uppercase tracking-wider text-[#6E6D68]">
+              Next Case Study
+            </span>
+            <Link
+              href={`/projects/${nextProject.slug}`}
+              className="block font-display text-2xl font-semibold text-[#111112] hover:text-[#D45A2A] transition-colors mt-1"
+            >
+              {nextProject.title} &rarr;
+            </Link>
+          </div>
           <Link
-            href={"/projects/" + nextProject.slug}
-            className="mt-2 block font-display text-3xl font-semibold text-[#111112] transition-colors hover:text-[#D45A2A] sm:text-4xl"
+            href="/projects"
+            className="font-mono text-xs uppercase tracking-wider text-[#6E6D68] hover:text-[#111112]"
           >
-            {nextProject.title} →
+            All Projects Index
           </Link>
-        </footer>
+        </div>
       </div>
     </article>
   );

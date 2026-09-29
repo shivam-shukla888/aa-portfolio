@@ -40,13 +40,8 @@ export async function POST(req: NextRequest) {
     const reply = await processPortfolioChat(message, history);
 
     return NextResponse.json({ reply });
-  } catch (err: unknown) {
-    // Log safe error server-side without leaking credentials
-    const errorMessage = err instanceof Error ? err.message : "Unknown error";
-    // Never expose stack trace or API key
-    if (process.env.NODE_ENV === "development") {
-      console.error("[API/chat error]:", errorMessage);
-    }
+  } catch {
+    // Return sanitized human-friendly message without leaking server paths or secrets
 
     return NextResponse.json(
       {

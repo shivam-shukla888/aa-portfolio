@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { AskAamnaModal } from "@/components/AskAamnaModal";
 import { profile } from "@/data/profile";
+import { SITE_URL } from "@/lib/site";
 
 const newsreader = Newsreader({
   subsets: ["latin"],
@@ -25,16 +26,14 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
-
 export const metadata: Metadata = {
-  ...(siteUrl ? { metadataBase: new URL(siteUrl) } : {}),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Syyeda Aamna — AI/ML & Software Professional",
     template: "%s | Syyeda Aamna",
   },
   description:
-    "Portfolio of Syyeda Aamna, an AI/ML-focused software professional working across machine learning, data analysis, generative AI and software development.",
+    "Portfolio of Syyeda Aamna, an AI/ML-focused software professional. Experienced in machine learning classification, exploratory data analysis, generative AI workflows, Python, C#, and .NET.",
   keywords: [
     "Syyeda Aamna",
     "AI/ML",
@@ -47,22 +46,22 @@ export const metadata: Metadata = {
     "C#",
     ".NET",
   ],
-  authors: [{ name: "Syyeda Aamna", url: profile.github }],
+  authors: [{ name: "Syyeda Aamna", url: "https://github.com/Syyeda-Aamna" }],
   creator: "Syyeda Aamna",
   openGraph: {
     type: "website",
     locale: "en_US",
+    url: SITE_URL,
     title: "Syyeda Aamna — AI/ML & Software Professional",
     description:
-      "Personal portfolio of Syyeda Aamna covering machine learning, data analysis, generative AI projects and software development.",
+      "Verified personal portfolio of Syyeda Aamna. Machine learning classification, exploratory data analysis, generative AI workflows, and software development.",
     siteName: "Syyeda Aamna Portfolio",
-    ...(siteUrl ? { url: siteUrl } : {}),
   },
   twitter: {
     card: "summary_large_image",
     title: "Syyeda Aamna — AI/ML & Software Professional",
     description:
-      "Personal portfolio of Syyeda Aamna covering machine learning, data analysis, generative AI projects and software development.",
+      "Verified personal portfolio of Syyeda Aamna. Machine learning classification, exploratory data analysis, generative AI workflows, and software development.",
   },
   robots: {
     index: true,
@@ -112,7 +111,7 @@ export default function RootLayout({
       {
         "@type": "WebSite",
         name: "Syyeda Aamna Portfolio",
-        ...(siteUrl ? { url: siteUrl } : {}),
+        url: SITE_URL,
         description: profile.positioningStatement,
         author: {
           "@type": "Person",
@@ -125,7 +124,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={newsreader.variable + " " + inter.variable + " " + jetbrainsMono.variable + " h-full antialiased"}
+      className={`${newsreader.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <head>
         <script

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 interface Message {
   role: "user" | "assistant";
@@ -13,6 +13,7 @@ const SUGGESTED_QUERIES = [
   "Tell me about her experience.",
   "What technologies does she use?",
   "Show me her AI/ML projects.",
+  "Where can I find her GitHub?",
 ];
 
 export function AskAamnaModal() {
@@ -21,29 +22,60 @@ export function AskAamnaModal() {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    if (!isOpen) return;
-    const id = window.setTimeout(() => inputRef.current?.focus(), 100);
-    return () => window.clearTimeout(id);
-  }, [isOpen]);
-
-  useEffect(() => {
-    function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") setIsOpen(false);
-    }
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
-
+  // Auto scroll to latest message
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isLoading]);
 
+  // Focus management: focus input when opened, return focus to trigger when closed
+  useEffect(() => {
+    if (isOpen) {
+      setTimeout(() => inputRef.current?.focus(), 100);
+    } else {
+      triggerRef.current?.focus();
+    }
+  }, [isOpen]);
+
+  // Handle ESC key and focus trap
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      if (!isOpen) return;
+
+      if (e.key === "Escape") {
+        setIsOpen(false);
+        return;
+      }
+
+      // Simple focus trap
+      if (e.key === "Tab" && modalRef.current) {
+        const focusableElements = modalRef.current.querySelectorAll<HTMLElement>(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        const first = focusableElements[0];
+        const last = focusableElements[focusableElements.length - 1];
+
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen]);
+
   async function handleSend(textToSend?: string) {
-    const text = (textToSend ?? input).trim();
+    const text = (textToSend || input).trim();
     if (!text || isLoading) return;
 
     setInput("");
@@ -55,7 +87,7 @@ export function AskAamnaModal() {
     setIsLoading(true);
 
     try {
-      const response = await fetch("/api/chat", {
+      const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -64,146 +96,201 @@ export function AskAamnaModal() {
         }),
       });
 
-      const data = await response.json();
+      const data = await res.json();
 
-      if (!response.ok) {
-        throw new Error(data.error || "Something went wrong.");
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to contact assistant.");
       }
 
-      setMessages((current) => [
-        ...current,
+      setMessages((prev) => [
+        ...prev,
         { role: "assistant", content: data.reply },
       ]);
-    } catch (err) {
-      setError(
+    } catch (err: unknown) {
+      const msg =
         err instanceof Error
           ? err.message
-          : "Something went wrong while contacting the assistant. Please try again.",
-      );
+          : "Something went wrong while contacting the assistant. Please try again.";
+      setError(msg);
     } finally {
       setIsLoading(false);
     }
   }
 
+  function handleClear() {
+    setMessages([]);
+    setError(null);
+  }
+
   return (
     <>
-      <div className="fixed bottom-5 right-5 z-40">
+      {/* Editorial Floating Trigger Button */}
+      <div className="fixed bottom-6 right-6 z-40">
         <button
+          ref={triggerRef}
           type="button"
           onClick={() => setIsOpen(true)}
-          className="group inline-flex min-h-11 items-center gap-3 border border-[#111112] bg-[#FAF9F6] px-4 py-2.5 shadow-[3px_3px_0_#111112] transition-transform hover:-translate-y-0.5 focus-visible:-translate-y-0.5"
-          aria-label="Open Ask Aamna portfolio assistant"
+          className="group flex items-center gap-3 px-4 py-3 bg-[#FAF9F6] border border-[#111112] hover:bg-[#F4F2EC] active:border-[#D45A2A] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D45A2A]"
+          aria-haspopup="dialog"
+          aria-expanded={isOpen}
+          aria-label="Open Ask Aamna AI Portfolio Assistant"
         >
-          <span
-            aria-hidden="true"
-            className="relative flex h-7 w-7 items-center justify-center border border-[#111112] bg-[#D45A2A] text-[11px] font-mono font-semibold text-[#FAF9F6]"
-          >
-            A
+          {/* Technical Terminal Prompt Icon */}
+          <span className="font-mono text-xs font-bold text-[#D45A2A] select-none" aria-hidden="true">
+            &gt;_
           </span>
-          <span className="text-left">
-            <span className="block font-mono text-[11px] font-semibold tracking-[0.16em] text-[#111112]">
+
+          <div className="flex flex-col text-left">
+            <span className="font-mono text-xs font-semibold tracking-widest uppercase text-[#111112] group-hover:text-[#D45A2A] transition-colors">
               ASK AAMNA
             </span>
-            <span className="mt-0.5 block font-mono text-[9px] uppercase tracking-[0.12em] text-[#6E6D68]">
-              Portfolio assistant
+            <span className="font-mono text-[9px] uppercase tracking-wider text-[#6E6D68]">
+              Portfolio Assistant
             </span>
-          </span>
+          </div>
+
+          <span className="w-1.5 h-1.5 bg-[#D45A2A] shrink-0" aria-hidden="true" />
         </button>
       </div>
 
+      {/* Editorial Slide-over / Modal Panel */}
       {isOpen && (
         <div
-          className="fixed inset-0 z-50 flex items-end justify-center bg-[#111112]/35 p-0 sm:items-center sm:p-5"
+          className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-[#111112]/40 backdrop-blur-xs transition-opacity"
           role="dialog"
           aria-modal="true"
           aria-labelledby="ask-aamna-title"
         >
-          <button
-            type="button"
-            className="absolute inset-0 cursor-default"
-            aria-label="Close assistant"
+          {/* Backdrop Click */}
+          <div
+            className="absolute inset-0"
             onClick={() => setIsOpen(false)}
+            aria-hidden="true"
           />
 
-          <section className="relative flex max-h-[88vh] w-full max-w-xl flex-col border border-[#111112] bg-[#FAF9F6] shadow-[8px_8px_0_#111112]">
-            <header className="flex items-center justify-between border-b border-[#E6E3DC] bg-[#F4F2EC] px-5 py-4">
-              <div>
-                <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#D45A2A]">
-                  Portfolio assistant
-                </p>
-                <h2 id="ask-aamna-title" className="mt-1 font-display text-2xl font-semibold text-[#111112]">
-                  Ask Aamna
-                </h2>
-                <p className="mt-1 text-xs leading-relaxed text-[#6E6D68]">
-                  Answers are grounded in the verified portfolio content.
-                </p>
+          {/* Modal Card */}
+          <div
+            ref={modalRef}
+            className="relative z-10 w-full sm:max-w-xl bg-[#FAF9F6] border-t sm:border border-[#111112] max-h-[90vh] sm:max-h-[640px] flex flex-col overflow-hidden"
+          >
+            {/* Header */}
+            <div className="px-5 py-4 bg-[#F4F2EC] border-b border-[#E6E3DC] flex items-center justify-between">
+              <div className="flex items-baseline gap-3">
+                <span className="font-mono text-xs font-bold text-[#D45A2A]" aria-hidden="true">
+                  &gt;_
+                </span>
+                <div>
+                  <h3
+                    id="ask-aamna-title"
+                    className="font-mono text-xs font-semibold uppercase tracking-widest text-[#111112]"
+                  >
+                    ASK AAMNA
+                  </h3>
+                  <p className="text-[10px] font-mono text-[#6E6D68] uppercase tracking-wider mt-0.5">
+                    Verified Portfolio Knowledge Base &bull; Grounded AI
+                  </p>
+                </div>
               </div>
-              <button
-                type="button"
-                onClick={() => setIsOpen(false)}
-                className="inline-flex h-10 w-10 items-center justify-center border border-[#E6E3DC] text-[#111112] transition-colors hover:border-[#111112]"
-                aria-label="Close assistant"
-              >
-                <span aria-hidden="true" className="text-xl leading-none">×</span>
-              </button>
-            </header>
 
-            <div className="min-h-[280px] flex-1 space-y-4 overflow-y-auto p-5">
+              <div className="flex items-center gap-2">
+                {messages.length > 0 && (
+                  <button
+                    type="button"
+                    onClick={handleClear}
+                    className="font-mono text-[11px] uppercase tracking-wider text-[#6E6D68] hover:text-[#D45A2A] px-2 py-1 transition-colors"
+                  >
+                    Clear
+                  </button>
+                )}
+                <button
+                  type="button"
+                  onClick={() => setIsOpen(false)}
+                  className="p-1.5 text-[#6E6D68] hover:text-[#111112] border border-transparent hover:border-[#E6E3DC] transition-colors focus:outline-none"
+                  aria-label="Close assistant panel"
+                >
+                  <svg
+                    className="w-4 h-4 stroke-current"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="2"
+                    aria-hidden="true"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            {/* Conversation Area */}
+            <div
+              className="flex-1 p-5 overflow-y-auto space-y-4 min-h-[260px] max-h-[380px] bg-[#FAF9F6]"
+              tabIndex={0}
+              aria-label="Conversation messages"
+            >
               {messages.length === 0 ? (
-                <>
-                  <div className="border-l-2 border-[#D45A2A] pl-4">
-                    <p className="text-sm leading-6 text-[#111112]">
-                      Ask about projects, experience, education, skills, or public contact details.
+                <div className="py-2 space-y-5">
+                  <div className="p-4 bg-[#F4F2EC] border border-[#E6E3DC]">
+                    <div className="font-mono text-[11px] uppercase tracking-widest text-[#D45A2A] font-semibold mb-1">
+                      Direct Portfolio Inquiries
+                    </div>
+                    <p className="font-sans text-xs text-[#111112] leading-relaxed">
+                      This assistant provides answers strictly grounded in Syyeda Aamna&apos;s verified public portfolio: machine learning projects, experience at Apollo Hospitals, internship at The Codevamp Technologies, technical skill set, and IIT Kanpur summer training.
                     </p>
                   </div>
+
                   <div>
-                    <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.16em] text-[#6E6D68]">
-                      Try one
-                    </p>
-                    <div className="grid gap-2">
-                      {SUGGESTED_QUERIES.map((query) => (
+                    <span className="block font-mono text-[10px] uppercase tracking-widest text-[#6E6D68] mb-2.5">
+                      Suggested Questions
+                    </span>
+                    <div className="flex flex-wrap gap-2">
+                      {SUGGESTED_QUERIES.map((q) => (
                         <button
-                          key={query}
+                          key={q}
                           type="button"
-                          onClick={() => handleSend(query)}
-                          className="border border-[#E6E3DC] px-3 py-2.5 text-left text-xs text-[#111112] transition-colors hover:border-[#111112] hover:bg-[#F4F2EC]"
+                          onClick={() => handleSend(q)}
+                          className="text-left font-mono text-xs px-3 py-1.5 bg-[#FAF9F6] hover:bg-[#F4F2EC] border border-[#E6E3DC] hover:border-[#111112] text-[#111112] transition-colors"
                         >
-                          {query}
+                          {q} &rarr;
                         </button>
                       ))}
                     </div>
                   </div>
-                </>
+                </div>
               ) : (
-                messages.map((message, index) => (
+                messages.map((m, idx) => (
                   <div
-                    key={index}
-                    className={message.role === "user" ? "ml-8" : "mr-8"}
+                    key={idx}
+                    className={`flex flex-col ${
+                      m.role === "user" ? "items-end" : "items-start"
+                    }`}
                   >
-                    <p className="mb-1 font-mono text-[9px] uppercase tracking-[0.16em] text-[#6E6D68]">
-                      {message.role === "user" ? "You" : "Ask Aamna"}
-                    </p>
                     <div
-                      className={
-                        message.role === "user"
-                          ? "border border-[#111112] bg-[#111112] px-3.5 py-3 text-sm leading-6 text-[#FAF9F6]"
-                          : "border border-[#E6E3DC] bg-[#F4F2EC] px-3.5 py-3 text-sm leading-6 text-[#111112]"
-                      }
+                      className={`max-w-[88%] p-3.5 text-xs leading-relaxed font-sans ${
+                        m.role === "user"
+                          ? "bg-[#111112] text-[#FAF9F6] border border-[#111112]"
+                          : "bg-[#F4F2EC] text-[#111112] border border-[#E6E3DC]"
+                      }`}
                     >
-                      {message.content}
+                      <div className="font-mono text-[9px] uppercase tracking-wider mb-1 text-[#6E6D68]">
+                        {m.role === "user" ? "Visitor" : "Ask Aamna (Verified)"}
+                      </div>
+                      <div className="whitespace-pre-wrap">{m.content}</div>
                     </div>
                   </div>
                 ))
               )}
 
+              {/* Loading Indicator */}
               {isLoading && (
-                <div className="mr-8 border border-[#E6E3DC] bg-[#F4F2EC] px-3.5 py-3 font-mono text-xs text-[#6E6D68]">
-                  Thinking from verified portfolio data…
+                <div className="flex items-center gap-2 p-3 bg-[#F4F2EC] border border-[#E6E3DC] max-w-[85%] text-xs font-mono text-[#6E6D68]">
+                  <span className="w-1.5 h-1.5 bg-[#D45A2A] animate-pulse" aria-hidden="true" />
+                  <span>Consulting verified portfolio knowledge base...</span>
                 </div>
               )}
 
+              {/* Error Message */}
               {error && (
-                <div className="border border-[#D9B8AD] bg-[#F7ECE8] px-3.5 py-3 text-xs leading-5 text-[#7B3320]">
+                <div className="p-3 bg-[#FAF9F6] border border-[#D45A2A] text-xs text-[#D45A2A] font-mono">
                   {error}
                 </div>
               )}
@@ -211,34 +298,34 @@ export function AskAamnaModal() {
               <div ref={messagesEndRef} />
             </div>
 
+            {/* Input Form */}
             <form
-              className="border-t border-[#E6E3DC] bg-[#F4F2EC] p-4"
-              onSubmit={(event) => {
-                event.preventDefault();
-                void handleSend();
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSend();
               }}
+              className="p-3 bg-[#F4F2EC] border-t border-[#E6E3DC] flex items-center gap-2"
             >
-              <div className="flex gap-2">
-                <input
-                  ref={inputRef}
-                  type="text"
-                  value={input}
-                  onChange={(event) => setInput(event.target.value)}
-                  maxLength={500}
-                  disabled={isLoading}
-                  placeholder="Ask about her work…"
-                  className="min-h-11 flex-1 border border-[#E6E3DC] bg-[#FAF9F6] px-3 text-sm text-[#111112] outline-none placeholder:text-[#9B9991] focus:border-[#111112]"
-                />
-                <button
-                  type="submit"
-                  disabled={isLoading || !input.trim()}
-                  className="min-h-11 border border-[#111112] bg-[#111112] px-4 font-mono text-[10px] uppercase tracking-[0.14em] text-[#FAF9F6] transition-colors hover:bg-[#D45A2A] disabled:cursor-not-allowed disabled:border-[#C8C5BD] disabled:bg-[#C8C5BD]"
-                >
-                  Send
-                </button>
-              </div>
+              <input
+                ref={inputRef}
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Ask about her skills, experience, or projects..."
+                disabled={isLoading}
+                maxLength={500}
+                className="flex-1 px-3 py-2 text-xs font-sans bg-[#FAF9F6] border border-[#E6E3DC] focus:border-[#111112] text-[#111112] placeholder:text-[#6E6D68] focus:outline-none"
+                aria-label="Ask a question about Syyeda Aamna's portfolio"
+              />
+              <button
+                type="submit"
+                disabled={isLoading || !input.trim()}
+                className="px-4 py-2 bg-[#111112] disabled:bg-[#E6E3DC] disabled:text-[#6E6D68] text-[#FAF9F6] font-mono text-xs uppercase tracking-wider font-semibold hover:bg-[#D45A2A] transition-colors disabled:cursor-not-allowed shrink-0"
+              >
+                Send
+              </button>
             </form>
-          </section>
+          </div>
         </div>
       )}
     </>
