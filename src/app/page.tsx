@@ -43,8 +43,9 @@ export default function HomePage() {
                 <div
                   className="
                     flex-shrink-0
-                    w-[64px] h-[64px]
-                    sm:w-[80px] sm:h-[80px]
+                    w-[76px] h-[76px]
+                    sm:w-[96px] sm:h-[96px]
+                    lg:w-[108px] lg:h-[108px]
                     border border-[#E6E3DC]
                     overflow-hidden
                     bg-[#F4F2EC]
@@ -53,10 +54,10 @@ export default function HomePage() {
                   <Image
                     src="/aamna.jpeg"
                     alt="Syyeda Aamna"
-                    width={80}
-                    height={80}
+                    width={108}
+                    height={108}
                     priority
-                    sizes="(max-width: 640px) 64px, 80px"
+                    sizes="(max-width: 640px) 76px, (max-width: 1024px) 96px, 108px"
                     className="w-full h-full object-cover select-none"
                     style={{ objectPosition: "center 10%" }}
                   />
