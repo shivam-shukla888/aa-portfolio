@@ -28,22 +28,26 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  alternates: {
+    canonical: "./",
+  },
   title: {
-    default: "Syyeda Aamna — AI/ML & Software Professional",
+    default: "Syyeda Aamna — Entry-Level AI/ML Engineer",
     template: "%s | Syyeda Aamna",
   },
   description:
-    "Portfolio of Syyeda Aamna, an AI/ML-focused software professional. Experienced in machine learning classification, exploratory data analysis, generative AI workflows, Python, C#, and .NET.",
+    "Portfolio of Syyeda Aamna, entry-level AI/ML Engineer. Applied machine learning classification, Retrieval-Augmented Generation (RAG) pipelines, exploratory data analysis, and software engineering with Python, FastAPI, and .NET.",
   keywords: [
     "Syyeda Aamna",
-    "AI/ML",
+    "AI/ML Engineer",
     "Machine Learning",
     "Python",
     "Data Science",
-    "Generative AI",
-    "LLMs",
+    "Retrieval-Augmented Generation",
+    "LangChain",
+    "FAISS",
     "Scikit-Learn",
-    "C#",
+    "FastAPI",
     ".NET",
   ],
   authors: [{ name: "Syyeda Aamna", url: "https://github.com/Syyeda-Aamna" }],
@@ -52,16 +56,25 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: SITE_URL,
-    title: "Syyeda Aamna — AI/ML & Software Professional",
+    title: "Syyeda Aamna — Entry-Level AI/ML Engineer",
     description:
-      "Verified personal portfolio of Syyeda Aamna. Machine learning classification, exploratory data analysis, generative AI workflows, and software development.",
+      "Personal portfolio of Syyeda Aamna. Machine learning classification, Retrieval-Augmented Generation (RAG) pipelines, exploratory data analysis, and software engineering with Python.",
     siteName: "Syyeda Aamna Portfolio",
+    images: [
+      {
+        url: "/projects/fraud-dashboard.png",
+        width: 1200,
+        height: 630,
+        alt: "Syyeda Aamna — Entry-Level AI/ML Engineer Portfolio",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Syyeda Aamna — AI/ML & Software Professional",
+    title: "Syyeda Aamna — Entry-Level AI/ML Engineer",
     description:
-      "Verified personal portfolio of Syyeda Aamna. Machine learning classification, exploratory data analysis, generative AI workflows, and software development.",
+      "Personal portfolio of Syyeda Aamna. Machine learning classification, Retrieval-Augmented Generation (RAG) pipelines, exploratory data analysis, and software engineering with Python.",
+    images: ["/projects/fraud-dashboard.png"],
   },
   robots: {
     index: true,
@@ -87,7 +100,7 @@ export default function RootLayout({
       {
         "@type": "Person",
         name: profile.name,
-        jobTitle: "AI/ML Developer & Software Professional",
+        jobTitle: "Entry-Level AI/ML Engineer",
         email: profile.email,
         telephone: profile.phone,
         address: {

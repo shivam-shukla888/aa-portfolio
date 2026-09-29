@@ -6,15 +6,16 @@ export interface TrainingItem {
   type: string;
   skillsCovered: string[];
   description: string;
+  credentialUrl?: string; // Real link if proof exists, otherwise undefined
 }
 
-export const verifiedTraining: TrainingItem[] = [
+export const technicalTraining: TrainingItem[] = [
   {
     id: "iitk-python-ds",
     title: "Python for Data Science",
     institution: "IIT Kanpur",
     year: "2025",
-    type: "Summer Training",
+    type: "Summer Training Program",
     skillsCovered: [
       "Python programming",
       "OOP",
@@ -28,6 +29,8 @@ export const verifiedTraining: TrainingItem[] = [
       "Data visualization",
     ],
     description:
-      "Structured summer training in Python programming, algorithmic data structures, numerical analysis with NumPy, data frame operations with Pandas, and data visualization with Matplotlib.",
+      "Intensive institutional training program covering Python software fundamentals, algorithmic data structures, numerical analysis with NumPy, structured data processing with Pandas, and exploratory data visualization with Matplotlib.",
+    // Certificate / proof link placeholder:
+    // credentialUrl: "[TODO_ADD_CERTIFICATE_LINK]"
   },
 ];

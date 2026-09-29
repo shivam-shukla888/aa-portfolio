@@ -6,9 +6,9 @@ export interface NavItem {
 
 export const mainNavItems: NavItem[] = [
   { label: "WORK", href: "/projects", description: "Selected AI/ML Projects" },
-  { label: "EXPERIENCE", href: "/experience", description: "Professional Timeline" },
+  { label: "EXPERIENCE", href: "/experience", description: "Career & Education Timeline" },
   { label: "ABOUT", href: "/about", description: "Background & Technical Focus" },
-  { label: "CONTACT", href: "/contact", description: "Get in touch" },
+  { label: "CONTACT", href: "/contact", description: "Direct Channels" },
 ];
 
 export const footerLinks: NavItem[] = [
@@ -17,6 +17,4 @@ export const footerLinks: NavItem[] = [
   { label: "Experience", href: "/experience" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
-  { label: "Privacy Policy", href: "/privacy" },
-  { label: "Terms of Use", href: "/terms" },
 ];

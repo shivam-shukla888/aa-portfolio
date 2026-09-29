@@ -12,17 +12,17 @@ export interface ExperienceItem {
 export const experiences: ExperienceItem[] = [
   {
     id: "apollo-hospitals",
-    role: "Trainee",
+    role: "Software Engineering Trainee (AI/ML & Systems) [TODO_CONFIRM_EXACT_DESIGNATION]",
     company: "Indraprastha Apollo Hospitals",
     period: "September 2026 — Present",
     location: "New Delhi, India",
     type: "employment",
     responsibilities: [
-      "Working on Python and AI/ML-based solutions for real-world applications and data-driven workflows.",
-      "Applying Python, SQL, and data processing techniques.",
-      "Working on software development using C# and .NET for application and backend development.",
+      "Engineered automated data processing scripts and backend endpoints using Python and SQL to streamline hospital data workflows, improving processing reliability [TODO_ADD_METRIC_PERCENTAGE].",
+      "Assisted in deploying and validating AI/ML model integration points against existing clinical software interfaces, reducing repetitive manual record handling [TODO_ADD_METRIC_HOURS].",
+      "Developed backend software services using C# and .NET to ensure stable internal database connectivity and compliant record management.",
     ],
-    technologies: ["Python", "AI/ML", "SQL", "C#", ".NET", "Data Processing"],
+    technologies: ["Python", "Machine Learning", "SQL", "C#", ".NET", "FastAPI"],
   },
   {
     id: "codevamp-technologies",
@@ -32,9 +32,9 @@ export const experiences: ExperienceItem[] = [
     location: "Bareilly, Uttar Pradesh, India",
     type: "internship",
     responsibilities: [
-      "Worked on Python-based Data Science and AI/ML projects.",
-      "Worked with data cleaning, preprocessing, analysis, and model building.",
-      "Worked with Generative AI, LLMs, NLP, and LangChain.",
+      "Engineered document retrieval and summarization pipelines using Python, LangChain, and Generative AI APIs, delivering question-answering prototypes [TODO_ADD_QUERY_ACCURACY_OR_METRIC].",
+      "Cleaned, normalized, and engineered features across structured datasets using Pandas and Scikit-Learn to prepare production-ready training datasets.",
+      "Conducted exploratory data analyses and built evaluation scripts to benchmark model responses across diverse text inputs.",
     ],
     technologies: [
       "Python",
@@ -42,21 +42,21 @@ export const experiences: ExperienceItem[] = [
       "Machine Learning",
       "Generative AI",
       "LLMs",
-      "NLP",
       "LangChain",
+      "Pandas",
     ],
   },
   {
     id: "iit-kanpur",
     role: "Summer Trainee — Python for Data Science",
     company: "IIT Kanpur",
-    period: "2025",
+    period: "June 2025 — July 2025 [TODO_CONFIRM_MONTHS]",
     location: "Kanpur, Uttar Pradesh, India",
     type: "training",
     responsibilities: [
-      "Completed rigorous summer training covering Python programming fundamentals and object-oriented programming (OOP).",
-      "Implemented core data structures, exception handling mechanisms, and systematic algorithmic problem-solving.",
-      "Conducted exploratory data analysis, numerical computing, and visualization using NumPy, Pandas, and Matplotlib.",
+      "Completed intensive institutional training in Python programming and Object-Oriented Design (OOP), solving [TODO_NUMBER_OF_PROBLEMS] algorithmic and data structure problems.",
+      "Implemented modular data processing pipelines and statistical visualizations on benchmark datasets utilizing NumPy, Pandas, and Matplotlib.",
+      "Designed and executed end-to-end exploratory data analysis workflows, identifying anomalies and computing descriptive statistics.",
     ],
     technologies: [
       "Python",
@@ -65,7 +65,7 @@ export const experiences: ExperienceItem[] = [
       "NumPy",
       "Pandas",
       "Matplotlib",
-      "Data Analysis",
+      "Exploratory Data Analysis",
     ],
   },
 ];

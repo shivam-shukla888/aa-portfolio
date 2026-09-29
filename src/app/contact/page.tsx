@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { profile } from "@/data/profile";
 import { PageBackground } from "@/components/PageBackground";
+import { ObfuscatedEmail } from "@/components/ObfuscatedEmail";
 
 export default function ContactPage() {
   const [copied, setCopied] = useState(false);
@@ -18,8 +19,7 @@ export default function ContactPage() {
     {
       label: "Direct Email",
       value: profile.email,
-      href: `mailto:${profile.email}?subject=Inquiry%20via%20Portfolio`,
-      hint: "Primary channel for technical inquiries, discussions & engineering roles.",
+      hint: "Primary channel for technical inquiries, engineering opportunities, and discussions.",
       actionLabel: "Send Email",
       isEmail: true,
     },
@@ -27,7 +27,7 @@ export default function ContactPage() {
       label: "LinkedIn",
       value: "linkedin.com/in/syyedaaamna",
       href: profile.linkedin,
-      hint: "Professional network profile & career updates.",
+      hint: "Professional network profile & engineering connections.",
       actionLabel: "Open LinkedIn Profile",
     },
     {
@@ -38,40 +38,37 @@ export default function ContactPage() {
       actionLabel: "Visit GitHub Repositories",
     },
     {
-      label: "Phone / Direct Line",
+      label: "Telephone Line",
       value: profile.phone,
       href: `tel:${profile.phone.replace(/\s+/g, "")}`,
-      hint: "Direct telephone line for formal discussions.",
+      hint: "Direct telephone line for scheduled discussions.",
       actionLabel: "Call Directly",
     },
   ];
 
   return (
     <div className="w-full">
-      {/* Editorial Hero Header matching Panel 06 */}
+      {/* Hero Header */}
       <section className="relative min-h-[480px] lg:min-h-[520px] border-b border-[#E6E3DC] bg-[#FAF9F6] py-14 sm:py-20 overflow-hidden">
         <PageBackground variant="contact" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-xl">
             <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-3 font-semibold">
-              <span>05 &mdash;</span>
+              <span>04 &mdash; DIRECT COMMUNICATION</span>
             </div>
             <h1 className="font-display text-5xl sm:text-7xl font-normal tracking-tight text-[#111112]">
               Let&apos;s Talk
             </h1>
             <p className="mt-4 font-display text-xl sm:text-2xl text-[#111112] leading-snug">
-              Open to opportunities, collaborations and interesting problems.
+              Open to entry-level AI/ML roles, collaborations, and technical discussions.
             </p>
-            <p className="mt-3 font-sans text-sm text-[#6E6D68] leading-relaxed">
-              Reach out directly through verified channels. All professional inquiries receive prompt attention without intermediate marketing layers.
+            <p className="mt-3 font-sans text-sm text-[#4A4944] leading-relaxed">
+              Reach out directly through public communication channels. All professional inquiries receive prompt attention.
             </p>
 
-            {/* Bottom-Left Values Rail matching Panel 06 */}
-            <div className="mt-14 pt-2 font-mono text-xs uppercase tracking-widest text-[#6E6D68] space-y-1.5 border-l-2 border-[#D45A2A] pl-3.5">
-              <div>IDEAS</div>
-              <div>COLLABORATION</div>
-              <div>OPPORTUNITIES</div>
-              <div>CONVERSATIONS</div>
+            <div className="mt-8 pt-4 border-t border-[#E6E3DC] font-mono text-xs text-[#111112]">
+              <span className="text-[#D45A2A] font-bold">&raquo; </span>
+              <span>{profile.relocationStatus}</span>
             </div>
           </div>
         </div>
@@ -79,8 +76,6 @@ export default function ContactPage() {
 
       {/* Contact Grid */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
-
-        {/* Contact Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {contactChannels.map((c) => (
             <div
@@ -92,31 +87,42 @@ export default function ContactPage() {
                   {c.label}
                 </span>
                 <div className="mt-3 font-display text-xl sm:text-2xl font-semibold text-[#111112] break-all leading-tight">
-                  {c.value}
+                  {c.isEmail ? (
+                    <ObfuscatedEmail showAddress={true} />
+                  ) : (
+                    c.value
+                  )}
                 </div>
-                <p className="mt-2 font-sans text-xs text-[#6E6D68] leading-relaxed">
+                <p className="mt-2 font-sans text-xs text-[#4A4944] leading-relaxed">
                   {c.hint}
                 </p>
               </div>
 
               <div className="mt-8 pt-5 border-t border-[#E6E3DC] flex items-center justify-between gap-3">
-                <a
-                  href={c.href}
-                  target={c.href.startsWith("http") ? "_blank" : undefined}
-                  rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-[#111112] hover:text-[#D45A2A] transition-colors font-medium"
-                >
-                  <span>{c.actionLabel}</span>
-                  <svg className="w-3.5 h-3.5 stroke-current" fill="none" viewBox="0 0 24 24" strokeWidth="2" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-                  </svg>
-                </a>
+                {c.isEmail ? (
+                  <ObfuscatedEmail
+                    className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-[#111112] hover:text-[#D45A2A] transition-colors font-medium focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
+                    label={c.actionLabel}
+                  />
+                ) : (
+                  <a
+                    href={c.href}
+                    target={c.href?.startsWith("http") ? "_blank" : undefined}
+                    rel={c.href?.startsWith("http") ? "noopener noreferrer" : undefined}
+                    className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-[#111112] hover:text-[#D45A2A] transition-colors font-medium focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
+                  >
+                    <span>{c.actionLabel}</span>
+                    <svg className="w-3.5 h-3.5 stroke-current" fill="none" viewBox="0 0 24 24" strokeWidth="2" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                    </svg>
+                  </a>
+                )}
 
                 {c.isEmail && (
                   <button
                     type="button"
                     onClick={handleCopyEmail}
-                    className="font-mono text-xs uppercase tracking-wider text-[#6E6D68] hover:text-[#111112] px-2 py-1 border border-[#E6E3DC] hover:border-[#111112] bg-[#FAF9F6] transition-colors"
+                    className="font-mono text-xs uppercase tracking-wider text-[#4A4944] hover:text-[#111112] px-2 py-1 border border-[#E6E3DC] hover:border-[#111112] bg-[#FAF9F6] transition-colors focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
                   >
                     {copied ? "Copied" : "Copy"}
                   </button>
@@ -128,7 +134,7 @@ export default function ContactPage() {
 
         {/* Location & Status Notice */}
         <div className="mt-10 p-6 bg-[#FAF9F6] border border-[#E6E3DC]">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 font-mono text-xs text-[#6E6D68]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 font-mono text-xs text-[#4A4944]">
             <div>
               <span className="block uppercase tracking-wider text-[#111112] font-semibold mb-1">
                 Geographic Location
@@ -137,9 +143,9 @@ export default function ContactPage() {
             </div>
             <div>
               <span className="block uppercase tracking-wider text-[#111112] font-semibold mb-1">
-                Communication Policy
+                Availability
               </span>
-              <span>Direct, unmediated channels. No unsolicited CRM ingestion or tracking.</span>
+              <span>Available for full-time entry-level roles and internships.</span>
             </div>
           </div>
         </div>

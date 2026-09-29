@@ -5,6 +5,7 @@ export interface EducationItem {
   location: string;
   period: string;
   boardOrUniversity?: string;
+  gradePlaceholder: string;
 }
 
 export const educationList: EducationItem[] = [
@@ -14,13 +15,24 @@ export const educationList: EducationItem[] = [
     institution: "SRMS Engineering College",
     location: "Bareilly, Uttar Pradesh, India",
     period: "2022 — 2026",
+    gradePlaceholder: "CGPA: [TODO_ADD_BTECH_CGPA / 10.0]",
   },
   {
     id: "senior-secondary",
-    degree: "Senior Secondary",
+    degree: "Senior Secondary (12th Grade)",
     institution: "Police Modern School",
     location: "Bareilly, Uttar Pradesh, India",
     period: "2020",
     boardOrUniversity: "CBSE",
+    gradePlaceholder: "Score: [TODO_ADD_12TH_PERCENTAGE]%",
+  },
+  {
+    id: "secondary-school",
+    degree: "Secondary School Examination (10th Grade)",
+    institution: "Police Modern School",
+    location: "Bareilly, Uttar Pradesh, India",
+    period: "2018",
+    boardOrUniversity: "CBSE",
+    gradePlaceholder: "Score: [TODO_ADD_10TH_PERCENTAGE]%",
   },
 ];

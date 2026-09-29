@@ -480,7 +480,7 @@ export function AskAamnaModal() {
                   <HamsterMascot size={28} state="thinking" />
                   <div className="flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 bg-[#D45A2A] animate-pulse" aria-hidden="true" />
-                    <span>Thinking through verified project context...</span>
+                    <span>Searching portfolio context...</span>
                   </div>
                 </div>
               )}
@@ -491,6 +491,11 @@ export function AskAamnaModal() {
                   {error}
                 </div>
               )}
+
+              {/* Disclaimer */}
+              <div className="pt-2 text-[10px] font-mono text-[#6E6D68] border-t border-[#E6E3DC]/60">
+                <span className="text-[#D45A2A] font-bold">Note:</span> AI portfolio guide grounded strictly on portfolio data. For official inquiries, please contact Syyeda Aamna directly.
+              </div>
 
               <div ref={messagesEndRef} />
             </div>

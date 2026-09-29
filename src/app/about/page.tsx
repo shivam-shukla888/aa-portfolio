@@ -2,41 +2,40 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { profile } from "@/data/profile";
 import { educationList } from "@/data/education";
-import { verifiedTraining } from "@/data/training";
+import { technicalTraining } from "@/data/training";
 import { PageBackground } from "@/components/PageBackground";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Professional background, technical focus, and verified educational credentials of Syyeda Aamna.",
+    "Professional background, technical focus, and educational qualifications of Syyeda Aamna — Entry-Level AI/ML Engineer.",
 };
 
 export default function AboutPage() {
   return (
     <div className="w-full">
-      {/* Editorial Hero Header matching Panel 02 */}
+      {/* Hero Header */}
       <section className="relative min-h-[480px] lg:min-h-[520px] border-b border-[#E6E3DC] bg-[#FAF9F6] py-14 sm:py-20 overflow-hidden">
         <PageBackground variant="about" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-xl">
             <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-3 font-semibold">
-              <span>02 &mdash;</span>
+              <span>03 &mdash; BIOGRAPHY &amp; INTERESTS</span>
             </div>
             <h1 className="font-display text-5xl sm:text-7xl font-normal tracking-tight text-[#111112]">
               About
             </h1>
             <p className="mt-4 font-display text-xl sm:text-2xl text-[#111112] leading-snug">
-              A deeper look at my background, interests and the kind of work I enjoy building.
+              A deeper look at my technical focus, background, and engineering approach.
             </p>
-            <p className="mt-3 font-mono text-xs sm:text-sm uppercase tracking-widest text-[#6E6D68]">
+            <p className="mt-3 font-mono text-xs sm:text-sm uppercase tracking-widest text-[#4A4944]">
               {profile.displayTitle} &bull; {profile.location}
             </p>
 
-            {/* Bottom-Left Domain Tag Stack matching Panel 02 */}
-            <div className="mt-14 pt-2 font-mono text-xs uppercase tracking-widest text-[#6E6D68] space-y-1.5 border-l-2 border-[#D45A2A] pl-3.5">
-              <div>AI/ML</div>
-              <div>DATA SCIENCE</div>
-              <div>SOFTWARE</div>
+            <div className="mt-14 pt-2 font-mono text-xs uppercase tracking-widest text-[#4A4944] space-y-1.5 border-l-2 border-[#D45A2A] pl-3.5">
+              <div>APPLIED ML</div>
+              <div>RETRIEVAL ARCHITECTURES</div>
+              <div>DATA PIPELINES</div>
             </div>
           </div>
         </div>
@@ -44,8 +43,7 @@ export default function AboutPage() {
 
       {/* Main Content Sections */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-
-        {/* Section 1: Professional Summary */}
+        {/* Section 1: Professional Positioning */}
         <section className="mb-20">
           <h2 className="font-mono text-xs uppercase tracking-widest text-[#D45A2A] font-semibold mb-4">
             01 / Professional Positioning
@@ -54,7 +52,10 @@ export default function AboutPage() {
             <p className="font-display text-2xl sm:text-3xl text-[#111112] leading-relaxed">
               {profile.positioningStatement}
             </p>
-            <p className="mt-6 font-sans text-sm text-[#6E6D68] leading-relaxed">
+            <p className="mt-4 font-sans text-base text-[#4A4944] leading-relaxed">
+              {profile.secondaryStatement}
+            </p>
+            <p className="mt-4 font-sans text-sm text-[#4A4944] leading-relaxed">
               {profile.shortBio}
             </p>
           </div>
@@ -71,7 +72,7 @@ export default function AboutPage() {
                 key={area}
                 className="grid grid-cols-[3rem_1fr] items-baseline gap-4 border-b border-[#E6E3DC] py-4 last:border-b-0"
               >
-                <span className="font-mono text-xs text-[#6E6D68]">
+                <span className="font-mono text-xs text-[#4A4944]">
                   0{idx + 1}
                 </span>
                 <span className="font-sans text-sm text-[#111112]">
@@ -82,7 +83,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Section 3: Verified Academic Foundation */}
+        {/* Section 3: Academic Foundation */}
         <section className="mb-20">
           <h2 className="font-mono text-xs uppercase tracking-widest text-[#D45A2A] font-semibold mb-4">
             03 / Education
@@ -94,9 +95,12 @@ export default function AboutPage() {
                   <h3 className="font-display text-xl font-semibold text-[#111112]">
                     {edu.degree}
                   </h3>
-                  <div className="font-sans text-sm text-[#6E6D68] mt-1">
+                  <div className="font-sans text-sm text-[#4A4944] mt-1">
                     {edu.institution}, {edu.location}
                     {edu.boardOrUniversity && ` (${edu.boardOrUniversity})`}
+                  </div>
+                  <div className="mt-2 font-mono text-xs text-[#D45A2A] font-semibold">
+                    {edu.gradePlaceholder}
                   </div>
                 </div>
                 <div className="font-mono text-xs text-[#111112] shrink-0 font-medium">
@@ -107,13 +111,13 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Section 4: Verified Summer Training */}
+        {/* Section 4: Institutional Training */}
         <section className="mb-20">
           <h2 className="font-mono text-xs uppercase tracking-widest text-[#D45A2A] font-semibold mb-4">
             04 / Institutional Training
           </h2>
           <div className="p-8 bg-[#F4F2EC] border border-[#E6E3DC]">
-            {verifiedTraining.map((tr) => (
+            {technicalTraining.map((tr) => (
               <div key={tr.id}>
                 <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-[#E6E3DC] pb-4 mb-4">
                   <div>
@@ -129,13 +133,13 @@ export default function AboutPage() {
                   </div>
                 </div>
 
-                <p className="font-sans text-sm text-[#6E6D68] leading-relaxed mb-6">
+                <p className="font-sans text-sm text-[#4A4944] leading-relaxed mb-6">
                   {tr.description}
                 </p>
 
                 <div>
                   <span className="block font-mono text-[10px] uppercase tracking-wider text-[#111112] font-semibold mb-2">
-                    Curriculum Competencies Verified:
+                    Curriculum Competencies:
                   </span>
                   <div className="flex flex-wrap gap-1.5">
                     {tr.skillsCovered.map((skill) => (
@@ -162,19 +166,19 @@ export default function AboutPage() {
             Active Engagement at Indraprastha Apollo Hospitals
           </h3>
           <p className="mt-3 font-sans text-sm text-[#A5A49D] leading-relaxed max-w-2xl">
-            Currently working on Python and AI/ML-based solutions for real-world applications and data-driven workflows, alongside software development using C# and .NET.
+            Developing data processing scripts and backend services using Python, SQL, and C#/.NET to automate internal clinical data workflows.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
               href="/experience"
-              className="inline-flex items-center px-5 py-2.5 bg-[#FAF9F6] text-[#111112] font-mono text-xs uppercase tracking-widest hover:bg-[#D45A2A] hover:text-[#FAF9F6] transition-colors"
+              className="inline-flex items-center px-5 py-2.5 bg-[#FAF9F6] text-[#111112] font-mono text-xs uppercase tracking-widest hover:bg-[#D45A2A] hover:text-[#FAF9F6] transition-colors focus-visible:outline-2 focus-visible:outline-[#FAF9F6]"
             >
               Examine Experience Timeline
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center px-5 py-2.5 border border-[#3A3A40] text-[#FAF9F6] font-mono text-xs uppercase tracking-widest hover:bg-[#1A1A1E] transition-colors"
+              className="inline-flex items-center px-5 py-2.5 border border-[#3A3A40] text-[#FAF9F6] font-mono text-xs uppercase tracking-widest hover:bg-[#1A1A1E] transition-colors focus-visible:outline-2 focus-visible:outline-[#FAF9F6]"
             >
               Get in Touch
             </Link>

@@ -1,0 +1,135 @@
+{
+  "name": "Syyeda Aamna",
+  "targetRole": "Entry-Level AI/ML Engineer",
+  "location": "Bareilly, Uttar Pradesh, India",
+  "email": "syyedaaamna682@gmail.com",
+  "phone": "+91 9639252679",
+  "github": "https://github.com/Syyeda-Aamna",
+  "linkedin": "https://linkedin.com/in/syyedaaamna",
+  "workPreferences": {
+    "openToRelocation": "[TODO_CONFIRM_RELOCATION_PREFERENCE: YES/NO]",
+    "openToRemote": true
+  },
+  "education": [
+    {
+      "degree": "B.Tech in Computer Science and Engineering",
+      "institution": "SRMS Engineering College",
+      "location": "Bareilly, Uttar Pradesh, India",
+      "period": "2022 — 2026",
+      "cgpa": "[TODO_ADD_BTECH_CGPA / 10.0]"
+    },
+    {
+      "degree": "Senior Secondary (12th Grade)",
+      "institution": "Police Modern School",
+      "location": "Bareilly, Uttar Pradesh, India",
+      "period": "2020",
+      "board": "CBSE",
+      "percentage": "[TODO_ADD_12TH_PERCENTAGE]%"
+    },
+    {
+      "degree": "Secondary School Examination (10th Grade)",
+      "institution": "Police Modern School",
+      "location": "Bareilly, Uttar Pradesh, India",
+      "period": "2018",
+      "board": "CBSE",
+      "percentage": "[TODO_ADD_10TH_PERCENTAGE]%"
+    }
+  ],
+  "experience": [
+    {
+      "role": "Software Engineering Trainee (AI/ML & Systems) [TODO_CONFIRM_EXACT_DESIGNATION]",
+      "company": "Indraprastha Apollo Hospitals",
+      "location": "New Delhi, India",
+      "period": "September 2026 — Present",
+      "type": "employment",
+      "summary": "Working on data processing scripts and backend services using Python, SQL, and C#/.NET to automate internal clinical data workflows.",
+      "technologies": ["Python", "SQL", "C#", ".NET", "Data Processing"]
+    },
+    {
+      "role": "GEN AI Intern",
+      "company": "The Codevamp Technologies",
+      "location": "Bareilly, Uttar Pradesh, India",
+      "period": "November 2025 — April 2026",
+      "type": "internship",
+      "summary": "Engineered Generative AI and retrieval workflows using Python, LangChain, and LLM APIs for automated document question answering; cleaned and preprocessed datasets for classification models.",
+      "technologies": ["Python", "Data Science", "Machine Learning", "Generative AI", "LLMs", "LangChain"]
+    },
+    {
+      "role": "Summer Trainee — Python for Data Science",
+      "company": "IIT Kanpur",
+      "location": "Kanpur, Uttar Pradesh, India",
+      "period": "June 2025 — July 2025 [TODO_CONFIRM_MONTHS]",
+      "type": "training",
+      "summary": "Completed structured summer training covering Python programming, object-oriented design, algorithmic data structures, and exploratory data analysis using NumPy, Pandas, and Matplotlib.",
+      "technologies": ["Python", "OOP", "Data Structures", "NumPy", "Pandas", "Matplotlib"]
+    }
+  ],
+  "projects": [
+    {
+      "title": "AI Powered Fraud Detection Dashboard",
+      "slug": "ai-fraud-detection-system",
+      "problem": "Detecting fraudulent banking transactions from high-volume streaming flows while maintaining explainability and low false-negative rates.",
+      "stack": ["Python", "FastAPI", "Scikit-Learn", "React.js", "Recharts", "Pandas", "NumPy"],
+      "outcomes": [
+        "Constructed a dual-stage fraud engine combining Logistic Regression with rule-based heuristics to score anomaly risk.",
+        "Built a real-time analytics frontend in React with Recharts for visual transaction monitoring and CSV report export.",
+        "Achieved classification metrics on transaction benchmarks: Accuracy [TODO_ADD_ACCURACY], Precision [TODO_ADD_PRECISION], Recall [TODO_ADD_RECALL]."
+      ],
+      "github": "https://github.com/Syyeda-Aamna/fraud-detection-project",
+      "liveDemo": null
+    },
+    {
+      "title": "RAG Voice Chatbot",
+      "slug": "rag-voice-chatbot",
+      "problem": "Answering targeted questions over private PDF reference documents with accurate source citations and hands-free speech input.",
+      "stack": ["Python 3.10+", "LangChain", "FAISS", "HuggingFace (all-MiniLM-L6-v2)", "Google Gemini LLM", "SpeechRecognition", "PyPDFLoader"],
+      "outcomes": [
+        "Implemented document extraction and chunking via RecursiveCharacterTextSplitter and dense embeddings into FAISS.",
+        "Grounded LLM synthesis via Google Gemini with verified page-level source citations to eliminate hallucinations.",
+        "Integrated microphone voice capture and audio transcription for interactive voice-driven question answering."
+      ],
+      "github": "https://github.com/Syyeda-Aamna/rag-voice-chatbot",
+      "liveDemo": null
+    },
+    {
+      "title": "Netflix Movie Data Analysis",
+      "slug": "netflix-movie-data-analysis",
+      "problem": "Analyzing catalog composition, rating patterns, genre evolution, and international distribution trends across ~9,800 movie titles.",
+      "stack": ["Python", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Jupyter Notebook"],
+      "outcomes": [
+        "Engineered data cleaning and missing value resolution across ~9,800 Netflix movie titles.",
+        "Mapped statistical distributions of release years, vote counts, and audience rating metrics.",
+        "Produced multi-variable correlation heatmaps revealing audience popularity and release timeline patterns."
+      ],
+      "github": "https://github.com/Syyeda-Aamna/netflix-movie-data-analysis",
+      "liveDemo": null
+    }
+  ],
+  "skills": {
+    "strong": [
+      { "name": "Python", "project": "All Projects (Fraud Detection, RAG Chatbot, Netflix Analysis)" },
+      { "name": "Machine Learning (Scikit-Learn)", "project": "AI Fraud Detection Dashboard" },
+      { "name": "LangChain", "project": "RAG Voice Chatbot" },
+      { "name": "FAISS & Vector Search", "project": "RAG Voice Chatbot" },
+      { "name": "Pandas & NumPy", "project": "Netflix Movie Data Analysis & Fraud Detection" },
+      { "name": "Matplotlib & Seaborn", "project": "Netflix Movie Data Analysis" },
+      { "name": "FastAPI", "project": "AI Fraud Detection Dashboard" },
+      { "name": "SQL", "project": "Apollo Hospitals Experience" }
+    ],
+    "working": [
+      { "name": "React.js", "evidence": "Fraud Detection Frontend" },
+      { "name": "Generative AI & LLMs", "evidence": "RAG Voice Chatbot & Codevamp" },
+      { "name": "REST APIs", "evidence": "FastAPI & .NET Services" },
+      { "name": "C# & .NET", "evidence": "Apollo Hospitals" },
+      { "name": "Git & GitHub", "evidence": "Version control across all project repositories" }
+    ],
+    "familiar": [
+      { "name": "PyTorch", "note": "Coursework / Foundational" },
+      { "name": "Deep Learning", "note": "Coursework / Foundational" },
+      { "name": "Docker", "note": "Basic containerization concepts" },
+      { "name": "MongoDB", "note": "NoSQL document storage fundamentals" },
+      { "name": "Tableau", "note": "Business intelligence visualization basics" },
+      { "name": "Java", "note": "Academic object-oriented programming foundation" }
+    ]
+  }
+}

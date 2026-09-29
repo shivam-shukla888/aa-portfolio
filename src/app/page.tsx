@@ -1,331 +1,221 @@
 import Link from "next/link";
+import Image from "next/image";
 import { profile } from "@/data/profile";
 import { projects } from "@/data/projects";
 import { experiences } from "@/data/experience";
-import { skillCategories } from "@/data/skills";
+import { skillTiers } from "@/data/skills";
 import { educationList } from "@/data/education";
-import { verifiedTraining } from "@/data/training";
+import { technicalTraining } from "@/data/training";
 import { PageBackground } from "@/components/PageBackground";
+import { ObfuscatedEmail } from "@/components/ObfuscatedEmail";
 
 export default function HomePage() {
   return (
     <div className="w-full">
-      {/* 1. HERO SECTION */}
+      {/* ═══════════════════════════════════════════════
+          1. HERO SECTION (Fresher AI/ML Engineer Positioning)
+      ═══════════════════════════════════════════════ */}
       <section className="relative border-b border-[#E6E3DC] pt-10 sm:pt-16 pb-12 sm:pb-20 bg-[#FAF9F6] overflow-hidden">
         <PageBackground variant="home" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-2xl pt-4 pb-8 sm:pb-16 flex flex-col justify-between">
-            {/* Category tracker */}
-            <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#6E6D68] mb-4 sm:mb-6">
-              <span>AI/ML</span>
+            {/* Target Role & Scope Indicator */}
+            <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#4A4944] mb-4 sm:mb-6">
+              <span>AI/ML ENGINEER (ENTRY-LEVEL)</span>
               <span className="text-[#D45A2A] font-bold">&bull;</span>
-              <span>DATA SCIENCE</span>
+              <span>PYTHON</span>
               <span className="text-[#D45A2A] font-bold">&bull;</span>
-              <span>SOFTWARE</span>
+              <span>APPLIED ML</span>
             </div>
 
             {/* Display Headline */}
-            <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] tracking-tight text-[#111112] font-normal leading-[0.98]">
-              Syyeda Aamna
+            <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.25rem] tracking-tight text-[#111112] font-normal leading-[0.98]">
+              {profile.name}
             </h1>
 
-            {/* Subheading / Ethos */}
+            {/* Primary One-Line Value Proposition (Requirement 6) */}
             <p className="mt-4 sm:mt-5 font-display text-xl sm:text-2xl text-[#111112] leading-snug max-w-xl">
-              Building practical AI/ML solutions with a focus on real-world impact.
+              {profile.positioningStatement}
             </p>
 
-            {/* Bio summary */}
-            <p className="mt-4 font-sans text-sm sm:text-base text-[#6E6D68] leading-relaxed max-w-xl">
-              AI/ML-focused software professional with hands-on experience in Python, Machine Learning, Data Science, Generative AI and software development.
+            {/* Secondary Supporting Line (Requirement 6) */}
+            <p className="mt-3 font-sans text-sm sm:text-base text-[#4A4944] leading-relaxed max-w-xl">
+              {profile.secondaryStatement}
             </p>
 
-            {/* Action Buttons */}
-            <div className="mt-8 pt-2 flex flex-wrap gap-4 items-center">
+            {/* Action Buttons & Resume Download (Requirement 9) */}
+            <div className="mt-8 pt-2 flex flex-wrap gap-3.5 items-center">
               <a
-                href="#featured-work"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#D45A2A] text-[#FAF9F6] font-mono text-xs uppercase tracking-wider font-semibold hover:bg-[#b8471c] transition-colors"
+                href="#projects"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#D45A2A] text-[#FAF9F6] font-mono text-xs uppercase tracking-wider font-semibold hover:bg-[#b8471c] transition-colors focus-visible:outline-2 focus-visible:outline-[#111112]"
               >
-                <span>View My Work</span>
+                <span>View Projects</span>
                 <span aria-hidden="true">&rarr;</span>
               </a>
+
               <a
+                href="/resume.pdf"
+                download="Syyeda_Aamna_Resume.pdf"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-[#111112] bg-[#FAF9F6] text-[#111112] font-mono text-xs uppercase tracking-wider hover:bg-[#111112] hover:text-[#FAF9F6] transition-colors focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
+                aria-label="Download Resume (PDF)"
+              >
+                <svg className="w-3.5 h-3.5 stroke-current" fill="none" viewBox="0 0 24 24" strokeWidth="2" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                </svg>
+                <span>Download Resume</span>
+              </a>
+
+              <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-[#D45A2A] text-[#111112] font-mono text-xs uppercase tracking-wider hover:bg-[#F4F2EC] transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 border border-[#E6E3DC] text-[#111112] font-mono text-xs uppercase tracking-wider hover:bg-[#F4F2EC] transition-colors focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
               >
-                <span>Get in Touch</span>
-                <span aria-hidden="true">&rarr;</span>
-              </a>
+                <span>Contact</span>
+              </Link>
             </div>
 
-            {/* Metadata Indicators */}
-            <div className="mt-12 pt-6 border-t border-[#E6E3DC] flex flex-wrap gap-y-2 gap-x-6 font-mono text-xs text-[#6E6D68]">
+            {/* Social Channels in Hero (Requirement 9) */}
+            <div className="mt-8 flex items-center gap-4 text-xs font-mono text-[#111112]">
+              <span className="text-[#4A4944] text-[11px] uppercase tracking-wider font-semibold">Channels:</span>
+              <a
+                href={profile.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 hover:text-[#D45A2A] transition-colors focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
+              >
+                <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                </svg>
+                <span>GitHub</span>
+              </a>
+              <a
+                href={profile.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 hover:text-[#D45A2A] transition-colors focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
+              >
+                <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                </svg>
+                <span>LinkedIn</span>
+              </a>
+              <ObfuscatedEmail
+                className="inline-flex items-center gap-1.5 hover:text-[#D45A2A] transition-colors focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
+                showIcon={true}
+                label="Direct Email"
+              />
+            </div>
+
+            {/* Location & Relocation Indicator (Requirement 7) */}
+            <div className="mt-8 pt-6 border-t border-[#E6E3DC] flex flex-wrap gap-y-2 gap-x-6 font-mono text-xs text-[#4A4944]">
               <div className="flex items-center gap-1.5">
                 <span className="text-[#D45A2A] font-bold">&raquo;</span>
-                <span className="uppercase tracking-wider">BAREILLY, UTTAR PRADESH</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <span className="text-[#D45A2A] font-bold">&raquo;</span>
-                <span className="uppercase tracking-wider">AVAILABLE FOR OPPORTUNITIES</span>
+                <span className="uppercase tracking-wider">LOCATION: {profile.location}</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 bg-[#D45A2A] inline-block" aria-hidden="true" />
-                <span className="uppercase tracking-wider text-[#111112]">OPEN TO COLLABORATION</span>
+                <span className="uppercase tracking-wider text-[#111112]">{profile.relocationStatus}</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 2. SYSTEM NOTEBOOK (EDITORIAL ARCHITECTURE ARCHIVE) */}
-      <section className="py-16 sm:py-24 border-b border-[#E6E3DC] bg-[#F4F2EC]">
+      {/* ═══════════════════════════════════════════════
+          2. DEDUPLICATED PROJECTS SECTION (Requirement 3)
+          Merged System Notebook + Featured Work into one clean section.
+      ═══════════════════════════════════════════════ */}
+      <section id="projects" className="py-16 sm:py-24 border-b border-[#E6E3DC] bg-[#FAF9F6]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 sm:mb-16 pb-4 border-b border-[#E6E3DC] gap-4">
             <div>
               <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-2 font-semibold">
-                <span>01 &mdash; ARCHITECTURE &amp; PIPELINES</span>
+                <span>01 &mdash; APPLIED SYSTEMS &amp; PROJECTS</span>
               </div>
               <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold text-[#111112] tracking-tight">
-                System Notebook
+                Projects
               </h2>
-              <p className="mt-2 font-sans text-sm sm:text-base text-[#6E6D68] max-w-2xl leading-relaxed">
-                Verified repository pipelines, model architectures, and computational workflows extracted directly from working source code.
-              </p>
-            </div>
-            <span className="font-mono text-xs text-[#6E6D68] uppercase tracking-wider shrink-0">
-              Verified Technical Archive
-            </span>
-          </div>
-
-          {/* Editorial 3-Column Architecture Archive */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* System 1: RAG Pipeline */}
-            <div className="p-7 sm:p-8 bg-[#FAF9F6] border border-[#E6E3DC] hover:border-[#111112] transition-colors flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between font-mono text-xs uppercase tracking-widest text-[#D45A2A] font-semibold pb-3 border-b border-[#E6E3DC] mb-5">
-                  <span>01 &bull; Document Intelligence</span>
-                  <span className="text-[#6E6D68]">FAISS Local</span>
-                </div>
-
-                <h3 className="font-display text-2xl font-semibold text-[#111112] mb-3">
-                  RAG Voice &amp; Document Pipeline
-                </h3>
-
-                <p className="font-sans text-sm text-[#6E6D68] leading-relaxed mb-6">
-                  End-to-end question answering over PDF documents with local vector indexing, semantic retrieval, and speech-driven querying.
-                </p>
-
-                <div className="space-y-3 font-mono text-xs text-[#111112] pt-4 border-t border-[#E6E3DC]">
-                  <div>
-                    <span className="text-[#6E6D68] block text-[10px] uppercase tracking-wider">Ingestion</span>
-                    <span className="font-medium">PyPDFLoader &bull; RecursiveSplitter</span>
-                  </div>
-                  <div>
-                    <span className="text-[#6E6D68] block text-[10px] uppercase tracking-wider">Embeddings &amp; Vector Store</span>
-                    <span className="font-medium">all-MiniLM-L6-v2 &bull; FAISS Persistence</span>
-                  </div>
-                  <div>
-                    <span className="text-[#6E6D68] block text-[10px] uppercase tracking-wider">Generation &amp; Citations</span>
-                    <span className="font-medium text-[#D45A2A]">Gemini LLM Synthesis with Page Citations</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-8 pt-4 border-t border-[#E6E3DC] flex items-center justify-between">
-                <div className="flex flex-wrap gap-1.5">
-                  {["LangChain", "FAISS", "Gemini", "Speech API"].map((t) => (
-                    <span key={t} className="font-mono text-[10px] px-2 py-0.5 bg-[#F4F2EC] border border-[#E6E3DC] text-[#111112]">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-                <Link
-                  href="/projects/rag-voice-chatbot"
-                  className="font-mono text-xs text-[#D45A2A] hover:text-[#111112] font-semibold shrink-0 ml-2"
-                  aria-label="Explore RAG Voice Chatbot project"
-                >
-                  Explore &rarr;
-                </Link>
-              </div>
-            </div>
-
-            {/* System 2: Fraud Detection */}
-            <div className="p-7 sm:p-8 bg-[#FAF9F6] border border-[#E6E3DC] hover:border-[#111112] transition-colors flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between font-mono text-xs uppercase tracking-widest text-[#D45A2A] font-semibold pb-3 border-b border-[#E6E3DC] mb-5">
-                  <span>02 &bull; Anomaly Scoring</span>
-                  <span className="text-[#6E6D68]">FastAPI</span>
-                </div>
-
-                <h3 className="font-display text-2xl font-semibold text-[#111112] mb-3">
-                  Hybrid Fraud Detection Engine
-                </h3>
-
-                <p className="font-sans text-sm text-[#6E6D68] leading-relaxed mb-6">
-                  Dual-stage risk assessment combining statistical machine learning with deterministic rule-based anomaly scoring for real-time transaction screening.
-                </p>
-
-                <div className="space-y-3 font-mono text-xs text-[#111112] pt-4 border-t border-[#E6E3DC]">
-                  <div>
-                    <span className="text-[#6E6D68] block text-[10px] uppercase tracking-wider">Classification Model</span>
-                    <span className="font-medium">Scikit-Learn Logistic Regression</span>
-                  </div>
-                  <div>
-                    <span className="text-[#6E6D68] block text-[10px] uppercase tracking-wider">Risk Evaluation</span>
-                    <span className="font-medium">Deterministic Rule-Based Anomaly Scoring</span>
-                  </div>
-                  <div>
-                    <span className="text-[#6E6D68] block text-[10px] uppercase tracking-wider">Interface &amp; Monitoring</span>
-                    <span className="font-medium text-[#D45A2A]">FastAPI Backend &bull; React Analytics Dashboard</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-8 pt-4 border-t border-[#E6E3DC] flex items-center justify-between">
-                <div className="flex flex-wrap gap-1.5">
-                  {["FastAPI", "Scikit-Learn", "React", "Recharts"].map((t) => (
-                    <span key={t} className="font-mono text-[10px] px-2 py-0.5 bg-[#F4F2EC] border border-[#E6E3DC] text-[#111112]">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-                <Link
-                  href="/projects/ai-fraud-detection-system"
-                  className="font-mono text-xs text-[#D45A2A] hover:text-[#111112] font-semibold shrink-0 ml-2"
-                  aria-label="Explore AI Fraud Detection System project"
-                >
-                  Explore &rarr;
-                </Link>
-              </div>
-            </div>
-
-            {/* System 3: Netflix Data Analysis */}
-            <div className="p-7 sm:p-8 bg-[#FAF9F6] border border-[#E6E3DC] hover:border-[#111112] transition-colors flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between font-mono text-xs uppercase tracking-widest text-[#D45A2A] font-semibold pb-3 border-b border-[#E6E3DC] mb-5">
-                  <span>03 &bull; Exploratory Analysis</span>
-                  <span className="text-[#6E6D68]">9,800 Records</span>
-                </div>
-
-                <h3 className="font-display text-2xl font-semibold text-[#111112] mb-3">
-                  Netflix Content Analytics
-                </h3>
-
-                <p className="font-sans text-sm text-[#6E6D68] leading-relaxed mb-6">
-                  Systematic exploratory data analysis examining content evolution, rating distribution patterns, and international catalog trends across ~9,800 titles.
-                </p>
-
-                <div className="space-y-3 font-mono text-xs text-[#111112] pt-4 border-t border-[#E6E3DC]">
-                  <div>
-                    <span className="text-[#6E6D68] block text-[10px] uppercase tracking-wider">Data Processing</span>
-                    <span className="font-medium">Pandas &amp; NumPy Cleaning Pipelines</span>
-                  </div>
-                  <div>
-                    <span className="text-[#6E6D68] block text-[10px] uppercase tracking-wider">Visual Computing</span>
-                    <span className="font-medium">Matplotlib &amp; Seaborn Distributions</span>
-                  </div>
-                  <div>
-                    <span className="text-[#6E6D68] block text-[10px] uppercase tracking-wider">Statistical Focus</span>
-                    <span className="font-medium text-[#D45A2A]">Multi-Variable Rating &amp; Release Correlation</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-8 pt-4 border-t border-[#E6E3DC] flex items-center justify-between">
-                <div className="flex flex-wrap gap-1.5">
-                  {["Python", "Pandas", "NumPy", "Matplotlib"].map((t) => (
-                    <span key={t} className="font-mono text-[10px] px-2 py-0.5 bg-[#F4F2EC] border border-[#E6E3DC] text-[#111112]">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-                <Link
-                  href="/projects/netflix-movie-data-analysis"
-                  className="font-mono text-xs text-[#D45A2A] hover:text-[#111112] font-semibold shrink-0 ml-2"
-                  aria-label="Explore Netflix Movie Data Analysis project"
-                >
-                  Explore &rarr;
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. FEATURED WORK */}
-      <section id="featured-work" className="py-16 sm:py-24 border-b border-[#E6E3DC] bg-[#FAF9F6]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Header */}
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 sm:mb-16 pb-4 border-b border-[#E6E3DC] gap-4">
-            <div>
-              <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-2 font-semibold">
-                <span>02 &mdash; SELECTED PROJECTS</span>
-              </div>
-              <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold text-[#111112] tracking-tight">
-                Featured Work
-              </h2>
-              <p className="mt-2 font-sans text-sm sm:text-base text-[#6E6D68]">
-                Machine learning systems, generative AI workflows, and software implementations.
+              <p className="mt-2 font-sans text-sm sm:text-base text-[#4A4944] max-w-2xl leading-relaxed">
+                Applied machine learning pipelines, Retrieval-Augmented Generation workflows, and exploratory statistical analyses with public source repositories.
               </p>
             </div>
             <Link
               href="/projects"
-              className="font-mono text-xs uppercase tracking-wider text-[#D45A2A] hover:text-[#111112] inline-flex items-center gap-1.5 group font-semibold shrink-0"
+              className="font-mono text-xs uppercase tracking-wider text-[#D45A2A] hover:text-[#111112] inline-flex items-center gap-1.5 group font-semibold shrink-0 focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
             >
-              <span>View All Projects</span>
+              <span>View All Case Studies</span>
               <span className="group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
             </Link>
           </div>
 
-          {/* 3 Featured Projects Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          {/* Deduplicated 3-Project Grid (Requirement 3) */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {projects.map((project) => (
               <article
                 key={project.id}
                 className="bg-[#FAF9F6] border border-[#E6E3DC] hover:border-[#111112] transition-colors flex flex-col justify-between group"
               >
                 <div>
-                  {/* Real Project Image on Top */}
-                  {project.visualAsset && (
-                    <div className="border-b border-[#E6E3DC] bg-[#F4F2EC] p-3 aspect-16/10 flex items-center justify-center overflow-hidden">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={project.visualAsset.src}
-                        alt={project.visualAsset.alt}
+                  {/* Real Project Image with Next/Image (Requirement 12) */}
+                  {project.architectureDiagram && (
+                    <div className="border-b border-[#E6E3DC] bg-[#F4F2EC] p-3 aspect-16/10 relative flex items-center justify-center overflow-hidden">
+                      <Image
+                        src={project.architectureDiagram.src}
+                        alt={project.architectureDiagram.alt}
+                        width={640}
+                        height={360}
                         className="w-full h-full object-contain group-hover:scale-[1.02] transition-transform duration-300"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                     </div>
                   )}
 
                   {/* Card Content */}
-                  <div className="p-6">
-                    {/* Title + Arrow */}
-                    <div className="flex items-start justify-between gap-2">
-                      <Link href={`/projects/${project.slug}`}>
-                        <h3 className="font-display text-xl sm:text-2xl font-semibold text-[#111112] group-hover:text-[#D45A2A] transition-colors leading-snug">
-                          {project.title}
-                        </h3>
-                      </Link>
-                      <Link
-                        href={`/projects/${project.slug}`}
-                        className="text-[#111112] group-hover:text-[#D45A2A] transition-colors pt-0.5"
-                        aria-label={`View ${project.title}`}
-                      >
-                        <span className="font-mono text-base font-bold">↗</span>
-                      </Link>
+                  <div className="p-6 sm:p-7">
+                    {/* Category & Project Number */}
+                    <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-wider text-[#D45A2A] pb-3 border-b border-[#E6E3DC] mb-4">
+                      <span>{project.number} &bull; {project.category}</span>
                     </div>
 
-                    {/* Short Description */}
-                    <p className="mt-3 font-sans text-xs sm:text-sm text-[#6E6D68] leading-relaxed">
-                      {project.oneLineDescription}
-                    </p>
+                    {/* Title */}
+                    <h3 className="font-display text-2xl font-semibold text-[#111112] group-hover:text-[#D45A2A] transition-colors leading-snug">
+                      <Link href={`/projects/${project.slug}`} className="focus-visible:outline-2 focus-visible:outline-[#D45A2A]">
+                        {project.title}
+                      </Link>
+                    </h3>
+
+                    {/* One-Line Problem (Requirement 3) */}
+                    <div className="mt-3 pt-3 border-t border-[#E6E3DC]">
+                      <span className="block font-mono text-[10px] uppercase tracking-wider text-[#4A4944] font-semibold">
+                        Problem Statement
+                      </span>
+                      <p className="mt-1 font-sans text-xs sm:text-sm text-[#111112] leading-relaxed">
+                        {project.oneLineProblem}
+                      </p>
+                    </div>
+
+                    {/* Outcome Bullets (Requirement 3) */}
+                    <div className="mt-4 pt-3 border-t border-[#E6E3DC]">
+                      <span className="block font-mono text-[10px] uppercase tracking-wider text-[#4A4944] font-semibold mb-2">
+                        Key Engineering Outcomes
+                      </span>
+                      <ul className="space-y-1.5 font-sans text-xs text-[#4A4944] leading-relaxed">
+                        {project.outcomeBullets.map((bullet, i) => (
+                          <li key={i} className="flex items-start gap-2">
+                            <span className="text-[#D45A2A] font-mono text-xs mt-0.5 shrink-0">&bull;</span>
+                            <span>{bullet}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </div>
 
-                {/* Tech Pills at Bottom */}
-                <div className="px-6 pb-6 pt-0">
-                  <div className="flex flex-wrap gap-1.5 pt-3 border-t border-[#E6E3DC]">
-                    {project.technologies.slice(0, 4).map((tech) => (
+                {/* Tech Tags & Action Buttons (Requirement 3) */}
+                <div className="px-6 sm:px-7 pb-6 pt-0">
+                  {/* Stack Tags */}
+                  <div className="flex flex-wrap gap-1.5 py-3 border-t border-[#E6E3DC]">
+                    {project.technologies.slice(0, 5).map((tech) => (
                       <span
                         key={tech}
                         className="font-mono text-[10px] px-2 py-0.5 bg-[#F4F2EC] border border-[#E6E3DC] text-[#111112]"
@@ -334,6 +224,38 @@ export default function HomePage() {
                       </span>
                     ))}
                   </div>
+
+                  {/* Buttons: Case Study, GitHub, Live Demo (hidden if missing) */}
+                  <div className="pt-3 border-t border-[#E6E3DC] flex flex-wrap items-center gap-2">
+                    <Link
+                      href={`/projects/${project.slug}`}
+                      className="px-3 py-1.5 bg-[#111112] text-[#FAF9F6] font-mono text-xs uppercase tracking-wider hover:bg-[#D45A2A] transition-colors focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
+                    >
+                      Case Study &rarr;
+                    </Link>
+
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-3 py-1.5 border border-[#111112] text-[#111112] font-mono text-xs uppercase tracking-wider hover:bg-[#F4F2EC] transition-colors inline-flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
+                    >
+                      <span>GitHub</span>
+                      <span aria-hidden="true">↗</span>
+                    </a>
+
+                    {/* Live Demo button: ONLY shown if liveUrl exists (Requirement 3) */}
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-3 py-1.5 border border-[#D45A2A] text-[#D45A2A] font-mono text-xs uppercase tracking-wider hover:bg-[#D45A2A] hover:text-[#FAF9F6] transition-colors focus-visible:outline-2 focus-visible:outline-[#111112]"
+                      >
+                        Live Demo ↗
+                      </a>
+                    )}
+                  </div>
                 </div>
               </article>
             ))}
@@ -341,21 +263,23 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. EXPERIENCE & SKILLS (MATCHING REFERENCE 2-COLUMN SPLIT) */}
+      {/* ═══════════════════════════════════════════════
+          3. EXPERIENCE & SKILLS (Requirements 5 & 7)
+      ═══════════════════════════════════════════════ */}
       <section className="py-16 sm:py-24 border-b border-[#E6E3DC] bg-[#FAF9F6]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-            {/* Left Column: EXPERIENCE */}
+            {/* Left Column: EXPERIENCE (Requirement 7) */}
             <div className="lg:col-span-6">
               <div className="mb-8 pb-3 border-b border-[#E6E3DC]">
                 <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-2 font-semibold">
-                  <span>03 &mdash; CAREER TIMELINE</span>
+                  <span>02 &mdash; CAREER TIMELINE</span>
                 </div>
                 <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#111112] tracking-tight">
                   Experience
                 </h2>
-                <p className="mt-2 font-sans text-xs sm:text-sm text-[#6E6D68]">
-                  Verified professional roles and engineering responsibilities.
+                <p className="mt-2 font-sans text-xs sm:text-sm text-[#4A4944]">
+                  Professional positions, internships, and institutional engineering training.
                 </p>
               </div>
 
@@ -370,15 +294,15 @@ export default function HomePage() {
 
                     <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
                       <h3 className="font-sans text-sm sm:text-base font-semibold text-[#111112]">
-                        {exp.role} &mdash; <span className="text-[#111112]">{exp.company}</span>
+                        {exp.role}
                       </h3>
-                      <span className="font-mono text-xs text-[#6E6D68] shrink-0">
+                      <span className="font-mono text-xs text-[#4A4944] shrink-0">
                         {exp.period}
                       </span>
                     </div>
 
-                    <div className="font-sans text-xs text-[#6E6D68] mt-0.5">
-                      {exp.location}
+                    <div className="font-sans text-xs text-[#D45A2A] font-medium mt-0.5">
+                      {exp.company} &bull; <span className="text-[#4A4944]">{exp.location}</span>
                     </div>
 
                     <ul className="mt-2.5 space-y-1.5 font-sans text-xs sm:text-sm text-[#111112] leading-relaxed">
@@ -396,7 +320,7 @@ export default function HomePage() {
               <div className="mt-8 pt-4 border-t border-[#E6E3DC]">
                 <Link
                   href="/experience"
-                  className="font-mono text-xs uppercase tracking-wider text-[#D45A2A] hover:text-[#111112] inline-flex items-center gap-1 font-semibold"
+                  className="font-mono text-xs uppercase tracking-wider text-[#D45A2A] hover:text-[#111112] inline-flex items-center gap-1 font-semibold focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
                 >
                   <span>View Full Timeline &amp; Credentials</span>
                   <span aria-hidden="true">&rarr;</span>
@@ -404,29 +328,55 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right Column: SKILLS */}
+            {/* Right Column: SKILLS (Requirement 5: Strong / Working / Familiar) */}
             <div className="lg:col-span-6">
               <div className="mb-8 pb-3 border-b border-[#E6E3DC]">
                 <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-2 font-semibold">
-                  <span>04 &mdash; CORE COMPETENCIES</span>
+                  <span>03 &mdash; TECHNICAL COMPETENCIES</span>
                 </div>
                 <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#111112] tracking-tight">
                   Skills
                 </h2>
-                <p className="mt-2 font-sans text-xs sm:text-sm text-[#6E6D68]">
-                  Technical proficiencies across languages, frameworks, and tools.
+                <p className="mt-2 font-sans text-xs sm:text-sm text-[#4A4944]">
+                  Categorized by practical verification: Strong, Working, and Familiar.
                 </p>
               </div>
 
-              {/* Clean Editorial Table of Skills */}
-              <div className="divide-y divide-[#E6E3DC] border-t border-b border-[#E6E3DC]">
-                {skillCategories.map((group) => (
-                  <div key={group.category} className="py-4 flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-6">
-                    <div className="w-36 shrink-0 font-mono text-xs font-semibold text-[#111112] uppercase tracking-wider">
-                      {group.category}
+              {/* Tiered Skills Layout (Requirement 5) */}
+              <div className="space-y-6">
+                {skillTiers.map((tier) => (
+                  <div key={tier.tier} className="p-5 bg-[#F4F2EC] border border-[#E6E3DC]">
+                    <div className="flex items-center justify-between pb-2 mb-3 border-b border-[#E6E3DC]">
+                      <span className="font-mono text-xs uppercase tracking-wider text-[#D45A2A] font-bold">
+                        {tier.title}
+                      </span>
                     </div>
-                    <div className="flex-1 font-sans text-xs text-[#6E6D68] leading-relaxed">
-                      {group.skills.join(", ")}
+                    <p className="font-sans text-xs text-[#4A4944] mb-3 leading-relaxed">
+                      {tier.description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2">
+                      {tier.skills.map((skill) =>
+                        skill.evidenceProjectSlug ? (
+                          <Link
+                            key={skill.name}
+                            href={`/projects/${skill.evidenceProjectSlug}`}
+                            title={`View project using ${skill.name}: ${skill.evidenceProjectTitle}`}
+                            className="font-mono text-xs px-2.5 py-1 bg-[#FAF9F6] border border-[#111112] text-[#111112] hover:bg-[#111112] hover:text-[#FAF9F6] transition-colors inline-flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
+                          >
+                            <span>{skill.name}</span>
+                            <span className="text-[#D45A2A] text-[10px]">↗</span>
+                          </Link>
+                        ) : (
+                          <span
+                            key={skill.name}
+                            title={skill.contextNote}
+                            className="font-mono text-xs px-2.5 py-1 bg-[#FAF9F6] border border-[#E6E3DC] text-[#111112]"
+                          >
+                            {skill.name}
+                          </span>
+                        )
+                      )}
                     </div>
                   </div>
                 ))}
@@ -436,20 +386,22 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. ACADEMIC FOUNDATIONS & SPECIALIZED TRAINING */}
+      {/* ═══════════════════════════════════════════════
+          4. EDUCATION & INSTITUTIONAL TRAINING (Requirement 8)
+      ═══════════════════════════════════════════════ */}
       <section className="py-16 sm:py-24 border-b border-[#E6E3DC] bg-[#FAF9F6]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
-            {/* Education */}
+            {/* Education (Requirement 8: CGPA & 10th Placeholders) */}
             <div className="lg:col-span-6">
               <div className="mb-8 pb-3 border-b border-[#E6E3DC]">
                 <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-2 font-semibold">
-                  <span>05 &mdash; ACADEMIC FOUNDATIONS</span>
+                  <span>04 &mdash; ACADEMIC FOUNDATIONS</span>
                 </div>
                 <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#111112] tracking-tight">
                   Education
                 </h2>
-                <p className="mt-2 font-sans text-xs sm:text-sm text-[#6E6D68]">
+                <p className="mt-2 font-sans text-xs sm:text-sm text-[#4A4944]">
                   Formal academic degrees and qualifications.
                 </p>
               </div>
@@ -457,50 +409,51 @@ export default function HomePage() {
               <div className="space-y-4">
                 {educationList.map((edu) => (
                   <div key={edu.id} className="p-6 bg-[#F4F2EC] border border-[#E6E3DC]">
-                    <div className="font-mono text-xs text-[#6E6D68]">
-                      {edu.period}
+                    <div className="flex items-center justify-between font-mono text-xs text-[#4A4944]">
+                      <span>{edu.period}</span>
+                      {edu.boardOrUniversity && (
+                        <span>Board: {edu.boardOrUniversity}</span>
+                      )}
                     </div>
-                    <h3 className="font-display text-xl font-semibold text-[#111112] mt-1">
+                    <h3 className="font-display text-xl font-semibold text-[#111112] mt-1.5">
                       {edu.degree}
                     </h3>
                     <div className="font-sans text-xs text-[#111112] mt-1">
                       {edu.institution}, {edu.location}
                     </div>
-                    {edu.boardOrUniversity && (
-                      <div className="font-mono text-[11px] text-[#6E6D68] mt-1">
-                        Board / University: {edu.boardOrUniversity}
-                      </div>
-                    )}
+                    <div className="mt-2.5 font-mono text-xs text-[#D45A2A] font-semibold bg-[#FAF9F6] border border-[#E6E3DC] px-2.5 py-1 inline-block">
+                      {edu.gradePlaceholder}
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Specialized Training */}
+            {/* Technical Training & Workshops (Requirement 2: Neutral title) */}
             <div className="lg:col-span-6">
               <div className="mb-8 pb-3 border-b border-[#E6E3DC]">
                 <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-2 font-semibold">
-                  <span>06 &mdash; VERIFIED WORKSHOPS</span>
+                  <span>05 &mdash; TECHNICAL TRAINING</span>
                 </div>
                 <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#111112] tracking-tight">
-                  Specialized Training
+                  Institutional Workshops
                 </h2>
-                <p className="mt-2 font-sans text-xs sm:text-sm text-[#6E6D68]">
+                <p className="mt-2 font-sans text-xs sm:text-sm text-[#4A4944]">
                   Structured computational and institutional programs.
                 </p>
               </div>
 
               <div className="space-y-4">
-                {verifiedTraining.map((tr) => (
+                {technicalTraining.map((tr) => (
                   <div key={tr.id} className="p-6 bg-[#F4F2EC] border border-[#E6E3DC]">
-                    <div className="flex items-center justify-between font-mono text-xs text-[#6E6D68]">
+                    <div className="flex items-center justify-between font-mono text-xs text-[#4A4944]">
                       <span>{tr.type} &bull; {tr.year}</span>
                       <span className="text-[#D45A2A] font-semibold">{tr.institution}</span>
                     </div>
-                    <h3 className="font-display text-xl font-semibold text-[#111112] mt-1">
+                    <h3 className="font-display text-xl font-semibold text-[#111112] mt-1.5">
                       {tr.title}
                     </h3>
-                    <p className="mt-2 text-xs font-sans text-[#6E6D68] leading-relaxed">
+                    <p className="mt-2 text-xs font-sans text-[#4A4944] leading-relaxed">
                       {tr.description}
                     </p>
                     <div className="mt-3.5 flex flex-wrap gap-1.5">
@@ -521,7 +474,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. CONTACT CTA */}
+      {/* ═══════════════════════════════════════════════
+          5. CONTACT CTA (Direct Communication)
+      ═══════════════════════════════════════════════ */}
       <section className="py-16 sm:py-20 bg-[#121214] text-[#FAF9F6]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -530,22 +485,20 @@ export default function HomePage() {
                 Direct Inquiry
               </span>
               <h2 className="font-display text-3xl sm:text-5xl font-normal tracking-tight mt-2 text-[#FAF9F6]">
-                Let&apos;s Talk.
+                Let&apos;s Connect.
               </h2>
               <p className="mt-4 font-sans text-sm text-[#A5A49D] max-w-xl leading-relaxed">
-                Available for engineering roles, technical collaboration, and discussions on machine learning systems and software development.
+                Open to entry-level AI/ML engineering roles, technical discussions, and collaborative opportunities.
               </p>
             </div>
             <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3">
-              <a
-                href={`mailto:${profile.email}`}
-                className="inline-flex items-center justify-center px-6 py-3.5 bg-[#D45A2A] text-[#FAF9F6] font-mono text-xs uppercase tracking-widest hover:bg-[#b8471c] transition-colors"
-              >
-                Send Direct Email
-              </a>
+              <ObfuscatedEmail
+                className="inline-flex items-center justify-center px-6 py-3.5 bg-[#D45A2A] text-[#FAF9F6] font-mono text-xs uppercase tracking-widest hover:bg-[#b8471c] transition-colors focus-visible:outline-2 focus-visible:outline-[#FAF9F6]"
+                label="Send Direct Email"
+              />
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center px-6 py-3.5 border border-[#3A3A40] text-[#FAF9F6] font-mono text-xs uppercase tracking-widest hover:bg-[#1A1A1E] transition-colors"
+                className="inline-flex items-center justify-center px-6 py-3.5 border border-[#3A3A40] text-[#FAF9F6] font-mono text-xs uppercase tracking-widest hover:bg-[#1A1A1E] transition-colors focus-visible:outline-2 focus-visible:outline-[#FAF9F6]"
               >
                 View Direct Channels
               </Link>
