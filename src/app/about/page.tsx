@@ -88,9 +88,11 @@ export default function AboutPage() {
                     {edu.institution}, {edu.location}
                     {edu.boardOrUniversity && ` (${edu.boardOrUniversity})`}
                   </div>
-                  <div className="mt-2 font-mono text-xs text-[#D45A2A] font-semibold">
-                    {edu.gradePlaceholder}
-                  </div>
+                  {edu.gradePlaceholder && (
+                    <div className="mt-2 font-mono text-xs text-[#D45A2A] font-semibold">
+                      {edu.gradePlaceholder}
+                    </div>
+                  )}
                 </div>
                 <div className="font-mono text-xs text-[#111112] shrink-0 font-medium">
                   {edu.period}

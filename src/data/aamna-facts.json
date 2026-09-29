@@ -15,29 +15,26 @@
       "degree": "B.Tech in Computer Science and Engineering",
       "institution": "SRMS Engineering College",
       "location": "Bareilly, Uttar Pradesh, India",
-      "period": "2022 — 2026",
-      "cgpa": "[TODO_ADD_BTECH_CGPA / 10.0]"
+      "period": "2022 — 2026"
     },
     {
       "degree": "Senior Secondary (12th Grade)",
       "institution": "Police Modern School",
       "location": "Bareilly, Uttar Pradesh, India",
       "period": "2020",
-      "board": "CBSE",
-      "percentage": "[TODO_ADD_12TH_PERCENTAGE]%"
+      "board": "CBSE"
     },
     {
       "degree": "Secondary School Examination (10th Grade)",
       "institution": "Police Modern School",
       "location": "Bareilly, Uttar Pradesh, India",
       "period": "2018",
-      "board": "CBSE",
-      "percentage": "[TODO_ADD_10TH_PERCENTAGE]%"
+      "board": "CBSE"
     }
   ],
   "experience": [
     {
-      "role": "Software Engineering Trainee (AI/ML & Systems) [TODO_CONFIRM_EXACT_DESIGNATION]",
+      "role": "Software Engineering Trainee",
       "company": "Indraprastha Apollo Hospitals",
       "location": "New Delhi, India",
       "period": "September 2026 — Present",
@@ -58,7 +55,7 @@
       "role": "Summer Trainee — Python for Data Science",
       "company": "IIT Kanpur",
       "location": "Kanpur, Uttar Pradesh, India",
-      "period": "June 2025 — July 2025 [TODO_CONFIRM_MONTHS]",
+      "period": "Summer 2025",
       "type": "training",
       "summary": "Completed structured summer training covering Python programming, object-oriented design, algorithmic data structures, and exploratory data analysis using NumPy, Pandas, and Matplotlib.",
       "technologies": ["Python", "OOP", "Data Structures", "NumPy", "Pandas", "Matplotlib"]
@@ -73,7 +70,7 @@
       "outcomes": [
         "Constructed a dual-stage fraud engine combining Logistic Regression with rule-based heuristics to score anomaly risk.",
         "Built a real-time analytics frontend in React with Recharts for visual transaction monitoring and CSV report export.",
-        "Achieved classification metrics on transaction benchmarks: Accuracy [TODO_ADD_ACCURACY], Precision [TODO_ADD_PRECISION], Recall [TODO_ADD_RECALL]."
+        "Evaluated classification performance on held-out transaction test sets to optimize precision and recall."
       ],
       "github": "https://github.com/Syyeda-Aamna/fraud-detection-project",
       "liveDemo": null

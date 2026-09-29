@@ -12,14 +12,14 @@ export interface ExperienceItem {
 export const experiences: ExperienceItem[] = [
   {
     id: "apollo-hospitals",
-    role: "Software Engineering Trainee (AI/ML & Systems) [TODO_CONFIRM_EXACT_DESIGNATION]",
+    role: "Software Engineering Trainee",
     company: "Indraprastha Apollo Hospitals",
     period: "September 2026 — Present",
     location: "New Delhi, India",
     type: "employment",
     responsibilities: [
-      "Engineered automated data processing scripts and backend endpoints using Python and SQL to streamline hospital data workflows, improving processing reliability [TODO_ADD_METRIC_PERCENTAGE].",
-      "Assisted in deploying and validating AI/ML model integration points against existing clinical software interfaces, reducing repetitive manual record handling [TODO_ADD_METRIC_HOURS].",
+      "Engineered automated data processing scripts and backend endpoints using Python and SQL to streamline hospital data workflows, improving processing reliability.",
+      "Assisted in deploying and validating AI/ML model integration points against existing clinical software interfaces, reducing repetitive manual record handling.",
       "Developed backend software services using C# and .NET to ensure stable internal database connectivity and compliant record management.",
     ],
     technologies: ["Python", "Machine Learning", "SQL", "C#", ".NET", "FastAPI"],
@@ -32,7 +32,7 @@ export const experiences: ExperienceItem[] = [
     location: "Bareilly, Uttar Pradesh, India",
     type: "internship",
     responsibilities: [
-      "Engineered document retrieval and summarization pipelines using Python, LangChain, and Generative AI APIs, delivering question-answering prototypes [TODO_ADD_QUERY_ACCURACY_OR_METRIC].",
+      "Engineered document retrieval and summarization pipelines using Python, LangChain, and Generative AI APIs, delivering responsive question-answering prototypes.",
       "Cleaned, normalized, and engineered features across structured datasets using Pandas and Scikit-Learn to prepare production-ready training datasets.",
       "Conducted exploratory data analyses and built evaluation scripts to benchmark model responses across diverse text inputs.",
     ],
@@ -50,11 +50,11 @@ export const experiences: ExperienceItem[] = [
     id: "iit-kanpur",
     role: "Summer Trainee — Python for Data Science",
     company: "IIT Kanpur",
-    period: "June 2025 — July 2025 [TODO_CONFIRM_MONTHS]",
+    period: "Summer 2025",
     location: "Kanpur, Uttar Pradesh, India",
     type: "training",
     responsibilities: [
-      "Completed intensive institutional training in Python programming and Object-Oriented Design (OOP), solving [TODO_NUMBER_OF_PROBLEMS] algorithmic and data structure problems.",
+      "Completed intensive institutional training in Python programming and Object-Oriented Design (OOP), solving algorithmic and data structure problems.",
       "Implemented modular data processing pipelines and statistical visualizations on benchmark datasets utilizing NumPy, Pandas, and Matplotlib.",
       "Designed and executed end-to-end exploratory data analysis workflows, identifying anomalies and computing descriptive statistics.",
     ],

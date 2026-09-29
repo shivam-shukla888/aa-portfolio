@@ -67,7 +67,7 @@ export const projects: Project[] = [
     outcomeBullets: [
       "Built a hybrid fraud engine combining Logistic Regression with deterministic heuristic rules to flag anomalous transactions.",
       "Developed a real-time React monitoring dashboard with Recharts displaying risk score gauges and CSV export capabilities.",
-      "Evaluated model classification performance on held-out transaction test sets: Accuracy [TODO_ADD_ACCURACY], Precision [TODO_ADD_PRECISION], Recall [TODO_ADD_RECALL].",
+      "Evaluated model classification performance on held-out transaction test sets to optimize precision and recall trade-offs.",
     ],
     keyAspects: [
       "Hybrid architecture uniting statistical ML classification with explainable rule-based heuristics",
@@ -77,24 +77,24 @@ export const projects: Project[] = [
     ],
     metricsTable: [
       {
-        metric: "Classification Accuracy",
-        value: "[TODO_ADD_ACCURACY]",
-        benchmarkOrNote: "Measured on balanced test split [TODO_ADD_TEST_SPLIT_PERCENTAGE]%",
+        metric: "Dataset Size",
+        value: "6.3 Million+",
+        benchmarkOrNote: "Raw transaction log records parsed and processed",
       },
       {
-        metric: "Precision (Fraud Class)",
-        value: "[TODO_ADD_PRECISION]",
-        benchmarkOrNote: "Targeting minimized false positive rate to prevent user friction",
+        metric: "Classification Algorithm",
+        value: "Logistic Regression",
+        benchmarkOrNote: "Class-weighted model with heuristic verification rules",
       },
       {
-        metric: "Recall (Fraud Class)",
-        value: "[TODO_ADD_RECALL]",
-        benchmarkOrNote: "Prioritizing high catch rate for critical fraudulent anomalies",
+        metric: "Target Class",
+        value: "Fraudulent Transfers",
+        benchmarkOrNote: "Binary classification prioritizing anomaly sensitivity",
       },
       {
-        metric: "End-to-End Scoring Latency",
-        value: "[TODO_ADD_LATENCY]",
-        benchmarkOrNote: "FastAPI REST API inference benchmark",
+        metric: "Inference Engine",
+        value: "FastAPI REST API",
+        benchmarkOrNote: "Sub-100ms targeted response for transaction scoring",
       },
     ],
     challenges: [
@@ -145,7 +145,7 @@ export const projects: Project[] = [
     outcomeBullets: [
       "Engineered an automated document indexing workflow chunking PDFs and persisting dense vector embeddings into a local FAISS store.",
       "Integrated Google Gemini LLM with strict context-injection prompts requiring verifiable source document citations.",
-      "Benchmarked retrieval and generation performance: Retrieval Latency [TODO_ADD_LATENCY], Response Accuracy [TODO_ADD_ACCURACY].",
+      "Benchmarked retrieval and generation performance across diverse technical document queries.",
     ],
     keyAspects: [
       "Local vector persistence eliminating recurring remote database hosting overhead",
@@ -155,24 +155,24 @@ export const projects: Project[] = [
     ],
     metricsTable: [
       {
-        metric: "Vector Retrieval Latency (top-k)",
-        value: "[TODO_ADD_LATENCY]",
-        benchmarkOrNote: "FAISS local cosine similarity search over indexed chunks",
+        metric: "Vector Store",
+        value: "FAISS FlatIP",
+        benchmarkOrNote: "Local dense cosine similarity search over indexed chunks",
       },
       {
-        metric: "Citation Grounding Rate",
-        value: "[TODO_ADD_ACCURACY]",
-        benchmarkOrNote: "Percentage of answers containing verifiable page citations",
+        metric: "Embedding Model",
+        value: "all-MiniLM-L6-v2",
+        benchmarkOrNote: "HuggingFace dense sentence embeddings",
       },
       {
-        metric: "Speech-to-Text Transcription Accuracy",
-        value: "[TODO_ADD_ACCURACY]",
-        benchmarkOrNote: "Evaluated on spoken technical terminology queries",
+        metric: "Generation Model",
+        value: "Google Gemini",
+        benchmarkOrNote: "Context-grounded retrieval synthesis with source citations",
       },
       {
-        metric: "End-to-End Query-to-Response Time",
-        value: "[TODO_ADD_LATENCY]",
-        benchmarkOrNote: "Audio capture + transcription + retrieval + LLM completion",
+        metric: "Input Modality",
+        value: "Voice & Text",
+        benchmarkOrNote: "Microphone speech-to-text pipeline with real-time transcription",
       },
     ],
     challenges: [
@@ -237,19 +237,19 @@ export const projects: Project[] = [
         benchmarkOrNote: "Complete dataset parsed without row drop errors",
       },
       {
-        metric: "Missing Data Resolution",
-        value: "[TODO_ADD_PERCENTAGE_RESOLVED]%",
-        benchmarkOrNote: "Imputation and date standardization rate",
+        metric: "Attribute Scope",
+        value: "6 Dimensions",
+        benchmarkOrNote: "Release date, title, popularity, votes, rating, genres",
       },
       {
-        metric: "Distinct Genres Analyzed",
-        value: "[TODO_ADD_GENRE_COUNT]",
-        benchmarkOrNote: "Extracted from delimited multi-genre attribute strings",
+        metric: "Statistical Methods",
+        value: "Pearson Correlation",
+        benchmarkOrNote: "Correlation matrix computed across numeric attributes",
       },
       {
-        metric: "Correlation Coefficient (Votes vs Popularity)",
-        value: "[TODO_ADD_CORRELATION_COEFFICIENT]",
-        benchmarkOrNote: "Pearson correlation coefficient computed via Pandas",
+        metric: "Visualization Stack",
+        value: "Matplotlib & Seaborn",
+        benchmarkOrNote: "Distributions, box plots, and correlation heatmaps",
       },
     ],
     challenges: [

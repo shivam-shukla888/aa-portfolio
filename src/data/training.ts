@@ -30,7 +30,5 @@ export const technicalTraining: TrainingItem[] = [
     ],
     description:
       "Intensive institutional training program covering Python software fundamentals, algorithmic data structures, numerical analysis with NumPy, structured data processing with Pandas, and exploratory data visualization with Matplotlib.",
-    // Certificate / proof link placeholder:
-    // credentialUrl: "[TODO_ADD_CERTIFICATE_LINK]"
   },
 ];

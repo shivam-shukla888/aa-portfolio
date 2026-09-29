@@ -248,9 +248,11 @@ export default function ExperiencePage() {
                         Board: {edu.boardOrUniversity}
                       </div>
                     )}
-                    <div className="mt-3 font-mono text-xs text-[#D45A2A] font-semibold bg-[#FAF9F6] border border-[#E6E3DC] px-2.5 py-1 inline-block">
-                      {edu.gradePlaceholder}
-                    </div>
+                    {edu.gradePlaceholder && (
+                      <div className="mt-3 font-mono text-xs text-[#D45A2A] font-semibold bg-[#FAF9F6] border border-[#E6E3DC] px-2.5 py-1 inline-block">
+                        {edu.gradePlaceholder}
+                      </div>
+                    )}
                   </div>
                   <div className="shrink-0 font-mono text-xs text-[#6E6D68] sm:text-right">
                     {edu.period}

@@ -395,9 +395,11 @@ export default function HomePage() {
                     <div className="font-sans text-xs text-[#111112] mt-1">
                       {edu.institution}, {edu.location}
                     </div>
-                    <div className="mt-2.5 font-mono text-xs text-[#D45A2A] font-semibold bg-[#FAF9F6] border border-[#E6E3DC] px-2.5 py-1 inline-block">
-                      {edu.gradePlaceholder}
-                    </div>
+                    {edu.gradePlaceholder && (
+                      <div className="mt-2.5 font-mono text-xs text-[#D45A2A] font-semibold bg-[#FAF9F6] border border-[#E6E3DC] px-2.5 py-1 inline-block">
+                        {edu.gradePlaceholder}
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
