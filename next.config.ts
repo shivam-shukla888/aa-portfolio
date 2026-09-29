@@ -44,8 +44,20 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  turbopack: {
+    root: __dirname,
+  },
   reactStrictMode: true,
   poweredByHeader: false,
+  async redirects() {
+    return [
+      {
+        source: "/projects/netflix-data-analysis",
+        destination: "/projects/netflix-movie-data-analysis",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

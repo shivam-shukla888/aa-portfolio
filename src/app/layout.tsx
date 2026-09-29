@@ -124,6 +124,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${newsreader.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <head>
