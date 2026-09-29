@@ -156,8 +156,8 @@ export default function HomePage() {
                 <Image
                   src="/hero-visual.jpg"
                   alt="Machine learning, AI, data science and software development architecture visualization"
-                  width={1390}
-                  height={780}
+                  width={1264}
+                  height={848}
                   priority
                   sizes="(max-width: 768px) 90vw, (max-width: 1024px) 80vw, (max-width: 1280px) 50vw, 600px"
                   className="w-full h-auto object-contain select-none"
