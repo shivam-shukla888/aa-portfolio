@@ -1,61 +1,34 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
 import { projects } from "@/data/projects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://syyeda-aamna.dev";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
+  if (!baseUrl) return [];
+
   const currentDate = new Date().toISOString();
 
-  const staticRoutes: MetadataRoute.Sitemap = [
-    {
-      url: baseUrl,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/projects`,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/experience`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/privacy`,
-      lastModified: currentDate,
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/terms`,
-      lastModified: currentDate,
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
+  const paths = [
+    "",
+    "/projects",
+    "/experience",
+    "/about",
+    "/contact",
+    "/privacy",
+    "/terms",
   ];
 
-  const projectRoutes: MetadataRoute.Sitemap = projects.map((p) => ({
-    url: `${baseUrl}/projects/${p.slug}`,
-    lastModified: currentDate,
-    changeFrequency: "monthly",
-    priority: 0.85,
-  }));
-
-  return [...staticRoutes, ...projectRoutes];
+  return [
+    ...paths.map((path, index) => ({
+      url: baseUrl + path,
+      lastModified: currentDate,
+      changeFrequency: index < 2 ? ("weekly" as const) : ("monthly" as const),
+      priority: index === 0 ? 1 : index < 3 ? 0.8 : 0.5,
+    })),
+    ...projects.map((project) => ({
+      url: baseUrl + "/projects/" + project.slug,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
+  ];
 }
