@@ -76,79 +76,203 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. VERIFIED SYSTEM DOSSIER (ENGINEERING PIPELINE SUMMARY) */}
-      <section className="py-12 border-b border-[#E6E3DC] bg-[#F4F2EC]">
+      {/* 2. SYSTEM NOTEBOOK (EDITORIAL ARCHITECTURE ARCHIVE) */}
+      <section className="py-16 sm:py-24 border-b border-[#E6E3DC] bg-[#F4F2EC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="border border-[#E6E3DC] bg-[#FAF9F6] p-6 sm:p-8">
-            {/* Dossier Header */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#E6E3DC] pb-4 mb-6 gap-2">
-              <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-[#111112] font-semibold">
-                <span className="w-2 h-2 rounded-full bg-[#D45A2A]" aria-hidden="true" />
-                <span>SYSTEM NOTEBOOK // VERIFIED REPOSITORY PIPELINES</span>
+          {/* Section Header */}
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 sm:mb-16 pb-4 border-b border-[#E6E3DC] gap-4">
+            <div>
+              <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-2 font-semibold">
+                <span>01 &mdash; ARCHITECTURE &amp; PIPELINES</span>
               </div>
-              <span className="font-mono text-[11px] text-[#6E6D68] uppercase tracking-wider">
-                100% REPRODUCIBLE &bull; GITHUB VERIFIED
-              </span>
+              <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold text-[#111112] tracking-tight">
+                System Notebook
+              </h2>
+              <p className="mt-2 font-sans text-sm sm:text-base text-[#6E6D68] max-w-2xl leading-relaxed">
+                Verified repository pipelines, model architectures, and computational workflows extracted directly from working source code.
+              </p>
+            </div>
+            <span className="font-mono text-xs text-[#6E6D68] uppercase tracking-wider shrink-0">
+              Verified Technical Archive
+            </span>
+          </div>
+
+          {/* Editorial 3-Column Architecture Archive */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* System 1: RAG Pipeline */}
+            <div className="p-7 sm:p-8 bg-[#FAF9F6] border border-[#E6E3DC] hover:border-[#111112] transition-colors flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between font-mono text-xs uppercase tracking-widest text-[#D45A2A] font-semibold pb-3 border-b border-[#E6E3DC] mb-5">
+                  <span>01 &bull; Document Intelligence</span>
+                  <span className="text-[#6E6D68]">FAISS Local</span>
+                </div>
+
+                <h3 className="font-display text-2xl font-semibold text-[#111112] mb-3">
+                  RAG Voice &amp; Document Pipeline
+                </h3>
+
+                <p className="font-sans text-sm text-[#6E6D68] leading-relaxed mb-6">
+                  End-to-end question answering over PDF documents with local vector indexing, semantic retrieval, and speech-driven querying.
+                </p>
+
+                <div className="space-y-3 font-mono text-xs text-[#111112] pt-4 border-t border-[#E6E3DC]">
+                  <div>
+                    <span className="text-[#6E6D68] block text-[10px] uppercase tracking-wider">Ingestion</span>
+                    <span className="font-medium">PyPDFLoader &bull; RecursiveSplitter</span>
+                  </div>
+                  <div>
+                    <span className="text-[#6E6D68] block text-[10px] uppercase tracking-wider">Embeddings &amp; Vector Store</span>
+                    <span className="font-medium">all-MiniLM-L6-v2 &bull; FAISS Persistence</span>
+                  </div>
+                  <div>
+                    <span className="text-[#6E6D68] block text-[10px] uppercase tracking-wider">Generation &amp; Citations</span>
+                    <span className="font-medium text-[#D45A2A]">Gemini LLM Synthesis with Page Citations</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 pt-4 border-t border-[#E6E3DC] flex items-center justify-between">
+                <div className="flex flex-wrap gap-1.5">
+                  {["LangChain", "FAISS", "Gemini", "Speech API"].map((t) => (
+                    <span key={t} className="font-mono text-[10px] px-2 py-0.5 bg-[#F4F2EC] border border-[#E6E3DC] text-[#111112]">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                <Link
+                  href="/projects/rag-voice-chatbot"
+                  className="font-mono text-xs text-[#D45A2A] hover:text-[#111112] font-semibold shrink-0 ml-2"
+                  aria-label="Explore RAG Voice Chatbot project"
+                >
+                  Explore &rarr;
+                </Link>
+              </div>
             </div>
 
-            {/* Schematic 3-Column Pipeline Overview */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {/* Step 1: Real RAG Pipeline Overview */}
-              <div className="p-4 bg-[#F4F2EC] border border-[#E6E3DC]">
-                <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-[#D45A2A] font-semibold mb-2">
-                  <span>RAG PIPELINE // MULTI-MODAL</span>
-                  <span>LOCAL DISK</span>
+            {/* System 2: Fraud Detection */}
+            <div className="p-7 sm:p-8 bg-[#FAF9F6] border border-[#E6E3DC] hover:border-[#111112] transition-colors flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between font-mono text-xs uppercase tracking-widest text-[#D45A2A] font-semibold pb-3 border-b border-[#E6E3DC] mb-5">
+                  <span>02 &bull; Anomaly Scoring</span>
+                  <span className="text-[#6E6D68]">FastAPI</span>
                 </div>
-                <div className="font-mono text-xs text-[#111112] space-y-1.5">
-                  <div className="text-[11px] text-[#6E6D68]">PyPDFLoader &rarr; RecursiveSplitter</div>
-                  <div className="font-medium text-[#111112]">FAISS Vector Index (all-MiniLM-L6-v2)</div>
-                  <div className="text-[11px] text-[#D45A2A]">Gemini LLM Synthesis + Page Citations</div>
+
+                <h3 className="font-display text-2xl font-semibold text-[#111112] mb-3">
+                  Hybrid Fraud Detection Engine
+                </h3>
+
+                <p className="font-sans text-sm text-[#6E6D68] leading-relaxed mb-6">
+                  Dual-stage risk assessment combining statistical machine learning with deterministic rule-based anomaly scoring for real-time transaction screening.
+                </p>
+
+                <div className="space-y-3 font-mono text-xs text-[#111112] pt-4 border-t border-[#E6E3DC]">
+                  <div>
+                    <span className="text-[#6E6D68] block text-[10px] uppercase tracking-wider">Classification Model</span>
+                    <span className="font-medium">Scikit-Learn Logistic Regression</span>
+                  </div>
+                  <div>
+                    <span className="text-[#6E6D68] block text-[10px] uppercase tracking-wider">Risk Evaluation</span>
+                    <span className="font-medium">Deterministic Rule-Based Anomaly Scoring</span>
+                  </div>
+                  <div>
+                    <span className="text-[#6E6D68] block text-[10px] uppercase tracking-wider">Interface &amp; Monitoring</span>
+                    <span className="font-medium text-[#D45A2A]">FastAPI Backend &bull; React Analytics Dashboard</span>
+                  </div>
                 </div>
               </div>
 
-              {/* Step 2: Fraud Detection Hybrid Model */}
-              <div className="p-4 bg-[#F4F2EC] border border-[#E6E3DC]">
-                <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-[#D45A2A] font-semibold mb-2">
-                  <span>FRAUD DETECTION // HYBRID</span>
-                  <span>FASTAPI REST</span>
+              <div className="mt-8 pt-4 border-t border-[#E6E3DC] flex items-center justify-between">
+                <div className="flex flex-wrap gap-1.5">
+                  {["FastAPI", "Scikit-Learn", "React", "Recharts"].map((t) => (
+                    <span key={t} className="font-mono text-[10px] px-2 py-0.5 bg-[#F4F2EC] border border-[#E6E3DC] text-[#111112]">
+                      {t}
+                    </span>
+                  ))}
                 </div>
-                <div className="font-mono text-xs text-[#111112] space-y-1.5">
-                  <div className="text-[11px] text-[#6E6D68]">Scikit-Learn Logistic Regression</div>
-                  <div className="font-medium text-[#111112]">Deterministic Rule-Based Anomaly Scoring</div>
-                  <div className="text-[11px] text-[#6E6D68]">FastAPI Engine &bull; React Analytics Dashboard</div>
+                <Link
+                  href="/projects/ai-fraud-detection-system"
+                  className="font-mono text-xs text-[#D45A2A] hover:text-[#111112] font-semibold shrink-0 ml-2"
+                  aria-label="Explore AI Fraud Detection System project"
+                >
+                  Explore &rarr;
+                </Link>
+              </div>
+            </div>
+
+            {/* System 3: Netflix Data Analysis */}
+            <div className="p-7 sm:p-8 bg-[#FAF9F6] border border-[#E6E3DC] hover:border-[#111112] transition-colors flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between font-mono text-xs uppercase tracking-widest text-[#D45A2A] font-semibold pb-3 border-b border-[#E6E3DC] mb-5">
+                  <span>03 &bull; Exploratory Analysis</span>
+                  <span className="text-[#6E6D68]">9,800 Records</span>
+                </div>
+
+                <h3 className="font-display text-2xl font-semibold text-[#111112] mb-3">
+                  Netflix Content Analytics
+                </h3>
+
+                <p className="font-sans text-sm text-[#6E6D68] leading-relaxed mb-6">
+                  Systematic exploratory data analysis examining content evolution, rating distribution patterns, and international catalog trends across ~9,800 titles.
+                </p>
+
+                <div className="space-y-3 font-mono text-xs text-[#111112] pt-4 border-t border-[#E6E3DC]">
+                  <div>
+                    <span className="text-[#6E6D68] block text-[10px] uppercase tracking-wider">Data Processing</span>
+                    <span className="font-medium">Pandas &amp; NumPy Cleaning Pipelines</span>
+                  </div>
+                  <div>
+                    <span className="text-[#6E6D68] block text-[10px] uppercase tracking-wider">Visual Computing</span>
+                    <span className="font-medium">Matplotlib &amp; Seaborn Distributions</span>
+                  </div>
+                  <div>
+                    <span className="text-[#6E6D68] block text-[10px] uppercase tracking-wider">Statistical Focus</span>
+                    <span className="font-medium text-[#D45A2A]">Multi-Variable Rating &amp; Release Correlation</span>
+                  </div>
                 </div>
               </div>
 
-              {/* Step 3: Netflix Data Analysis */}
-              <div className="p-4 bg-[#F4F2EC] border border-[#E6E3DC]">
-                <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-[#D45A2A] font-semibold mb-2">
-                  <span>EXPLORATORY DATA ANALYSIS</span>
-                  <span>~9,800 MOVIES</span>
+              <div className="mt-8 pt-4 border-t border-[#E6E3DC] flex items-center justify-between">
+                <div className="flex flex-wrap gap-1.5">
+                  {["Python", "Pandas", "NumPy", "Matplotlib"].map((t) => (
+                    <span key={t} className="font-mono text-[10px] px-2 py-0.5 bg-[#F4F2EC] border border-[#E6E3DC] text-[#111112]">
+                      {t}
+                    </span>
+                  ))}
                 </div>
-                <div className="font-mono text-xs text-[#111112] space-y-1.5">
-                  <div className="font-medium text-[#111112]">Pandas &amp; NumPy Cleaning Pipelines</div>
-                  <div className="text-[11px] text-[#6E6D68]">Matplotlib &amp; Seaborn Visualizations</div>
-                  <div className="text-[11px] text-[#D45A2A]">Multi-Variable Rating &amp; Release Correlation</div>
-                </div>
+                <Link
+                  href="/projects/netflix-movie-data-analysis"
+                  className="font-mono text-xs text-[#D45A2A] hover:text-[#111112] font-semibold shrink-0 ml-2"
+                  aria-label="Explore Netflix Movie Data Analysis project"
+                >
+                  Explore &rarr;
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 2. FEATURED WORK (MATCHING REFERENCE 3-COLUMN EDITORIAL CARDS) */}
-      <section id="featured-work" className="py-14 sm:py-20 border-b border-[#E6E3DC] bg-[#FAF9F6]">
+      {/* 3. FEATURED WORK */}
+      <section id="featured-work" className="py-16 sm:py-24 border-b border-[#E6E3DC] bg-[#FAF9F6]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
-          <div className="flex items-center justify-between mb-8 pb-3 border-b border-[#111112]">
-            <h2 className="font-mono text-xs uppercase tracking-widest text-[#111112] font-bold">
-              FEATURED WORK
-            </h2>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 sm:mb-16 pb-4 border-b border-[#E6E3DC] gap-4">
+            <div>
+              <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-2 font-semibold">
+                <span>02 &mdash; SELECTED PROJECTS</span>
+              </div>
+              <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold text-[#111112] tracking-tight">
+                Featured Work
+              </h2>
+              <p className="mt-2 font-sans text-sm sm:text-base text-[#6E6D68]">
+                Machine learning systems, generative AI workflows, and software implementations.
+              </p>
+            </div>
             <Link
               href="/projects"
-              className="font-mono text-xs uppercase tracking-wider text-[#D45A2A] hover:text-[#111112] inline-flex items-center gap-1 group font-semibold"
+              className="font-mono text-xs uppercase tracking-wider text-[#D45A2A] hover:text-[#111112] inline-flex items-center gap-1.5 group font-semibold shrink-0"
             >
-              <span>VIEW ALL PROJECTS</span>
+              <span>View All Projects</span>
               <span className="group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
             </Link>
           </div>
@@ -174,11 +298,11 @@ export default function HomePage() {
                   )}
 
                   {/* Card Content */}
-                  <div className="p-5">
+                  <div className="p-6">
                     {/* Title + Arrow */}
                     <div className="flex items-start justify-between gap-2">
                       <Link href={`/projects/${project.slug}`}>
-                        <h3 className="font-display text-xl font-semibold text-[#111112] group-hover:text-[#D45A2A] transition-colors leading-snug">
+                        <h3 className="font-display text-xl sm:text-2xl font-semibold text-[#111112] group-hover:text-[#D45A2A] transition-colors leading-snug">
                           {project.title}
                         </h3>
                       </Link>
@@ -192,14 +316,14 @@ export default function HomePage() {
                     </div>
 
                     {/* Short Description */}
-                    <p className="mt-2.5 font-sans text-xs text-[#6E6D68] leading-relaxed">
+                    <p className="mt-3 font-sans text-xs sm:text-sm text-[#6E6D68] leading-relaxed">
                       {project.oneLineDescription}
                     </p>
                   </div>
                 </div>
 
                 {/* Tech Pills at Bottom */}
-                <div className="px-5 pb-5 pt-0">
+                <div className="px-6 pb-6 pt-0">
                   <div className="flex flex-wrap gap-1.5 pt-3 border-t border-[#E6E3DC]">
                     {project.technologies.slice(0, 4).map((tech) => (
                       <span
@@ -217,31 +341,35 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. EXPERIENCE & SKILLS (MATCHING REFERENCE 2-COLUMN SPLIT) */}
-      <section className="py-14 sm:py-20 border-b border-[#E6E3DC] bg-[#FAF9F6]">
+      {/* 4. EXPERIENCE & SKILLS (MATCHING REFERENCE 2-COLUMN SPLIT) */}
+      <section className="py-16 sm:py-24 border-b border-[#E6E3DC] bg-[#FAF9F6]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
             {/* Left Column: EXPERIENCE */}
             <div className="lg:col-span-6">
-              <div className="mb-6 pb-2 border-b border-[#111112]">
-                <h2 className="font-mono text-xs uppercase tracking-widest text-[#111112] font-bold">
-                  EXPERIENCE
+              <div className="mb-8 pb-3 border-b border-[#E6E3DC]">
+                <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-2 font-semibold">
+                  <span>03 &mdash; CAREER TIMELINE</span>
+                </div>
+                <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#111112] tracking-tight">
+                  Experience
                 </h2>
+                <p className="mt-2 font-sans text-xs sm:text-sm text-[#6E6D68]">
+                  Verified professional roles and engineering responsibilities.
+                </p>
               </div>
 
               {/* Vertical Timeline */}
               <div className="relative border-l border-[#E6E3DC] pl-6 ml-2 space-y-8">
                 {experiences.map((exp) => (
                   <div key={exp.id} className="relative">
-                    {/* Terracotta Dot Marker on Timeline */}
                     <span
                       className="absolute -left-[31px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#D45A2A] border-2 border-[#FAF9F6]"
                       aria-hidden="true"
                     />
 
-                    {/* Role & Company */}
                     <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
-                      <h3 className="font-sans text-sm font-semibold text-[#111112]">
+                      <h3 className="font-sans text-sm sm:text-base font-semibold text-[#111112]">
                         {exp.role} &mdash; <span className="text-[#111112]">{exp.company}</span>
                       </h3>
                       <span className="font-mono text-xs text-[#6E6D68] shrink-0">
@@ -249,13 +377,11 @@ export default function HomePage() {
                       </span>
                     </div>
 
-                    {/* Location */}
                     <div className="font-sans text-xs text-[#6E6D68] mt-0.5">
                       {exp.location}
                     </div>
 
-                    {/* Responsibilities list */}
-                    <ul className="mt-2.5 space-y-1.5 font-sans text-xs text-[#111112] leading-relaxed">
+                    <ul className="mt-2.5 space-y-1.5 font-sans text-xs sm:text-sm text-[#111112] leading-relaxed">
                       {exp.responsibilities.map((resp, i) => (
                         <li key={i} className="flex items-start gap-2">
                           <span className="text-[#D45A2A] font-mono text-xs" aria-hidden="true">&bull;</span>
@@ -266,21 +392,37 @@ export default function HomePage() {
                   </div>
                 ))}
               </div>
+
+              <div className="mt-8 pt-4 border-t border-[#E6E3DC]">
+                <Link
+                  href="/experience"
+                  className="font-mono text-xs uppercase tracking-wider text-[#D45A2A] hover:text-[#111112] inline-flex items-center gap-1 font-semibold"
+                >
+                  <span>View Full Timeline &amp; Credentials</span>
+                  <span aria-hidden="true">&rarr;</span>
+                </Link>
+              </div>
             </div>
 
             {/* Right Column: SKILLS */}
             <div className="lg:col-span-6">
-              <div className="mb-6 pb-2 border-b border-[#111112]">
-                <h2 className="font-mono text-xs uppercase tracking-widest text-[#111112] font-bold">
-                  SKILLS
+              <div className="mb-8 pb-3 border-b border-[#E6E3DC]">
+                <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-2 font-semibold">
+                  <span>04 &mdash; CORE COMPETENCIES</span>
+                </div>
+                <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#111112] tracking-tight">
+                  Skills
                 </h2>
+                <p className="mt-2 font-sans text-xs sm:text-sm text-[#6E6D68]">
+                  Technical proficiencies across languages, frameworks, and tools.
+                </p>
               </div>
 
               {/* Clean Editorial Table of Skills */}
               <div className="divide-y divide-[#E6E3DC] border-t border-b border-[#E6E3DC]">
                 {skillCategories.map((group) => (
-                  <div key={group.category} className="py-3.5 flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-6">
-                    <div className="w-32 shrink-0 font-mono text-xs font-semibold text-[#111112] uppercase tracking-wider">
+                  <div key={group.category} className="py-4 flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-6">
+                    <div className="w-36 shrink-0 font-mono text-xs font-semibold text-[#111112] uppercase tracking-wider">
                       {group.category}
                     </div>
                     <div className="flex-1 font-sans text-xs text-[#6E6D68] leading-relaxed">
@@ -294,25 +436,31 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. ACADEMIC FOUNDATIONS & SPECIALIZED TRAINING */}
-      <section className="py-14 sm:py-20 border-b border-[#E6E3DC] bg-[#FAF9F6]">
+      {/* 5. ACADEMIC FOUNDATIONS & SPECIALIZED TRAINING */}
+      <section className="py-16 sm:py-24 border-b border-[#E6E3DC] bg-[#FAF9F6]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
             {/* Education */}
             <div className="lg:col-span-6">
-              <div className="mb-6 pb-2 border-b border-[#111112]">
-                <h2 className="font-mono text-xs uppercase tracking-widest text-[#111112] font-bold">
-                  EDUCATION
+              <div className="mb-8 pb-3 border-b border-[#E6E3DC]">
+                <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-2 font-semibold">
+                  <span>05 &mdash; ACADEMIC FOUNDATIONS</span>
+                </div>
+                <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#111112] tracking-tight">
+                  Education
                 </h2>
+                <p className="mt-2 font-sans text-xs sm:text-sm text-[#6E6D68]">
+                  Formal academic degrees and qualifications.
+                </p>
               </div>
 
               <div className="space-y-4">
                 {educationList.map((edu) => (
-                  <div key={edu.id} className="p-5 bg-[#F4F2EC] border border-[#E6E3DC]">
+                  <div key={edu.id} className="p-6 bg-[#F4F2EC] border border-[#E6E3DC]">
                     <div className="font-mono text-xs text-[#6E6D68]">
                       {edu.period}
                     </div>
-                    <h3 className="font-display text-lg font-semibold text-[#111112] mt-1">
+                    <h3 className="font-display text-xl font-semibold text-[#111112] mt-1">
                       {edu.degree}
                     </h3>
                     <div className="font-sans text-xs text-[#111112] mt-1">
@@ -330,20 +478,26 @@ export default function HomePage() {
 
             {/* Specialized Training */}
             <div className="lg:col-span-6">
-              <div className="mb-6 pb-2 border-b border-[#111112]">
-                <h2 className="font-mono text-xs uppercase tracking-widest text-[#111112] font-bold">
-                  INSTITUTIONAL TRAINING
+              <div className="mb-8 pb-3 border-b border-[#E6E3DC]">
+                <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-2 font-semibold">
+                  <span>06 &mdash; VERIFIED WORKSHOPS</span>
+                </div>
+                <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#111112] tracking-tight">
+                  Specialized Training
                 </h2>
+                <p className="mt-2 font-sans text-xs sm:text-sm text-[#6E6D68]">
+                  Structured computational and institutional programs.
+                </p>
               </div>
 
               <div className="space-y-4">
                 {verifiedTraining.map((tr) => (
-                  <div key={tr.id} className="p-5 bg-[#F4F2EC] border border-[#E6E3DC]">
+                  <div key={tr.id} className="p-6 bg-[#F4F2EC] border border-[#E6E3DC]">
                     <div className="flex items-center justify-between font-mono text-xs text-[#6E6D68]">
                       <span>{tr.type} &bull; {tr.year}</span>
                       <span className="text-[#D45A2A] font-semibold">{tr.institution}</span>
                     </div>
-                    <h3 className="font-display text-lg font-semibold text-[#111112] mt-1">
+                    <h3 className="font-display text-xl font-semibold text-[#111112] mt-1">
                       {tr.title}
                     </h3>
                     <p className="mt-2 text-xs font-sans text-[#6E6D68] leading-relaxed">
@@ -367,7 +521,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. CONTACT CTA */}
+      {/* 6. CONTACT CTA */}
       <section className="py-16 sm:py-20 bg-[#121214] text-[#FAF9F6]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
