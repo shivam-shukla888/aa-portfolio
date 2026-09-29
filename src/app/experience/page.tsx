@@ -27,6 +27,9 @@ export default function ExperiencePage() {
             <h1 className="font-display text-5xl sm:text-7xl font-normal tracking-tight text-[#111112]">
               Experience
             </h1>
+            <div id="deployment-proof-marker" className="inline-block px-3 py-1 bg-[#D45A2A] text-white font-mono text-sm font-bold my-2">
+              DEPLOYMENT_PROOF_2026
+            </div>
             <p className="mt-4 font-display text-xl sm:text-2xl text-[#111112] leading-snug">
               My professional journey, roles, and key contributions.
             </p>
