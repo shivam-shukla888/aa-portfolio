@@ -6,13 +6,17 @@ export interface Project {
   category: string;
   oneLineDescription: string;
   overview: string;
-  problemContext?: string;
+  problemContext: string;
   datasetOrScope?: string;
   implementation: string;
   technologies: string[];
   keyAspects: string[];
   githubUrl: string;
-  liveDemoUrl?: string;
+  visualAsset?: {
+    src: string;
+    alt: string;
+    caption: string;
+  };
 }
 
 export const projects: Project[] = [
@@ -20,102 +24,117 @@ export const projects: Project[] = [
     id: "fraud-detection",
     slug: "ai-fraud-detection-system",
     number: "01",
-    title: "AI Fraud Detection System",
-    category: "Machine Learning / Full Stack",
+    title: "AI Powered Fraud Detection Dashboard",
+    category: "Machine Learning & Fintech Systems",
     oneLineDescription:
-      "Fraud-detection dashboard combining machine learning prediction with rule-based checks over a 6.3M-record dataset.",
+      "Full-stack fintech analytics platform combining Logistic Regression with rule-based fraud detection to evaluate financial transactions.",
     overview:
-      "A full-stack fraud-detection project that combines machine learning and rule-based checks to classify suspicious transactions and present the result through an analytics dashboard.",
+      "A full-stack fintech analytics application developed to identify suspicious financial activity from high-volume transaction data. The system pairs a trained Logistic Regression classification model with a deterministic rule-based fraud engine to calculate fraud risk scores and trigger real-time alerts through an interactive React dashboard.",
     problemContext:
-      "The project is built around transaction-level fraud detection: users can submit transaction details, receive a fraud decision and risk score, and review fraud analytics.",
+      "Digital banking platforms process thousands of transactions per second where fraudulent instances are rare but financially damaging. Relying solely on static rules produces false negatives on novel patterns, while relying solely on black-box ML models can make immediate explainability difficult. The project implements a hybrid approach combining algorithmic prediction with explicit rule-based checks.",
     datasetOrScope:
-      "6.3M-record financial transaction dataset used for preprocessing and fraud classification.",
+      "6.3M-record financial transaction dataset used for training, feature extraction, and transactional behavior simulation.",
     implementation:
-      "The project uses Python, FastAPI, Scikit-Learn, Pandas and NumPy on the backend, with a React frontend. The ML layer includes Logistic Regression and the application also includes a rule-based fraud engine, transaction monitoring, analytics and CSV report export.",
+      "The backend is built with Python and FastAPI, executing a Scikit-Learn Logistic Regression model alongside behavior pattern detection. The frontend is built in React with Axios and Recharts, providing visual fraud analytics, risk score gauges, transaction monitoring tables, and CSV report export functionality.",
     technologies: [
       "Python",
       "FastAPI",
-      "React",
-      "Scikit-Learn",
-      "Pandas",
-      "NumPy",
-      "Logistic Regression",
+      "Scikit-Learn (Logistic Regression)",
+      "React.js",
+      "Recharts",
+      "Pandas & NumPy",
+      "Rule-Based Fraud Engine",
     ],
     keyAspects: [
-      "Machine learning and rule-based fraud detection in one application",
-      "Fraud / normal classification with a fraud risk score",
-      "Transaction monitoring and analytics dashboard",
-      "CSV export for analyzed transaction data",
+      "Hybrid fraud detection engine combining Logistic Regression with heuristic rule checks",
+      "Full-stack implementation featuring FastAPI backend and React analytics frontend",
+      "Real-time fraud risk scoring and transaction behavior classification",
+      "Interactive data visualization using Recharts and CSV transaction export",
+      "Evaluated on a large-scale 6.3M-record transaction dataset",
     ],
     githubUrl: "https://github.com/Syyeda-Aamna/fraud-detection-project",
+    visualAsset: {
+      src: "/projects/fraud-dashboard.png",
+      alt: "AI Powered Fraud Detection Dashboard screenshot showing fraud risk score and transaction analysis",
+      caption: "Repository Screenshot — Real-Time Transaction Risk Scoring & Analytics Dashboard",
+    },
   },
   {
     id: "rag-voice-chatbot",
     slug: "rag-voice-chatbot",
     number: "02",
     title: "RAG Voice Chatbot",
-    category: "Generative AI / RAG",
+    category: "Generative AI & Speech Retrieval",
     oneLineDescription:
-      "A PDF question-answering chatbot using RAG, FAISS, HuggingFace embeddings, Gemini and voice input.",
+      "Retrieval-Augmented Generation assistant using HuggingFace embeddings, FAISS vector search, Gemini LLM, and speech-to-text input.",
     overview:
-      "A Retrieval-Augmented Generation chatbot that answers questions from a PDF document. It combines semantic retrieval with a generative model and supports voice-to-text input.",
+      "A Retrieval-Augmented Generation (RAG) conversational pipeline engineered in Python to answer user queries over PDF documents with grounded citations. The system indexes document chunks using HuggingFace sentence transformer embeddings in a locally persistent FAISS vector store, synthesizes responses via Google Gemini LLM, and accepts spoken queries via microphone.",
     problemContext:
-      "The project focuses on making a reference document queryable through natural-language questions while also allowing users to submit questions by voice.",
+      "Standard large language models hallucinate when asked questions about private or specific reference documents. Furthermore, manual text entry can be inconvenient. This system solves both issues by retrieving exact document context before synthesis and enabling hands-free voice transcription.",
     datasetOrScope:
-      "A PDF document is processed into text chunks and indexed as vector embeddings for retrieval.",
+      "PDF document corpus (notes.pdf) processed and chunked via LangChain RecursiveCharacterTextSplitter into dense vector embeddings.",
     implementation:
-      "The Python application splits PDF text into chunks, generates embeddings with HuggingFace Sentence Transformers, stores them in FAISS, retrieves relevant context for a query, and sends that context to Gemini for response generation. The chatbot also returns source page numbers and supports voice input.",
+      "Developed in Python using the LangChain framework. Document text is extracted via PyPDFLoader, chunked, and converted into dense vector representations using 'sentence-transformers/all-MiniLM-L6-v2'. Vectors are indexed in FAISS with local disk persistence. Queries are synthesized using ChatGoogleGenerativeAI (Gemini) with prompts requiring source page citations. Voice input is captured via sounddevice (44.1 kHz PCM audio) and transcribed using speech_recognition.",
     technologies: [
-      "Python",
+      "Python 3.10+",
       "LangChain",
-      "FAISS",
-      "HuggingFace Sentence Transformers",
-      "Gemini LLM",
-      "SpeechRecognition",
-      "SoundDevice",
+      "FAISS (Vector Store)",
+      "HuggingFace (all-MiniLM-L6-v2)",
+      "Google Gemini LLM",
+      "SpeechRecognition & sounddevice",
+      "PyPDFLoader",
     ],
     keyAspects: [
-      "PDF question answering through a RAG pipeline",
-      "Semantic vector search with FAISS",
-      "HuggingFace sentence-transformer embeddings",
-      "Gemini-based response generation",
-      "Voice-to-text question input",
-      "Source page references in responses",
+      "Complete Retrieval-Augmented Generation pipeline built with LangChain",
+      "Semantic indexing using HuggingFace Sentence Transformers (all-MiniLM-L6-v2)",
+      "High-efficiency similarity search with locally persisted FAISS vector index",
+      "Synthesis grounded by Google Gemini LLM with source PDF page citations",
+      "Integrated microphone voice capture and audio transcription pipeline",
     ],
     githubUrl: "https://github.com/Syyeda-Aamna/rag-voice-chatbot",
+    visualAsset: {
+      src: "/projects/rag-pipeline.svg",
+      alt: "RAG Voice Chatbot architecture diagram detailing ingestion, vector storage, generation, and voice modality",
+      caption: "System Architecture — Document Chunking, FAISS Vector Indexing & Voice Modality Pipeline",
+    },
   },
   {
     id: "netflix-analysis",
     slug: "netflix-movie-data-analysis",
     number: "03",
     title: "Netflix Movie Data Analysis",
-    category: "Data Science / EDA",
+    category: "Exploratory Data Analysis & Statistics",
     oneLineDescription:
-      "Exploratory analysis of roughly 9,800 movie records using Python, Pandas, NumPy, Matplotlib and Seaborn.",
+      "Exploratory data analysis investigating content distributions, genre popularity, and rating dynamics across ~9,800 titles.",
     overview:
-      "An exploratory data analysis project examining movie release patterns, genre distribution and popularity-related fields in a dataset of roughly 9,800 movies.",
+      "An exploratory data science and statistical visualization study examining content patterns across approximately 9,800 movie records in Netflix's catalog. The project inspects release timelines, genre distributions, vote counts, and correlation patterns using Python's numerical and visualization stack.",
     problemContext:
-      "The analysis uses structured movie attributes such as release date, genre, popularity, vote count and vote average to explore patterns in the dataset.",
+      "Understanding catalog composition and viewer reception requires rigorous data hygiene, handling missing records, standardizing release dates, and mapping statistical distributions across multiple attributes.",
     datasetOrScope:
-      "Approximately 9,800 movie records with fields including Release_Date, Title, Popularity, Vote_Count, Vote_Average and Genre.",
+      "Dataset of ~9,800 catalog movie records containing Release_Date, Title, Popularity, Vote_Count, Vote_Average, and Genre fields.",
     implementation:
-      "The workflow uses Pandas and NumPy for data preparation, including release-date conversion, column cleanup, vote-average categorization and genre transformation. Matplotlib and Seaborn are used for distributions, release trends, correlations and popularity analysis.",
+      "Conducted in Python using Jupyter/VS Code notebooks. Pandas and NumPy handle data cleaning, missing value resolution, and date-to-year extraction. Statistical plots, correlation heatmaps, genre frequency distributions, and release year distributions were generated using Matplotlib and Seaborn.",
     technologies: [
       "Python",
       "Pandas",
       "NumPy",
       "Matplotlib",
       "Seaborn",
-      "Jupyter / VS Code",
+      "Exploratory Data Analysis (EDA)",
+      "Jupyter Notebook",
     ],
     keyAspects: [
-      "Genre distribution and movie-release analysis",
-      "Popularity and vote-related exploration",
-      "Release year distribution visualization",
-      "Correlation heatmap and popularity visualizations",
-      "Genre transformation for analysis",
+      "Empirical exploratory analysis of ~9,800 movie titles",
+      "Date standardization, column filtering, and missing data imputation",
+      "Multi-variable correlation analysis across popularity and audience ratings",
+      "Statistical distribution mapping using Matplotlib and Seaborn visualization suites",
     ],
     githubUrl: "https://github.com/Syyeda-Aamna/netflix-movie-data-analysis",
+    visualAsset: {
+      src: "/projects/netflix-genre-distribution.png",
+      alt: "Netflix movie genre distribution chart showing statistical frequencies across ~9,800 records",
+      caption: "Repository Visualization — Empirical Genre Distribution Across ~9,800 Titles",
+    },
   },
 ];
 

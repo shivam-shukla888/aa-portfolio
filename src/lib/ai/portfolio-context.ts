@@ -13,10 +13,8 @@ export function getPortfolioSystemContext(): string {
   const experiencesText = experiences
     .map(
       (exp) => `• Role: ${exp.role} at ${exp.company}
-  Dates: ${exp.period}
-  Location: ${exp.location}
-  Responsibilities:
-  ${exp.responsibilities.map((r) => `  - ${r}`).join("\n")}
+  Period: ${exp.period} (${exp.location})
+  Summary: ${exp.responsibilities.join(" ")}
   Technologies: ${exp.technologies.join(", ")}`
     )
     .join("\n\n");
@@ -24,13 +22,13 @@ export function getPortfolioSystemContext(): string {
   const projectsText = projects
     .map(
       (p) => `• Project ${p.number}: ${p.title}
-  Category: ${p.category}
-  Description: ${p.oneLineDescription}
+  One-line: ${p.oneLineDescription}
   Overview: ${p.overview}
-  Problem / Context: ${p.problemContext}
-  ${p.datasetOrScope ? `Dataset / Scope: ${p.datasetOrScope}` : ""}
+  Problem: ${p.problemContext}
+  ${p.datasetOrScope ? `Data Scope: ${p.datasetOrScope}` : ""}
   Implementation: ${p.implementation}
-  Technologies: ${p.technologies.join(", ")}
+  Tech: ${p.technologies.join(", ")}
+  Highlights: ${p.keyAspects.join("; ")}
   GitHub: ${p.githubUrl}`
     )
     .join("\n\n");
@@ -38,7 +36,7 @@ export function getPortfolioSystemContext(): string {
   const educationText = educationList
     .map(
       (edu) => `• ${edu.degree} — ${edu.institution}, ${edu.location} (${edu.period}${
-        edu.boardOrUniversity ? `, ${edu.boardOrUniversity}` : ""
+        edu.boardOrUniversity ? `, Board: ${edu.boardOrUniversity}` : ""
       })`
     )
     .join("\n");
@@ -46,8 +44,8 @@ export function getPortfolioSystemContext(): string {
   const trainingText = verifiedTraining
     .map(
       (tr) => `• ${tr.title} (${tr.type}) — ${tr.institution} (${tr.year})
-  Focus: ${tr.skillsCovered.join(", ")}
-  Description: ${tr.description}`
+  Curriculum: ${tr.skillsCovered.join(", ")}
+  Summary: ${tr.description}`
     )
     .join("\n");
 
@@ -55,30 +53,28 @@ export function getPortfolioSystemContext(): string {
 VERIFIED PORTFOLIO KNOWLEDGE BASE FOR SYYEDA AAMNA:
 
 OWNER DETAILS:
-- Full Name: ${profile.name}
-- Display Title: ${profile.displayTitle}
+- Name: ${profile.name}
+- Title: ${profile.displayTitle}
 - Location: ${profile.location}
 - Email: ${profile.email}
 - Phone: ${profile.phone}
 - LinkedIn: ${profile.linkedin}
 - GitHub: ${profile.github}
-- Headline: ${profile.headline}
-- Professional Positioning: ${profile.positioningStatement}
+- Positioning: ${profile.positioningStatement}
 
-TECHNICAL SKILLS (VERIFIED ONLY):
+TECHNICAL SKILLS:
 ${skillsText}
 
-PROFESSIONAL EXPERIENCE:
+EXPERIENCE & ENGAGEMENTS:
 ${experiencesText}
 
-VERIFIED PROJECTS:
+VERIFIED PROJECTS & IMPLEMENTATION DETAILS:
 ${projectsText}
 
-EDUCATION:
+ACADEMIC BACKGROUND:
 ${educationText}
 
-VERIFIED SUMMER TRAINING:
+SPECIALIZED TRAINING:
 ${trainingText}
-(Note: Training at IIT Kanpur is verified summer training, not an official industry certification. No other certifications are currently verified.)
 `.trim();
 }

@@ -104,6 +104,26 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
           </div>
         </header>
 
+        {/* Real Project Visual Evidence */}
+        {project.visualAsset && (
+          <div className="mb-14 border border-[#E6E3DC] bg-[#F4F2EC] p-2 sm:p-4">
+            <div className="w-full overflow-hidden border border-[#E6E3DC] bg-[#FAF9F6] flex items-center justify-center">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={project.visualAsset.src}
+                alt={project.visualAsset.alt}
+                className="w-full h-auto object-contain max-h-[480px] mx-auto block"
+              />
+            </div>
+            <div className="mt-2.5 px-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[11px] font-mono text-[#6E6D68]">
+              <span>{project.visualAsset.caption}</span>
+              <span className="text-[#D45A2A] uppercase tracking-wider font-semibold shrink-0">
+                Verified Repository Artifact
+              </span>
+            </div>
+          </div>
+        )}
+
         {/* Case Study Sections */}
         <div className="space-y-12 border-t border-[#111112] pt-10">
           {/* 01 / Overview */}

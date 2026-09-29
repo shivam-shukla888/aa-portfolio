@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
     if (!allowed) {
       return NextResponse.json(
         {
-          error: `Rate limit reached. Please wait ${retryAfter ?? 30} seconds before asking again.`,
+          error: `Please wait ${retryAfter ?? 20} seconds before asking your next question.`,
         },
         { status: 429 }
       );
@@ -40,15 +40,15 @@ export async function POST(req: NextRequest) {
     const reply = await processPortfolioChat(message, history);
 
     return NextResponse.json({ reply });
-  } catch {
-    // Return sanitized human-friendly message without leaking server paths or secrets
+  } catch (err: unknown) {
+    const errorMsg =
+      err instanceof Error && err.message.includes("high request volume")
+        ? err.message
+        : "The assistant is momentarily unavailable. Please try again shortly.";
 
     return NextResponse.json(
-      {
-        error:
-          "Something went wrong while contacting the assistant. Please try again in a few moments.",
-      },
-      { status: 500 }
+      { error: errorMsg },
+      { status: 503 }
     );
   }
 }

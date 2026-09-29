@@ -1,20 +1,162 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, ReactNode } from "react";
 
 interface Message {
   role: "user" | "assistant";
   content: string;
+  time?: string;
 }
 
 const SUGGESTED_QUERIES = [
-  "Who is Syyeda Aamna?",
-  "What has she built?",
-  "Tell me about her experience.",
+  "Walk me through her projects",
+  "Explain the fraud detection project",
+  "How does the RAG chatbot work?",
   "What technologies does she use?",
-  "Show me her AI/ML projects.",
-  "Where can I find her GitHub?",
+  "Give me an interview question",
 ];
+
+/**
+ * Lightweight, zero-dependency Markdown parser converting raw text
+ * into clean editorial React components (bold, links, lists, code, paragraphs).
+ */
+function FormattedMessage({ text }: { text: string }) {
+  // Split into structural blocks (paragraphs, bullet lists)
+  const lines = text.split("\n");
+  const elements: ReactNode[] = [];
+  let currentListItems: ReactNode[] = [];
+
+  function flushList() {
+    if (currentListItems.length > 0) {
+      elements.push(
+        <ul key={`ul-${elements.length}`} className="my-2 space-y-1.5 pl-1">
+          {currentListItems}
+        </ul>
+      );
+      currentListItems = [];
+    }
+  }
+
+  lines.forEach((line, lineIdx) => {
+    const trimmed = line.trim();
+
+    if (!trimmed) {
+      flushList();
+      return;
+    }
+
+    // Check for list item (•, -, *, or numbered like 1.)
+    const listMatch = trimmed.match(/^([•\-\*]|\d+\.)\s+(.+)$/);
+    if (listMatch) {
+      const itemContent = listMatch[2];
+      currentListItems.push(
+        <li key={`li-${lineIdx}`} className="flex items-start gap-2 text-xs leading-relaxed">
+          <span className="font-mono text-xs text-[#D45A2A] mt-0.5 shrink-0" aria-hidden="true">&bull;</span>
+          <span className="flex-1">{parseInlineFormatting(itemContent)}</span>
+        </li>
+      );
+      return;
+    }
+
+    flushList();
+
+    // Check for quote/callout (e.g., > text)
+    if (trimmed.startsWith("> ")) {
+      elements.push(
+        <blockquote
+          key={`quote-${lineIdx}`}
+          className="my-2 border-l-2 border-[#D45A2A] pl-3 italic text-xs text-[#111112] bg-[#FAF9F6] py-1"
+        >
+          {parseInlineFormatting(trimmed.slice(2))}
+        </blockquote>
+      );
+      return;
+    }
+
+    // Regular paragraph line
+    elements.push(
+      <p key={`p-${lineIdx}`} className="text-xs leading-relaxed my-1.5">
+        {parseInlineFormatting(trimmed)}
+      </p>
+    );
+  });
+
+  flushList();
+
+  return <div className="space-y-1">{elements}</div>;
+}
+
+/**
+ * Parses inline formatting: [link](url), **bold**, `code`, *italic*
+ */
+function parseInlineFormatting(str: string): ReactNode[] {
+  const parts: ReactNode[] = [];
+  // Tokenize regex matching [link](url), **bold**, `code`, *italic*
+  const regex = /(\[.*?\]\(.*?\)|\*\*.*?\*\*|`.*?`|\*.*?\*)/g;
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = regex.exec(str)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(str.substring(lastIndex, match.index));
+    }
+
+    const token = match[0];
+
+    if (token.startsWith("[") && token.includes("](") && token.endsWith(")")) {
+      // Markdown link: [text](url)
+      const linkMatch = token.match(/^\[(.*?)\]\((.*?)\)$/);
+      if (linkMatch) {
+        const [, label, url] = linkMatch;
+        parts.push(
+          <a
+            key={match.index}
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 text-[#D45A2A] hover:text-[#111112] font-medium"
+          >
+            {label}
+          </a>
+        );
+      } else {
+        parts.push(token);
+      }
+    } else if (token.startsWith("**") && token.endsWith("**")) {
+      // Bold text: **text**
+      parts.push(
+        <strong key={match.index} className="font-semibold text-[#111112]">
+          {token.slice(2, -2)}
+        </strong>
+      );
+    } else if (token.startsWith("`") && token.endsWith("`")) {
+      // Inline code: `code`
+      parts.push(
+        <code
+          key={match.index}
+          className="font-mono text-[11px] bg-[#FAF9F6] border border-[#E6E3DC] px-1 py-0.5 text-[#111112]"
+        >
+          {token.slice(1, -1)}
+        </code>
+      );
+    } else if (token.startsWith("*") && token.endsWith("*")) {
+      // Italic text: *text*
+      parts.push(
+        <em key={match.index} className="italic">
+          {token.slice(1, -1)}
+        </em>
+      );
+    }
+
+    lastIndex = regex.lastIndex;
+  }
+
+  if (lastIndex < str.length) {
+    parts.push(str.substring(lastIndex));
+  }
+
+  return parts;
+}
 
 export function AskAamnaModal() {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,16 +175,16 @@ export function AskAamnaModal() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isLoading]);
 
-  // Focus management: focus input when opened, return focus to trigger when closed
+  // Focus management
   useEffect(() => {
     if (isOpen) {
-      setTimeout(() => inputRef.current?.focus(), 100);
+      setTimeout(() => inputRef.current?.focus(), 120);
     } else {
       triggerRef.current?.focus();
     }
   }, [isOpen]);
 
-  // Handle ESC key and focus trap
+  // Handle ESC and Tab focus trapping
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
       if (!isOpen) return;
@@ -52,13 +194,12 @@ export function AskAamnaModal() {
         return;
       }
 
-      // Simple focus trap
       if (e.key === "Tab" && modalRef.current) {
-        const focusableElements = modalRef.current.querySelectorAll<HTMLElement>(
+        const focusables = modalRef.current.querySelectorAll<HTMLElement>(
           'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
         );
-        const first = focusableElements[0];
-        const last = focusableElements[focusableElements.length - 1];
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
 
         if (e.shiftKey && document.activeElement === first) {
           e.preventDefault();
@@ -74,6 +215,11 @@ export function AskAamnaModal() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen]);
 
+  function getCurrentTime(): string {
+    const d = new Date();
+    return d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+  }
+
   async function handleSend(textToSend?: string) {
     const text = (textToSend || input).trim();
     if (!text || isLoading) return;
@@ -81,7 +227,11 @@ export function AskAamnaModal() {
     setInput("");
     setError(null);
 
-    const userMessage: Message = { role: "user", content: text };
+    const userMessage: Message = {
+      role: "user",
+      content: text,
+      time: getCurrentTime(),
+    };
     const updatedMessages = [...messages, userMessage];
     setMessages(updatedMessages);
     setIsLoading(true);
@@ -104,7 +254,11 @@ export function AskAamnaModal() {
 
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", content: data.reply },
+        {
+          role: "assistant",
+          content: data.reply,
+          time: getCurrentTime(),
+        },
       ]);
     } catch (err: unknown) {
       const msg =
@@ -124,28 +278,27 @@ export function AskAamnaModal() {
 
   return (
     <>
-      {/* Editorial Floating Trigger Button */}
-      <div className="fixed bottom-6 right-6 z-40">
+      {/* Floating Trigger: Understated, Confident Editorial Badge */}
+      <div className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40">
         <button
           ref={triggerRef}
           type="button"
           onClick={() => setIsOpen(true)}
-          className="group flex items-center gap-3 px-4 py-3 bg-[#FAF9F6] border border-[#111112] hover:bg-[#F4F2EC] active:border-[#D45A2A] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D45A2A]"
+          className="group flex items-center gap-3 px-4 py-2.5 bg-[#FAF9F6] border border-[#111112] hover:bg-[#F4F2EC] active:border-[#D45A2A] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D45A2A] shadow-xs"
           aria-haspopup="dialog"
           aria-expanded={isOpen}
-          aria-label="Open Ask Aamna AI Portfolio Assistant"
+          aria-label="Open Ask Aamna Portfolio Assistant"
         >
-          {/* Technical Terminal Prompt Icon */}
           <span className="font-mono text-xs font-bold text-[#D45A2A] select-none" aria-hidden="true">
             &gt;_
           </span>
 
           <div className="flex flex-col text-left">
-            <span className="font-mono text-xs font-semibold tracking-widest uppercase text-[#111112] group-hover:text-[#D45A2A] transition-colors">
+            <span className="font-mono text-xs font-semibold tracking-wider uppercase text-[#111112] group-hover:text-[#D45A2A] transition-colors">
               ASK AAMNA
             </span>
             <span className="font-mono text-[9px] uppercase tracking-wider text-[#6E6D68]">
-              Portfolio Assistant
+              Portfolio Guide
             </span>
           </div>
 
@@ -153,7 +306,7 @@ export function AskAamnaModal() {
         </button>
       </div>
 
-      {/* Editorial Slide-over / Modal Panel */}
+      {/* Editorial Assistant Panel */}
       {isOpen && (
         <div
           className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-[#111112]/40 backdrop-blur-xs transition-opacity"
@@ -168,14 +321,14 @@ export function AskAamnaModal() {
             aria-hidden="true"
           />
 
-          {/* Modal Card */}
+          {/* Modal Container */}
           <div
             ref={modalRef}
-            className="relative z-10 w-full sm:max-w-xl bg-[#FAF9F6] border-t sm:border border-[#111112] max-h-[90vh] sm:max-h-[640px] flex flex-col overflow-hidden"
+            className="relative z-10 w-full sm:max-w-xl bg-[#FAF9F6] border-t sm:border border-[#111112] max-h-[88vh] sm:max-h-[640px] flex flex-col overflow-hidden"
           >
             {/* Header */}
             <div className="px-5 py-4 bg-[#F4F2EC] border-b border-[#E6E3DC] flex items-center justify-between">
-              <div className="flex items-baseline gap-3">
+              <div className="flex items-baseline gap-2.5">
                 <span className="font-mono text-xs font-bold text-[#D45A2A]" aria-hidden="true">
                   &gt;_
                 </span>
@@ -187,7 +340,7 @@ export function AskAamnaModal() {
                     ASK AAMNA
                   </h3>
                   <p className="text-[10px] font-mono text-[#6E6D68] uppercase tracking-wider mt-0.5">
-                    Verified Portfolio Knowledge Base &bull; Grounded AI
+                    Portfolio Intelligence &bull; Technical Interview Guide
                   </p>
                 </div>
               </div>
@@ -206,7 +359,7 @@ export function AskAamnaModal() {
                   type="button"
                   onClick={() => setIsOpen(false)}
                   className="p-1.5 text-[#6E6D68] hover:text-[#111112] border border-transparent hover:border-[#E6E3DC] transition-colors focus:outline-none"
-                  aria-label="Close assistant panel"
+                  aria-label="Close assistant"
                 >
                   <svg
                     className="w-4 h-4 stroke-current"
@@ -221,28 +374,28 @@ export function AskAamnaModal() {
               </div>
             </div>
 
-            {/* Conversation Area */}
+            {/* Conversation Stream */}
             <div
-              className="flex-1 p-5 overflow-y-auto space-y-4 min-h-[260px] max-h-[380px] bg-[#FAF9F6]"
+              className="flex-1 p-4 sm:p-5 overflow-y-auto space-y-4 min-h-[260px] max-h-[400px] bg-[#FAF9F6]"
               tabIndex={0}
               aria-label="Conversation messages"
             >
               {messages.length === 0 ? (
-                <div className="py-2 space-y-5">
+                <div className="py-2 space-y-4">
                   <div className="p-4 bg-[#F4F2EC] border border-[#E6E3DC]">
                     <div className="font-mono text-[11px] uppercase tracking-widest text-[#D45A2A] font-semibold mb-1">
                       Direct Portfolio Inquiries
                     </div>
                     <p className="font-sans text-xs text-[#111112] leading-relaxed">
-                      This assistant provides answers strictly grounded in Syyeda Aamna&apos;s verified public portfolio: machine learning projects, experience at Apollo Hospitals, internship at The Codevamp Technologies, technical skill set, and IIT Kanpur summer training.
+                      Ask directly about Syyeda Aamna&apos;s machine learning projects, engineering roles, technology decisions, or request project-grounded interview questions.
                     </p>
                   </div>
 
                   <div>
                     <span className="block font-mono text-[10px] uppercase tracking-widest text-[#6E6D68] mb-2.5">
-                      Suggested Questions
+                      Suggested Inquiries
                     </span>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1.5">
                       {SUGGESTED_QUERIES.map((q) => (
                         <button
                           key={q}
@@ -265,16 +418,22 @@ export function AskAamnaModal() {
                     }`}
                   >
                     <div
-                      className={`max-w-[88%] p-3.5 text-xs leading-relaxed font-sans ${
+                      className={`max-w-[92%] p-3.5 leading-relaxed ${
                         m.role === "user"
                           ? "bg-[#111112] text-[#FAF9F6] border border-[#111112]"
                           : "bg-[#F4F2EC] text-[#111112] border border-[#E6E3DC]"
                       }`}
                     >
-                      <div className="font-mono text-[9px] uppercase tracking-wider mb-1 text-[#6E6D68]">
-                        {m.role === "user" ? "Visitor" : "Ask Aamna (Verified)"}
+                      <div className="flex items-center justify-between gap-4 font-mono text-[9px] uppercase tracking-wider mb-1.5 text-[#6E6D68]">
+                        <span>{m.role === "user" ? "Visitor" : "Ask Aamna"}</span>
+                        {m.time && <span>{m.time}</span>}
                       </div>
-                      <div className="whitespace-pre-wrap">{m.content}</div>
+
+                      {m.role === "user" ? (
+                        <p className="text-xs font-sans leading-relaxed whitespace-pre-wrap">{m.content}</p>
+                      ) : (
+                        <FormattedMessage text={m.content} />
+                      )}
                     </div>
                   </div>
                 ))
@@ -282,13 +441,13 @@ export function AskAamnaModal() {
 
               {/* Loading Indicator */}
               {isLoading && (
-                <div className="flex items-center gap-2 p-3 bg-[#F4F2EC] border border-[#E6E3DC] max-w-[85%] text-xs font-mono text-[#6E6D68]">
+                <div className="flex items-center gap-2.5 p-3 bg-[#F4F2EC] border border-[#E6E3DC] max-w-[85%] text-xs font-mono text-[#6E6D68]">
                   <span className="w-1.5 h-1.5 bg-[#D45A2A] animate-pulse" aria-hidden="true" />
-                  <span>Consulting verified portfolio knowledge base...</span>
+                  <span>Thinking through verified project context...</span>
                 </div>
               )}
 
-              {/* Error Message */}
+              {/* Error Alert */}
               {error && (
                 <div className="p-3 bg-[#FAF9F6] border border-[#D45A2A] text-xs text-[#D45A2A] font-mono">
                   {error}
@@ -298,7 +457,7 @@ export function AskAamnaModal() {
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Input Form */}
+            {/* Input Bar */}
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -311,7 +470,7 @@ export function AskAamnaModal() {
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Ask about her skills, experience, or projects..."
+                placeholder="Ask about projects, technical decisions, or interview topics..."
                 disabled={isLoading}
                 maxLength={500}
                 className="flex-1 px-3 py-2 text-xs font-sans bg-[#FAF9F6] border border-[#E6E3DC] focus:border-[#111112] text-[#111112] placeholder:text-[#6E6D68] focus:outline-none"

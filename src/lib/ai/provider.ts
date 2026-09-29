@@ -35,8 +35,8 @@ export async function callGroqChat(
       body: JSON.stringify({
         model,
         messages,
-        temperature: 0.2,
-        max_tokens: 600,
+        temperature: 0.3,
+        max_tokens: 500,
       }),
       signal: controller.signal,
     });
@@ -45,7 +45,31 @@ export async function callGroqChat(
 
     if (!res.ok) {
       if (res.status === 429) {
-        throw new Error("Rate limit exceeded from provider. Please wait a moment.");
+        // Automatic single retry with brief backoff for rapid queries
+        await new Promise((r) => setTimeout(r, 1000));
+        const retryRes = await fetch(GROQ_ENDPOINT, {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${apiKey}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            model,
+            messages,
+            temperature: 0.3,
+            max_tokens: 500,
+          }),
+        });
+
+        if (retryRes.ok) {
+          const retryData = await retryRes.json();
+          const retryReply = retryData?.choices?.[0]?.message?.content?.trim();
+          if (retryReply) return retryReply;
+        }
+
+        throw new Error(
+          "The assistant is currently experiencing high request volume. Please wait a moment and try again."
+        );
       }
       throw new Error(`Provider returned error status ${res.status}`);
     }

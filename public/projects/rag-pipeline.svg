@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 380" fill="none" className="w-full h-auto">
+  <rect width="860" height="380" fill="#F4F2EC" />
+  <rect x="20" y="20" width="820" height="340" fill="#FAF9F6" stroke="#E6E3DC" stroke-width="1.5" />
+  
+  <!-- Title / Label -->
+  <text x="45" y="55" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600" fill="#D45A2A" letter-spacing="1.5">VERIFIED RAG VOICE ARCHITECTURE &bull; REPOSITORY FLOW</text>
+  <line x1="45" y1="68" x2="815" y2="68" stroke="#E6E3DC" stroke-width="1" />
+
+  <!-- Step 1: Document Ingestion -->
+  <g transform="translate(45, 100)">
+    <rect width="165" height="110" fill="#F4F2EC" stroke="#111112" stroke-width="1.25" />
+    <text x="15" y="28" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" fill="#6E6D68">01 / INGESTION</text>
+    <text x="15" y="52" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="#111112">notes.pdf</text>
+    <text x="15" y="72" font-family="'JetBrains Mono', monospace" font-size="10" fill="#6E6D68">PyPDFLoader</text>
+    <text x="15" y="88" font-family="'JetBrains Mono', monospace" font-size="10" fill="#6E6D68">RecursiveSplitter</text>
+  </g>
+
+  <!-- Arrow 1 -> 2 -->
+  <path d="M 210 155 L 245 155" stroke="#111112" stroke-width="1.5" />
+  <polygon points="245,151 253,155 245,159" fill="#111112" />
+
+  <!-- Step 2: Embedding & FAISS -->
+  <g transform="translate(255, 100)">
+    <rect width="180" height="110" fill="#F4F2EC" stroke="#111112" stroke-width="1.25" />
+    <text x="15" y="28" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" fill="#6E6D68">02 / VECTOR STORE</text>
+    <text x="15" y="52" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="#111112">FAISS Index</text>
+    <text x="15" y="72" font-family="'JetBrains Mono', monospace" font-size="10" fill="#6E6D68">all-MiniLM-L6-v2</text>
+    <text x="15" y="88" font-family="'JetBrains Mono', monospace" font-size="10" fill="#D45A2A">faiss_index (Disk)</text>
+  </g>
+
+  <!-- Arrow 2 -> 3 -->
+  <path d="M 435 155 L 470 155" stroke="#111112" stroke-width="1.5" />
+  <polygon points="470,151 478,155 470,159" fill="#111112" />
+
+  <!-- Step 3: Synthesis with Gemini -->
+  <g transform="translate(480, 100)">
+    <rect width="165" height="110" fill="#F4F2EC" stroke="#111112" stroke-width="1.25" />
+    <text x="15" y="28" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" fill="#6E6D68">03 / GENERATION</text>
+    <text x="15" y="52" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="#111112">Gemini LLM</text>
+    <text x="15" y="72" font-family="'JetBrains Mono', monospace" font-size="10" fill="#6E6D68">LangChain Chain</text>
+    <text x="15" y="88" font-family="'JetBrains Mono', monospace" font-size="10" fill="#6E6D68">PromptTemplate</text>
+  </g>
+
+  <!-- Arrow 3 -> 4 -->
+  <path d="M 645 155 L 680 155" stroke="#111112" stroke-width="1.5" />
+  <polygon points="680,151 688,155 680,159" fill="#111112" />
+
+  <!-- Step 4: Output with Page Reference -->
+  <g transform="translate(690, 100)">
+    <rect width="125" height="110" fill="#111112" stroke="#111112" stroke-width="1.25" />
+    <text x="15" y="28" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" fill="#FAF9F6">04 / OUTPUT</text>
+    <text x="15" y="52" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="#FAF9F6">Answer</text>
+    <text x="15" y="72" font-family="'JetBrains Mono', monospace" font-size="10" fill="#D45A2A">Source Page</text>
+    <text x="15" y="88" font-family="'JetBrains Mono', monospace" font-size="10" fill="#A5A49D">Citation</text>
+  </g>
+
+  <!-- Voice Input Branch -->
+  <g transform="translate(255, 245)">
+    <rect width="390" height="85" fill="#FAF9F6" stroke="#D45A2A" stroke-width="1.25" stroke-dasharray="4 3" />
+    <text x="20" y="28" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" fill="#D45A2A">MODALITY / SPEECH-TO-TEXT</text>
+    <text x="20" y="50" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="#111112">Microphone Voice Input (sounddevice + speech_recognition)</text>
+    <text x="20" y="68" font-family="'JetBrains Mono', monospace" font-size="10" fill="#6E6D68">Captures 44.1kHz audio &rarr; converts to PCM int16 &rarr; feeds transcribed query into RAG</text>
+  </g>
+
+  <!-- Connection from Voice to FAISS / Synthesis -->
+  <path d="M 450 245 L 450 220 L 562 220 L 562 212" stroke="#D45A2A" stroke-width="1.25" stroke-dasharray="3 3" />
+</svg>

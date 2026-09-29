@@ -66,6 +66,17 @@ export default function ProjectsPage() {
 
                 {/* Content Column */}
                 <div className="lg:col-span-8 space-y-6">
+                  {project.visualAsset && (
+                    <div className="border border-[#E6E3DC] bg-[#FAF9F6] p-2 overflow-hidden">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={project.visualAsset.src}
+                        alt={project.visualAsset.alt}
+                        className="w-full h-auto max-h-[260px] object-cover object-top border border-[#E6E3DC]"
+                      />
+                    </div>
+                  )}
+
                   <div>
                     <h3 className="font-mono text-xs uppercase tracking-widest text-[#6E6D68] mb-2">
                       Overview &amp; Scope
