@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, ReactNode } from "react";
 import { HamsterMascot, HamsterState } from "./HamsterMascot";
+import { PageBackground } from "./PageBackground";
 
 interface Message {
   role: "user" | "assistant";
@@ -13,7 +14,6 @@ const SUGGESTED_QUERIES = [
   "Walk me through her projects",
   "Explain the fraud detection project",
   "How does the RAG chatbot work?",
-  "What technologies does she use?",
   "Give me an interview question",
 ];
 
@@ -338,35 +338,23 @@ export function AskAamnaModal() {
             ref={modalRef}
             className="relative z-10 w-full sm:max-w-lg bg-[#FAF9F6] border-t sm:border border-[#111112] shadow-xl max-h-[90vh] sm:max-h-[640px] flex flex-col overflow-hidden"
           >
-            {/* Header matching reference: >_ ASK AAMNA • Portfolio Guide [hamster indicator] - × */}
-            <div className="px-5 py-3.5 bg-[#FAF9F6] border-b border-[#E6E3DC] flex items-center justify-between">
-              <div className="flex items-center gap-2.5">
+            <PageBackground variant="ask-aamna" />
+
+            {/* Header matching Panel 07: >_ ASK AAMNA - PORTFOLIO GUIDE with window controls */}
+            <div className="px-5 py-3.5 bg-[#FAF9F6] border-b border-[#E6E3DC] flex items-center justify-between relative z-10">
+              <div className="flex items-center gap-2">
                 <span className="font-mono text-xs font-bold text-[#D45A2A]" aria-hidden="true">
                   &gt;_
                 </span>
-                <div>
-                  <div className="flex items-center gap-2">
-                    <h3
-                      id="ask-aamna-title"
-                      className="font-mono text-xs font-semibold uppercase tracking-widest text-[#111112]"
-                    >
-                      ASK AAMNA
-                    </h3>
-                    <span className="text-[#D45A2A] font-mono text-xs">&bull;</span>
-                    <span className="font-mono text-[10px] uppercase tracking-wider text-[#6E6D68]">
-                      Portfolio Guide
-                    </span>
-                  </div>
+                <div className="flex items-center gap-1.5 font-mono text-xs font-semibold uppercase tracking-wider text-[#111112]">
+                  <h3 id="ask-aamna-title">ASK AAMNA</h3>
+                  <span className="text-[#6E6D68]">&ndash;</span>
+                  <span className="text-[10px] text-[#6E6D68] tracking-widest font-normal">PORTFOLIO GUIDE</span>
                 </div>
               </div>
 
-              {/* Window Controls */}
-              <div className="flex items-center gap-2">
-                {/* Tiny Mascot Avatar in header */}
-                <div className="w-6 h-6 rounded-full bg-[#F4F2EC] border border-[#E6E3DC] flex items-center justify-center overflow-hidden">
-                  <HamsterMascot size={22} state={hamsterState} />
-                </div>
-
+              {/* Window Controls: - [ ] X */}
+              <div className="flex items-center gap-2.5">
                 {messages.length > 0 && (
                   <button
                     type="button"
@@ -381,17 +369,20 @@ export function AskAamnaModal() {
                 <button
                   type="button"
                   onClick={() => setIsOpen(false)}
-                  className="p-1 text-[#6E6D68] hover:text-[#111112] focus:outline-none"
+                  className="w-5 h-5 flex items-center justify-center text-[#6E6D68] hover:text-[#111112] focus:outline-none"
                   aria-label="Minimize assistant"
                 >
                   <span className="font-mono text-xs block leading-none">&mdash;</span>
                 </button>
 
+                {/* Expand / Maximize symbol */}
+                <span className="w-3 h-3 border border-[#6E6D68] block opacity-60" aria-hidden="true" />
+
                 {/* Close button */}
                 <button
                   type="button"
                   onClick={() => setIsOpen(false)}
-                  className="p-1 text-[#6E6D68] hover:text-[#111112] focus:outline-none"
+                  className="w-5 h-5 flex items-center justify-center text-[#6E6D68] hover:text-[#111112] focus:outline-none"
                   aria-label="Close assistant"
                 >
                   <svg
@@ -409,48 +400,46 @@ export function AskAamnaModal() {
 
             {/* Conversation Stream */}
             <div
-              className="flex-1 p-4 sm:p-5 overflow-y-auto space-y-4 min-h-[280px] max-h-[420px] bg-[#FAF9F6]"
+              className="flex-1 p-4 sm:p-5 overflow-y-auto space-y-4 min-h-[280px] max-h-[420px] bg-[#FAF9F6]/80 relative z-10"
               tabIndex={0}
               aria-label="Conversation messages"
             >
               {messages.length === 0 ? (
-                /* Welcome State matching reference mockup */
+                /* Welcome State exactly matching Panel 07 in image.png */
                 <div className="space-y-4 pt-1">
-                  <div className="p-4 bg-[#F4F2EC] bg-grid-faint border border-[#E6E3DC] relative overflow-hidden">
-                    <div className="flex items-start justify-between gap-3">
-                      <div className="flex-1">
-                        <h4 className="font-display text-lg text-[#111112] font-semibold leading-snug">
-                          Hi! I&apos;m a portfolio guide for Syyeda Aamna.
-                        </h4>
-                        <p className="mt-1.5 font-sans text-xs text-[#6E6D68] leading-relaxed">
-                          I can help you understand her projects, experience, skills and more.
-                        </p>
-                      </div>
+                  <div className="p-4 bg-[#FAF9F6] border border-[#E6E3DC] relative overflow-hidden flex items-start gap-4">
+                    {/* Left Mascot with laptop & speech bubble */}
+                    <div className="shrink-0 pt-0.5">
+                      <HamsterMascot size={74} state={hamsterState} showSpeechBubble={true} />
+                    </div>
 
-                      {/* Hamster Character Illustration */}
-                      <div className="shrink-0 -mt-1 -mr-1">
-                        <HamsterMascot size={78} state="idle" showSpeechBubble={true} />
-                      </div>
+                    {/* Right Greeting & description */}
+                    <div className="flex-1">
+                      <h4 className="font-sans text-base font-semibold text-[#111112] leading-snug flex items-center gap-1.5">
+                        <span>Hi! I&apos;m Ask Aamna</span>
+                        <span aria-hidden="true">👋</span>
+                      </h4>
+                      <p className="mt-1 font-sans text-xs text-[#6E6D68] leading-relaxed">
+                        Your guide to Syyeda Aamna&apos;s projects, experience, skills and more.
+                      </p>
                     </div>
                   </div>
 
-                  {/* Suggested Query Buttons */}
-                  <div className="space-y-2">
-                    <div className="flex flex-col gap-1.5">
-                      {SUGGESTED_QUERIES.map((q) => (
-                        <button
-                          key={q}
-                          type="button"
-                          onClick={() => handleSend(q)}
-                          className="w-full text-left font-sans text-xs px-3.5 py-2 bg-[#FAF9F6] hover:bg-[#F4F2EC] border border-[#E6E3DC] hover:border-[#111112] text-[#111112] transition-colors rounded-full flex items-center justify-between group"
-                        >
-                          <span>{q}</span>
-                          <span className="font-mono text-xs text-[#6E6D68] group-hover:text-[#D45A2A] group-hover:translate-x-0.5 transition-all">
-                            &rarr;
-                          </span>
-                        </button>
-                      ))}
-                    </div>
+                  {/* 4 Suggested Query Pills in 2-column or list matching Panel 07 */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+                    {SUGGESTED_QUERIES.map((q) => (
+                      <button
+                        key={q}
+                        type="button"
+                        onClick={() => handleSend(q)}
+                        className="text-left font-sans text-xs px-3.5 py-2.5 bg-[#FAF9F6] hover:bg-[#F4F2EC] border border-[#E6E3DC] hover:border-[#111112] text-[#111112] transition-colors rounded-full flex items-center justify-between group"
+                      >
+                        <span className="line-clamp-1">{q}</span>
+                        <span className="font-mono text-xs text-[#6E6D68] group-hover:text-[#D45A2A] group-hover:translate-x-0.5 transition-all shrink-0 ml-1">
+                          &rarr;
+                        </span>
+                      </button>
+                    ))}
                   </div>
                 </div>
               ) : (

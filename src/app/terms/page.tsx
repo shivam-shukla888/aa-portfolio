@@ -1,23 +1,25 @@
 import type { Metadata } from "next";
 import { profile } from "@/data/profile";
+import { PageBackground } from "@/components/PageBackground";
 
 export const metadata: Metadata = {
-  title: "Terms of Use",
-  description: "Terms of use for visitors to Syyeda Aamna's portfolio.",
+  title: "Terms of Service",
+  description: "Terms and conditions for visitors to Syyeda Aamna's portfolio.",
 };
 
 export default function TermsPage() {
   return (
-    <div className="w-full py-16 sm:py-24">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="w-full py-16 sm:py-24 relative overflow-hidden">
+      <PageBackground variant="terms" />
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="border-b border-[#111112] pb-8 mb-12">
-          <div className="font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-2 font-semibold">
-            Terms of Use
-          </div>
-          <h1 className="font-display text-4xl sm:text-5xl font-semibold tracking-tight text-[#111112]">
-            Terms of Use
+          <h1 className="font-display text-5xl sm:text-7xl font-normal tracking-tight text-[#111112]">
+            Terms of Service
           </h1>
-          <p className="mt-2 font-mono text-xs text-[#6E6D68]">
+          <p className="mt-4 font-display text-xl sm:text-2xl text-[#111112] max-w-xl leading-snug">
+            Terms and conditions for using this website.
+          </p>
+          <p className="mt-3 font-mono text-xs text-[#6E6D68]">
             Last updated: September 2026
           </p>
         </div>

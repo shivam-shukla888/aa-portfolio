@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { projects } from "@/data/projects";
+import { PageBackground } from "@/components/PageBackground";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -10,18 +11,22 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <div className="w-full py-16 sm:py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Page Header */}
+    <div className="w-full py-16 sm:py-24 relative overflow-hidden">
+      <PageBackground variant="projects" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Page Header matching Panel 03 */}
         <div className="border-b border-[#111112] pb-8 mb-16">
-          <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-3">
-            <span>Engineering Case Studies</span>
+          <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-3 font-semibold">
+            <span>03 &mdash;</span>
           </div>
-          <h1 className="font-display text-4xl sm:text-6xl font-semibold tracking-tight text-[#111112]">
-            Selected Projects
+          <h1 className="font-display text-5xl sm:text-7xl font-normal tracking-tight text-[#111112]">
+            Projects
           </h1>
-          <p className="mt-4 font-sans text-sm sm:text-base text-[#6E6D68] max-w-2xl leading-relaxed">
-            Detailed case studies of machine learning systems, semantic retrieval architectures, and large-scale data analyses engineered with Python and standard scientific computing libraries.
+          <p className="mt-4 font-display text-xl sm:text-2xl text-[#111112] max-w-2xl leading-snug">
+            A collection of AI/ML, data science and software projects built with real-world use cases.
+          </p>
+          <p className="mt-3 font-sans text-sm text-[#6E6D68] max-w-2xl leading-relaxed">
+            Detailed case studies of machine learning systems, semantic retrieval architectures, and exploratory data analyses engineered with Python and standard scientific computing libraries.
           </p>
         </div>
 

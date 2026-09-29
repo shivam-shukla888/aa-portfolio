@@ -5,13 +5,15 @@ import { experiences } from "@/data/experience";
 import { skillCategories } from "@/data/skills";
 import { educationList } from "@/data/education";
 import { verifiedTraining } from "@/data/training";
+import { PageBackground } from "@/components/PageBackground";
 
 export default function HomePage() {
   return (
     <div className="w-full">
       {/* 1. HERO SECTION */}
-      <section className="border-b border-[#E6E3DC] pt-10 sm:pt-16 pb-12 sm:pb-20 bg-[#FAF9F6] bg-grid-faint">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative border-b border-[#E6E3DC] pt-10 sm:pt-16 pb-12 sm:pb-20 bg-[#FAF9F6] overflow-hidden">
+        <PageBackground variant="home" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
             {/* Left Editorial Content */}
             <div className="lg:col-span-7 flex flex-col justify-between">

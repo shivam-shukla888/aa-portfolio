@@ -3,6 +3,7 @@ import Link from "next/link";
 import { profile } from "@/data/profile";
 import { educationList } from "@/data/education";
 import { verifiedTraining } from "@/data/training";
+import { PageBackground } from "@/components/PageBackground";
 
 export const metadata: Metadata = {
   title: "About",
@@ -12,17 +13,21 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="w-full py-16 sm:py-24">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Page Header */}
+    <div className="w-full py-16 sm:py-24 relative overflow-hidden">
+      <PageBackground variant="about" />
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Page Header matching Panel 02 */}
         <div className="border-b border-[#111112] pb-8 mb-16">
-          <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-3">
-            <span>01 &mdash; Profile Dossier</span>
+          <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-3 font-semibold">
+            <span>02 &mdash;</span>
           </div>
-          <h1 className="font-display text-4xl sm:text-6xl font-semibold tracking-tight text-[#111112]">
-            About Syyeda Aamna
+          <h1 className="font-display text-5xl sm:text-7xl font-normal tracking-tight text-[#111112]">
+            About
           </h1>
-          <p className="mt-4 font-mono text-xs sm:text-sm uppercase tracking-widest text-[#6E6D68]">
+          <p className="mt-4 font-display text-xl sm:text-2xl text-[#111112] max-w-2xl leading-snug">
+            A deeper look at my background, interests and the kind of work I enjoy building.
+          </p>
+          <p className="mt-3 font-mono text-xs sm:text-sm uppercase tracking-widest text-[#6E6D68]">
             {profile.displayTitle} &bull; {profile.location}
           </p>
         </div>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projects, getProjectBySlug } from "@/data/projects";
+import { PageBackground } from "@/components/PageBackground";
 
 interface ProjectPageProps {
   params: Promise<{
@@ -49,8 +50,9 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
   const nextProject = projects[(currentIndex + 1) % projects.length];
 
   return (
-    <article className="w-full py-12 sm:py-20">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <article className="w-full py-12 sm:py-20 relative overflow-hidden">
+      <PageBackground variant="project-detail" projectNumber={project.number} />
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Navigation Breadcrumb */}
         <div className="mb-8 flex items-center justify-between font-mono text-xs text-[#6E6D68] border-b border-[#E6E3DC] pb-4">
           <Link
@@ -62,15 +64,14 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
           <span>Project {project.number} of 0{projects.length}</span>
         </div>
 
-        {/* Case Study Header */}
+        {/* Case Study Header matching Panel 04 */}
         <header className="mb-12">
           <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-3 font-semibold">
-            <span>{project.number}</span>
-            <span>&bull;</span>
-            <span>{project.category}</span>
+            <span>{project.number} &mdash;</span>
+            <span className="text-[#6E6D68]">{project.category}</span>
           </div>
 
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-[#111112] leading-[1.05]">
+          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-[#111112] leading-[1.05]">
             {project.title}
           </h1>
 

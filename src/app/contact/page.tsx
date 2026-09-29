@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { profile } from "@/data/profile";
+import { PageBackground } from "@/components/PageBackground";
 
 export default function ContactPage() {
   const [copied, setCopied] = useState(false);
@@ -46,17 +47,21 @@ export default function ContactPage() {
   ];
 
   return (
-    <div className="w-full py-12 sm:py-20">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Page Header */}
+    <div className="w-full py-12 sm:py-20 relative overflow-hidden">
+      <PageBackground variant="contact" />
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Page Header matching Panel 06 */}
         <div className="border-b border-[#111112] pb-8 mb-12">
           <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-3 font-semibold">
-            <span>Direct Channels</span>
+            <span>05 &mdash;</span>
           </div>
-          <h1 className="font-display text-4xl sm:text-6xl font-semibold tracking-tight text-[#111112]">
-            Contact &amp; Inquiries
+          <h1 className="font-display text-5xl sm:text-7xl font-normal tracking-tight text-[#111112]">
+            Let&apos;s Talk
           </h1>
-          <p className="mt-4 font-sans text-sm sm:text-base text-[#6E6D68] max-w-xl leading-relaxed">
+          <p className="mt-4 font-display text-xl sm:text-2xl text-[#111112] max-w-xl leading-snug">
+            Open to opportunities, collaborations and interesting problems.
+          </p>
+          <p className="mt-3 font-sans text-sm text-[#6E6D68] max-w-xl leading-relaxed">
             Reach out directly through verified channels. All professional inquiries receive prompt attention without intermediate marketing layers.
           </p>
         </div>

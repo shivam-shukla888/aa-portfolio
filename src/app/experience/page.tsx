@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { experiences } from "@/data/experience";
+import { PageBackground } from "@/components/PageBackground";
 
 export const metadata: Metadata = {
   title: "Experience",
@@ -10,18 +11,22 @@ export const metadata: Metadata = {
 
 export default function ExperiencePage() {
   return (
-    <div className="w-full py-16 sm:py-24">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Page Header */}
+    <div className="w-full py-16 sm:py-24 relative overflow-hidden">
+      <PageBackground variant="experience" />
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Page Header matching Panel 05 */}
         <div className="border-b border-[#111112] pb-8 mb-16">
-          <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-3">
-            <span>Career Timeline &bull; Verified</span>
+          <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-3 font-semibold">
+            <span>04 &mdash;</span>
           </div>
-          <h1 className="font-display text-4xl sm:text-6xl font-semibold tracking-tight text-[#111112]">
-            Experience &amp; Engagements
+          <h1 className="font-display text-5xl sm:text-7xl font-normal tracking-tight text-[#111112]">
+            Experience
           </h1>
-          <p className="mt-4 font-sans text-sm sm:text-base text-[#6E6D68] max-w-2xl leading-relaxed">
-            Professional positions, internships, and specialized technical training. All details strictly reflect verified responsibilities without exaggeration or unconfirmed metrics.
+          <p className="mt-4 font-display text-xl sm:text-2xl text-[#111112] max-w-2xl leading-snug">
+            My professional journey, roles, and key contributions.
+          </p>
+          <p className="mt-3 font-sans text-sm text-[#6E6D68] max-w-2xl leading-relaxed">
+            Professional positions, internships, and specialized technical training strictly reflecting verified engineering responsibilities.
           </p>
         </div>
 
