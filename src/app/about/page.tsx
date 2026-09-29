@@ -44,19 +44,19 @@ export default function AboutPage() {
 
         {/* Section 2: Technical Focus */}
         <section className="mb-20">
-          <h2 className="font-mono text-xs uppercase tracking-widest text-[#D45A2A] font-semibold mb-4">
+          <h2 className="mb-5 font-mono text-xs font-semibold uppercase tracking-[0.18em] text-[#D45A2A]">
             02 / Core Technical Domains
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="border-y border-[#E6E3DC]">
             {profile.focusAreas.map((area, idx) => (
               <div
                 key={area}
-                className="p-5 bg-[#FAF9F6] border border-[#E6E3DC] flex items-baseline gap-4"
+                className="grid grid-cols-[3rem_1fr] items-baseline gap-4 border-b border-[#E6E3DC] py-4 last:border-b-0"
               >
-                <span className="font-mono text-xs text-[#D45A2A] font-semibold">
+                <span className="font-mono text-xs text-[#6E6D68]">
                   0{idx + 1}
                 </span>
-                <span className="font-sans text-sm font-medium text-[#111112]">
+                <span className="font-sans text-sm text-[#111112]">
                   {area}
                 </span>
               </div>
