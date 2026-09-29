@@ -223,24 +223,53 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
           </section>
         </div>
 
-        {/* Next Project Footer */}
-        <div className="mt-16 pt-8 border-t border-[#111112] flex flex-col sm:flex-row items-baseline justify-between gap-4">
-          <div>
-            <span className="font-mono text-xs uppercase tracking-wider text-[#6E6D68]">
-              Next Case Study
+        {/* Next Project Exploration Loop */}
+        <div className="mt-20 pt-10 border-t border-[#111112]">
+          <div className="flex items-center justify-between mb-6">
+            <span className="font-mono text-xs uppercase tracking-widest text-[#D45A2A] font-semibold">
+              Next Project &bull; 0{nextProject.number}
             </span>
             <Link
-              href={`/projects/${nextProject.slug}`}
-              className="block font-display text-2xl font-semibold text-[#111112] hover:text-[#D45A2A] transition-colors mt-1"
+              href="/projects"
+              className="font-mono text-xs uppercase tracking-wider text-[#6E6D68] hover:text-[#111112]"
             >
-              {nextProject.title} &rarr;
+              All Projects Index &rarr;
             </Link>
           </div>
+
           <Link
-            href="/projects"
-            className="font-mono text-xs uppercase tracking-wider text-[#6E6D68] hover:text-[#111112]"
+            href={`/projects/${nextProject.slug}`}
+            className="group block p-5 sm:p-6 bg-[#F4F2EC] border border-[#E6E3DC] hover:border-[#111112] transition-colors"
           >
-            All Projects Index
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+              {nextProject.visualAsset && (
+                <div className="md:col-span-5 border border-[#E6E3DC] bg-[#FAF9F6] p-2 aspect-16/10 flex items-center justify-center overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={nextProject.visualAsset.src}
+                    alt={nextProject.visualAsset.alt}
+                    className="w-full h-full object-contain group-hover:scale-[1.02] transition-transform duration-300"
+                  />
+                </div>
+              )}
+              <div className="md:col-span-7 flex flex-col justify-between">
+                <div>
+                  <span className="font-mono text-[11px] uppercase tracking-wider text-[#6E6D68]">
+                    {nextProject.category}
+                  </span>
+                  <h3 className="font-display text-2xl sm:text-3xl font-semibold text-[#111112] group-hover:text-[#D45A2A] transition-colors mt-1">
+                    {nextProject.title}
+                  </h3>
+                  <p className="mt-2 font-sans text-xs sm:text-sm text-[#6E6D68] leading-relaxed">
+                    {nextProject.oneLineDescription}
+                  </p>
+                </div>
+                <div className="mt-4 font-mono text-xs uppercase tracking-wider text-[#D45A2A] font-semibold inline-flex items-center gap-1.5 group-hover:translate-x-1 transition-transform">
+                  <span>Explore Case Study</span>
+                  <span>&rarr;</span>
+                </div>
+              </div>
+            </div>
           </Link>
         </div>
       </div>

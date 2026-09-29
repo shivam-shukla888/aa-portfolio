@@ -59,7 +59,7 @@ export default function ProjectsPage() {
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center px-4 py-2.5 border border-[#111112] text-[#111112] font-mono text-xs uppercase tracking-wider hover:bg-[#FAF9F6] transition-colors"
                     >
-                      GitHub Repository &nearr;
+                      GitHub Repository ↗
                     </a>
                   </div>
                 </div>
@@ -67,12 +67,12 @@ export default function ProjectsPage() {
                 {/* Content Column */}
                 <div className="lg:col-span-8 space-y-6">
                   {project.visualAsset && (
-                    <div className="border border-[#E6E3DC] bg-[#FAF9F6] p-2 overflow-hidden">
+                    <div className="border border-[#E6E3DC] bg-[#F4F2EC] p-3 overflow-hidden">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={project.visualAsset.src}
                         alt={project.visualAsset.alt}
-                        className="w-full h-auto max-h-[260px] object-cover object-top border border-[#E6E3DC]"
+                        className="w-full h-auto max-h-[360px] object-contain mx-auto block border border-[#E6E3DC] bg-[#FAF9F6]"
                       />
                     </div>
                   )}

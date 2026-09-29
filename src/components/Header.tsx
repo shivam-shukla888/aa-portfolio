@@ -90,13 +90,21 @@ export function Header() {
           </nav>
 
           {/* Action & Mobile Toggle */}
-          <div className="flex items-center space-x-4">
-            <Link
-              href="/contact"
-              className="hidden lg:inline-flex items-center justify-center px-4 py-1.5 border border-[#111112] text-[#111112] font-mono text-xs uppercase tracking-wider hover:bg-[#111112] hover:text-[#FAF9F6] transition-all"
+          <div className="flex items-center space-x-3">
+            <button
+              type="button"
+              onClick={() => {
+                if (typeof window !== "undefined") {
+                  window.dispatchEvent(new CustomEvent("open-ask-aamna"));
+                }
+              }}
+              className="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 border border-[#D45A2A] bg-transparent text-[#111112] font-mono text-xs uppercase tracking-wider hover:bg-[#D45A2A] hover:text-[#FAF9F6] transition-colors group cursor-pointer"
+              aria-label="Open Ask Aamna portfolio assistant"
             >
-              Get in Touch
-            </Link>
+              <span className="font-bold text-[#D45A2A] group-hover:text-[#FAF9F6]">&gt;_</span>
+              <span>ASK AAMNA</span>
+              <span className="w-1.5 h-1.5 bg-[#D45A2A] group-hover:bg-[#FAF9F6]" aria-hidden="true" />
+            </button>
 
             {/* Mobile Menu Button */}
             <button
@@ -181,15 +189,34 @@ export function Header() {
             })}
           </nav>
 
-          <div className="mt-auto pt-8 border-t border-[#E6E3DC] flex flex-col space-y-3 font-mono text-xs text-[#6E6D68]">
-            <div className="text-[10px] uppercase tracking-wider">Direct Channel</div>
-            <a
-              href={`mailto:${profile.email}`}
-              className="text-[#111112] hover:text-[#D45A2A] break-all"
+          <div className="mt-8 pt-6 border-t border-[#E6E3DC] flex flex-col space-y-4">
+            <button
+              type="button"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                if (typeof window !== "undefined") {
+                  window.dispatchEvent(new CustomEvent("open-ask-aamna"));
+                }
+              }}
+              className="w-full flex items-center justify-between px-4 py-3 border border-[#D45A2A] bg-[#FAF9F6] text-[#111112] font-mono text-xs uppercase tracking-wider hover:bg-[#D45A2A] hover:text-[#FAF9F6] transition-colors"
             >
-              {profile.email}
-            </a>
-            <div className="text-[#6E6D68]">{profile.location}</div>
+              <div className="flex items-center gap-2">
+                <span className="font-bold text-[#D45A2A]">&gt;_</span>
+                <span>ASK AAMNA</span>
+              </div>
+              <span className="text-[10px] text-[#6E6D68]">Portfolio Guide &rarr;</span>
+            </button>
+
+            <div className="font-mono text-xs text-[#6E6D68] space-y-2">
+              <div className="text-[10px] uppercase tracking-wider">Direct Channel</div>
+              <a
+                href={`mailto:${profile.email}`}
+                className="text-[#111112] hover:text-[#D45A2A] break-all block"
+              >
+                {profile.email}
+              </a>
+              <div className="text-[#6E6D68]">{profile.location}</div>
+            </div>
           </div>
         </div>
       )}

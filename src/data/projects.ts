@@ -33,7 +33,7 @@ export const projects: Project[] = [
     problemContext:
       "Digital banking platforms process thousands of transactions per second where fraudulent instances are rare but financially damaging. Relying solely on static rules produces false negatives on novel patterns, while relying solely on black-box ML models can make immediate explainability difficult. The project implements a hybrid approach combining algorithmic prediction with explicit rule-based checks.",
     datasetOrScope:
-      "6.3M-record financial transaction dataset used for training, feature extraction, and transactional behavior simulation.",
+      "Financial transaction dataset used for training, feature extraction, and transactional behavior simulation.",
     implementation:
       "The backend is built with Python and FastAPI, executing a Scikit-Learn Logistic Regression model alongside behavior pattern detection. The frontend is built in React with Axios and Recharts, providing visual fraud analytics, risk score gauges, transaction monitoring tables, and CSV report export functionality.",
     technologies: [
@@ -41,6 +41,7 @@ export const projects: Project[] = [
       "FastAPI",
       "Scikit-Learn (Logistic Regression)",
       "React.js",
+      "Axios",
       "Recharts",
       "Pandas & NumPy",
       "Rule-Based Fraud Engine",
@@ -50,7 +51,7 @@ export const projects: Project[] = [
       "Full-stack implementation featuring FastAPI backend and React analytics frontend",
       "Real-time fraud risk scoring and transaction behavior classification",
       "Interactive data visualization using Recharts and CSV transaction export",
-      "Evaluated on a large-scale 6.3M-record transaction dataset",
+      "Simulates banking transaction monitoring and anomaly alerts",
     ],
     githubUrl: "https://github.com/Syyeda-Aamna/fraud-detection-project",
     visualAsset: {
