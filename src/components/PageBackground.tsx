@@ -455,28 +455,16 @@ export function PageBackground({
             strokeDasharray="3 3"
           />
 
-          {/* Right Rail Floating Card */}
+          {/* Right Architectural Drafting Coordinate Lines (clean, no fake text) */}
           <g className="hidden sm:block">
-            <rect
-              x="1050"
-              y="500"
-              width="280"
-              height="190"
-              fill="#FAF9F6"
-              stroke="#DFDCD5"
-              strokeWidth="1.2"
-            />
-            <g
-              fontFamily="var(--font-jetbrains-mono), monospace"
-              fontSize="13"
-              fill="#111112"
-              letterSpacing="0.08em"
-            >
-              <text x="1080" y="548">01 / LEARN</text>
-              <text x="1080" y="588">02 / WORK</text>
-              <text x="1080" y="628">03 / COLLABORATE</text>
-              <text x="1080" y="668">04 / GROW</text>
-            </g>
+            <line x1="1050" y1="500" x2="1330" y2="500" stroke="#DFDCD5" strokeWidth="0.8" />
+            <line x1="1050" y1="560" x2="1280" y2="560" stroke="#DFDCD5" strokeWidth="0.8" strokeDasharray="4 4" />
+            <line x1="1050" y1="620" x2="1240" y2="620" stroke="#DFDCD5" strokeWidth="0.8" strokeDasharray="4 4" />
+            <line x1="1050" y1="680" x2="1330" y2="680" stroke="#DFDCD5" strokeWidth="0.8" />
+            <line x1="1050" y1="500" x2="1050" y2="680" stroke="#DFDCD5" strokeWidth="0.8" />
+            <line x1="1330" y1="500" x2="1330" y2="680" stroke="#DFDCD5" strokeWidth="0.8" />
+            <rect x="1046" y="496" width="8" height="8" fill="#D45A2A" />
+            <rect x="1326" y="676" width="8" height="8" fill="#D45A2A" />
           </g>
 
           {/* Terracotta Squares */}
