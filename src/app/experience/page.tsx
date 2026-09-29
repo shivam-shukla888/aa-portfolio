@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function ExperiencePage() {
   return (
-    <div className="w-full">
+    <div className="w-full" data-build-test="LIVE_BUILD_TEST_2026">
 
       {/* ── Hero Header ─────────────────────────────── */}
       <section className="relative min-h-[480px] lg:min-h-[520px] border-b border-[#E6E3DC] bg-[#FAF9F6] py-14 sm:py-20 overflow-hidden">
