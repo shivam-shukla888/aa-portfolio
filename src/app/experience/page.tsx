@@ -34,12 +34,7 @@ export default function ExperiencePage() {
               Professional positions, internships, and specialized technical training strictly
               reflecting verified engineering responsibilities.
             </p>
-            <div className="mt-14 pt-2 font-mono text-xs uppercase tracking-widest text-[#6E6D68] space-y-1.5 border-l-2 border-[#D45A2A] pl-3.5">
-              <div>PEOPLE</div>
-              <div>PROJECTS</div>
-              <div>PRACTICE</div>
-              <div>PROGRESS</div>
-            </div>
+
           </div>
         </div>
       </section>
@@ -50,12 +45,12 @@ export default function ExperiencePage() {
             SECTION 1 — EXPERIENCE
         ═══════════════════════════════════════════════ */}
         <section className="py-16 sm:py-20 border-b border-[#E6E3DC]">
-          <div className="mb-12">
-            <h2 className="font-display text-4xl sm:text-5xl font-semibold text-[#111112] tracking-tight">
+          <div className="mb-10 sm:mb-12">
+            <h2 className="font-display text-5xl sm:text-6xl font-semibold text-[#111112] tracking-tight">
               Experience
             </h2>
-            <p className="mt-2 font-sans text-sm text-[#6E6D68]">
-              Positions held, internships, and structured technical training.
+            <p className="mt-3 font-sans text-sm sm:text-base text-[#6E6D68]">
+              Positions held, internships, and professional responsibilities.
             </p>
           </div>
 
@@ -128,11 +123,11 @@ export default function ExperiencePage() {
             SECTION 2 — SKILLS
         ═══════════════════════════════════════════════ */}
         <section className="py-16 sm:py-20 border-b border-[#E6E3DC]">
-          <div className="mb-12">
-            <h2 className="font-display text-4xl sm:text-5xl font-semibold text-[#111112] tracking-tight">
+          <div className="mb-10 sm:mb-12">
+            <h2 className="font-display text-5xl sm:text-6xl font-semibold text-[#111112] tracking-tight">
               Skills
             </h2>
-            <p className="mt-2 font-sans text-sm text-[#6E6D68]">
+            <p className="mt-3 font-sans text-sm sm:text-base text-[#6E6D68]">
               Technical competencies across languages, frameworks, and tooling.
             </p>
           </div>
@@ -168,12 +163,12 @@ export default function ExperiencePage() {
             SECTION 3 — SYSTEM NOTEBOOK
         ═══════════════════════════════════════════════ */}
         <section className="py-16 sm:py-20 border-b border-[#E6E3DC]">
-          <div className="mb-12">
-            <h2 className="font-display text-4xl sm:text-5xl font-semibold text-[#111112] tracking-tight">
+          <div className="mb-10 sm:mb-12">
+            <h2 className="font-display text-5xl sm:text-6xl font-semibold text-[#111112] tracking-tight">
               System Notebook
             </h2>
-            <p className="mt-2 font-sans text-sm text-[#6E6D68]">
-              Structured training programs with verified repository pipelines.
+            <p className="mt-3 font-sans text-sm sm:text-base text-[#6E6D68]">
+              Structured technical training and verified project pipelines.
             </p>
           </div>
 
@@ -222,11 +217,11 @@ export default function ExperiencePage() {
             SECTION 4 — EDUCATION
         ═══════════════════════════════════════════════ */}
         <section className="py-16 sm:py-20">
-          <div className="mb-12">
-            <h2 className="font-display text-4xl sm:text-5xl font-semibold text-[#111112] tracking-tight">
+          <div className="mb-10 sm:mb-12">
+            <h2 className="font-display text-5xl sm:text-6xl font-semibold text-[#111112] tracking-tight">
               Education
             </h2>
-            <p className="mt-2 font-sans text-sm text-[#6E6D68]">
+            <p className="mt-3 font-sans text-sm sm:text-base text-[#6E6D68]">
               Formal academic qualifications.
             </p>
           </div>
