@@ -49,7 +49,7 @@ export default function HomePage() {
               </a>
 
               <a
-                href="/resume.pdf"
+                href="/Syyeda_Aamna_Resume.pdf"
                 download="Syyeda_Aamna_Resume.pdf"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-[#111112] bg-[#FAF9F6] text-[#111112] font-mono text-xs uppercase tracking-wider hover:bg-[#111112] hover:text-[#FAF9F6] transition-colors focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
                 aria-label="Download Resume (PDF)"

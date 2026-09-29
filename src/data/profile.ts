@@ -37,5 +37,5 @@ export const profile: Profile = {
     "Vector Search & FAISS Indexing",
     "SQL Databases & .NET Services",
   ],
-  relocationStatus: "Open to relocation and remote opportunities [TODO_CONFIRM_RELOCATION_PREFERENCE: YES/NO]",
+  relocationStatus: "Open to relocation and remote opportunities",
 };

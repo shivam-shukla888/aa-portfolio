@@ -7,7 +7,7 @@
   "github": "https://github.com/Syyeda-Aamna",
   "linkedin": "https://linkedin.com/in/syyedaaamna",
   "workPreferences": {
-    "openToRelocation": "[TODO_CONFIRM_RELOCATION_PREFERENCE: YES/NO]",
+    "openToRelocation": true,
     "openToRemote": true
   },
   "education": [

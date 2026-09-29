@@ -127,7 +127,7 @@ export function Header() {
 
             {/* Resume Button */}
             <a
-              href="/resume.pdf"
+              href="/Syyeda_Aamna_Resume.pdf"
               download="Syyeda_Aamna_Resume.pdf"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 border border-[#111112] bg-transparent text-[#111112] text-xs font-medium hover:bg-[#111112] hover:text-[#FAF9F6] transition-colors focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
               aria-label="Download Resume (PDF)"
@@ -216,7 +216,7 @@ export function Header() {
 
           <div className="mt-8 pt-6 border-t border-[#E6E3DC] flex flex-col space-y-4">
             <a
-              href="/resume.pdf"
+              href="/Syyeda_Aamna_Resume.pdf"
               download="Syyeda_Aamna_Resume.pdf"
               className="w-full text-center px-4 py-3 border border-[#111112] text-xs font-medium text-[#111112] hover:bg-[#111112] hover:text-[#FAF9F6] transition-colors"
             >

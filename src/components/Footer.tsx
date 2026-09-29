@@ -105,7 +105,7 @@ export function Footer() {
           <div>&copy; 2026 Syyeda Aamna</div>
           <div className="flex items-center space-x-4">
             <a
-              href="/resume.pdf"
+              href="/Syyeda_Aamna_Resume.pdf"
               download="Syyeda_Aamna_Resume.pdf"
               className="hover:text-[#111112] transition-colors underline underline-offset-2"
             >
