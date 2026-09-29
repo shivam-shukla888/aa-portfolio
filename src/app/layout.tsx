@@ -25,14 +25,16 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://syyeda-aamna.dev"),
+  ...(siteUrl ? { metadataBase: new URL(siteUrl) } : {}),
   title: {
     default: "Syyeda Aamna — AI/ML & Software Professional",
     template: "%s | Syyeda Aamna",
   },
   description:
-    "Portfolio of Syyeda Aamna, an AI/ML-focused software professional. Experienced in machine learning classification, exploratory data analysis, generative AI workflows, Python, C#, and .NET.",
+    "Portfolio of Syyeda Aamna, an AI/ML-focused software professional working across machine learning, data analysis, generative AI and software development.",
   keywords: [
     "Syyeda Aamna",
     "AI/ML",
@@ -45,22 +47,22 @@ export const metadata: Metadata = {
     "C#",
     ".NET",
   ],
-  authors: [{ name: "Syyeda Aamna", url: "https://github.com/Syyeda-Aamna" }],
+  authors: [{ name: "Syyeda Aamna", url: profile.github }],
   creator: "Syyeda Aamna",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://syyeda-aamna.dev",
     title: "Syyeda Aamna — AI/ML & Software Professional",
     description:
-      "Verified personal portfolio of Syyeda Aamna. Machine learning classification, exploratory data analysis, generative AI workflows, and software development.",
+      "Personal portfolio of Syyeda Aamna covering machine learning, data analysis, generative AI projects and software development.",
     siteName: "Syyeda Aamna Portfolio",
+    ...(siteUrl ? { url: siteUrl } : {}),
   },
   twitter: {
     card: "summary_large_image",
     title: "Syyeda Aamna — AI/ML & Software Professional",
     description:
-      "Verified personal portfolio of Syyeda Aamna. Machine learning classification, exploratory data analysis, generative AI workflows, and software development.",
+      "Personal portfolio of Syyeda Aamna covering machine learning, data analysis, generative AI projects and software development.",
   },
   robots: {
     index: true,
@@ -110,7 +112,7 @@ export default function RootLayout({
       {
         "@type": "WebSite",
         name: "Syyeda Aamna Portfolio",
-        url: "https://syyeda-aamna.dev",
+        ...(siteUrl ? { url: siteUrl } : {}),
         description: profile.positioningStatement,
         author: {
           "@type": "Person",
@@ -123,7 +125,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${newsreader.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={newsreader.variable + " " + inter.variable + " " + jetbrainsMono.variable + " h-full antialiased"}
     >
       <head>
         <script
