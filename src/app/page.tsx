@@ -12,9 +12,9 @@ export default function HomePage() {
       {/* 1. HERO SECTION */}
       <section className="border-b border-[#E6E3DC] pt-16 sm:pt-24 pb-16 sm:pb-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3 font-mono text-xs tracking-widest uppercase text-[#6E6D68] mb-6">
-            <span className="w-2 h-2 bg-[#D45A2A]" aria-hidden="true" />
-            <span>Curated Portfolio &bull; 2026</span>
+          <div className="mb-7 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.18em] text-[#6E6D68]">
+            <span className="h-px w-8 bg-[#D45A2A]" aria-hidden="true" />
+            <span>Bareilly, India / 2026</span>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-baseline">
@@ -25,8 +25,8 @@ export default function HomePage() {
               <p className="mt-6 font-mono text-sm sm:text-base uppercase tracking-widest text-[#D45A2A] font-medium">
                 {profile.displayTitle}
               </p>
-              <p className="mt-8 font-display text-2xl sm:text-3xl text-[#111112] italic font-normal max-w-3xl leading-snug">
-                &ldquo;{profile.positioningStatement}&rdquo;
+              <p className="mt-8 max-w-3xl font-display text-2xl font-normal leading-snug text-[#111112] sm:text-3xl">
+                {profile.positioningStatement}
               </p>
             </div>
 
@@ -239,26 +239,21 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {skillCategories.map((group) => (
+          <div className="divide-y divide-[#E6E3DC] border-y border-[#E6E3DC]">
+            {skillCategories.map((group, index) => (
               <div
                 key={group.category}
-                className="p-6 bg-[#FAF9F6] border border-[#E6E3DC] flex flex-col justify-between"
+                className="grid gap-5 py-7 sm:grid-cols-[4rem_12rem_1fr] sm:items-start"
               >
-                <div>
-                  <h3 className="font-mono text-xs uppercase tracking-widest text-[#111112] font-semibold border-b border-[#E6E3DC] pb-2">
-                    {group.category}
-                  </h3>
-                  <p className="mt-2 text-xs font-sans text-[#6E6D68] leading-relaxed">
-                    {group.description}
-                  </p>
-                </div>
-                <div className="mt-6 flex flex-wrap gap-1.5">
+                <span className="font-mono text-[10px] text-[#6E6D68]">
+                  0{index + 1}
+                </span>
+                <h3 className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-[#111112]">
+                  {group.category}
+                </h3>
+                <div className="flex flex-wrap gap-x-5 gap-y-2">
                   {group.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="font-mono text-xs px-2.5 py-1 bg-[#F4F2EC] border border-[#E6E3DC] text-[#111112]"
-                    >
+                    <span key={skill} className="font-sans text-sm text-[#111112]">
                       {skill}
                     </span>
                   ))}
