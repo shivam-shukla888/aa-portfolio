@@ -30,7 +30,7 @@ export default function ProjectsPage() {
           {projects.map((project) => (
             <article
               key={project.id}
-              className="p-8 sm:p-10 bg-[#F4F2EC] border border-[#E6E3DC] hover:border-[#111112] transition-colors"
+              className="border-y border-[#E6E3DC] py-10 first:border-t-0 sm:py-12"
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 {/* Meta Column */}
