@@ -11,13 +11,12 @@ export interface Profile {
   secondaryStatement: string;
   shortBio: string;
   focusAreas: string[];
-  relocationStatus: string;
 }
 
 export const profile: Profile = {
   name: "Syyeda Aamna",
   displayTitle: "Machine Learning & Software",
-  location: "Bareilly, Uttar Pradesh, India",
+  location: "New Delhi, India",
   email: "syyedaaamna682@gmail.com",
   phone: "+91 9639252679",
   linkedin: "https://linkedin.com/in/syyedaaamna",
@@ -28,7 +27,7 @@ export const profile: Profile = {
   secondaryStatement:
     "B.Tech in Computer Science (2022–2026) with projects in fraud detection, retrieval-augmented generation, and exploratory data analysis.",
   shortBio:
-    "Syyeda Aamna is a Computer Science student and software developer based in Bareilly, Uttar Pradesh, India. Her work focuses on applied machine learning, semantic retrieval, and backend development with Python, FastAPI, and .NET.",
+    "Syyeda Aamna is a Computer Science student and software developer based in New Delhi, India. Her work focuses on applied machine learning, semantic retrieval, and backend development with Python, FastAPI, and .NET.",
   focusAreas: [
     "Machine Learning & Classification",
     "Retrieval-Augmented Generation & LangChain",
@@ -37,5 +36,4 @@ export const profile: Profile = {
     "Vector Search & FAISS Indexing",
     "SQL Databases & .NET Services",
   ],
-  relocationStatus: "Open to relocation and remote opportunities",
 };

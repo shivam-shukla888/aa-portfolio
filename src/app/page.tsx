@@ -6,6 +6,9 @@ import { experiences } from "@/data/experience";
 import { skillTiers } from "@/data/skills";
 import { educationList } from "@/data/education";
 import { technicalTraining } from "@/data/training";
+import { achievements } from "@/data/achievements";
+import { extracurricularList } from "@/data/extracurricular";
+import { strengths } from "@/data/strengths";
 import { PageBackground } from "@/components/PageBackground";
 import { ObfuscatedEmail } from "@/components/ObfuscatedEmail";
 
@@ -99,14 +102,9 @@ export default function HomePage() {
               />
             </div>
 
-            {/* Location & Status */}
-            <div className="mt-8 pt-6 border-t border-[#E6E3DC] flex flex-wrap gap-y-2 gap-x-6 font-mono text-xs text-[#6E6D68]">
-              <div>
-                <span className="uppercase tracking-wider">Location: {profile.location}</span>
-              </div>
-              <div>
-                <span className="uppercase tracking-wider text-[#111112]">{profile.relocationStatus}</span>
-              </div>
+            {/* Location */}
+            <div className="mt-8 pt-6 border-t border-[#E6E3DC] font-mono text-xs text-[#6E6D68]">
+              <span className="uppercase tracking-wider">{profile.location}</span>
             </div>
           </div>
         </div>
@@ -448,7 +446,85 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          5. CONTACT
+          5. ACHIEVEMENTS, EXTRACURRICULAR & STRENGTHS
+      ═══════════════════════════════════════════════ */}
+      <section className="py-16 sm:py-24 border-b border-[#E6E3DC] bg-[#FAF9F6]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Achievements Summary */}
+            <div className="p-6 bg-[#F4F2EC] border border-[#E6E3DC]">
+              <span className="font-mono text-xs uppercase tracking-widest text-[#D45A2A] font-semibold">
+                Achievements
+              </span>
+              <h3 className="font-display text-xl font-semibold text-[#111112] mt-2">
+                LeetCode
+              </h3>
+              {achievements.map((item) => (
+                <div key={item.id} className="mt-2">
+                  <p className="text-xs sm:text-sm text-[#111112] leading-relaxed">
+                    {item.title}
+                  </p>
+                  {item.link && (
+                    <div className="mt-4">
+                      <a
+                        href={item.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-mono text-xs text-[#D45A2A] hover:underline inline-flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
+                      >
+                        <span>{item.linkText || item.link}</span>
+                        <svg className="w-3 h-3 stroke-current" fill="none" viewBox="0 0 24 24" strokeWidth="2" aria-hidden="true">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                        </svg>
+                      </a>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Extracurricular Summary */}
+            <div className="p-6 bg-[#F4F2EC] border border-[#E6E3DC]">
+              <span className="font-mono text-xs uppercase tracking-widest text-[#D45A2A] font-semibold">
+                Extracurricular
+              </span>
+              <h3 className="font-display text-xl font-semibold text-[#111112] mt-2">
+                Campus Leadership
+              </h3>
+              <ul className="mt-2 space-y-2 text-xs sm:text-sm text-[#111112] leading-relaxed">
+                {extracurricularList.map((item) => (
+                  <li key={item.id}>
+                    &bull; {item.role}, {item.organizationOrEvent}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Strengths Summary */}
+            <div className="p-6 bg-[#F4F2EC] border border-[#E6E3DC]">
+              <span className="font-mono text-xs uppercase tracking-widest text-[#D45A2A] font-semibold">
+                Strengths
+              </span>
+              <h3 className="font-display text-xl font-semibold text-[#111112] mt-2">
+                Core Competencies
+              </h3>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {strengths.map((str) => (
+                  <span
+                    key={str}
+                    className="font-mono text-xs px-2.5 py-1 bg-[#FAF9F6] border border-[#E6E3DC] text-[#111112]"
+                  >
+                    {str}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════
+          6. CONTACT
       ═══════════════════════════════════════════════ */}
       <section className="py-16 sm:py-20 bg-[#121214] text-[#FAF9F6]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

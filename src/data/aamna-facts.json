@@ -1,15 +1,11 @@
 {
   "name": "Syyeda Aamna",
   "targetRole": "Entry-Level AI/ML Engineer",
-  "location": "Bareilly, Uttar Pradesh, India",
+  "location": "New Delhi, India",
   "email": "syyedaaamna682@gmail.com",
   "phone": "+91 9639252679",
   "github": "https://github.com/Syyeda-Aamna",
   "linkedin": "https://linkedin.com/in/syyedaaamna",
-  "workPreferences": {
-    "openToRelocation": true,
-    "openToRemote": true
-  },
   "education": [
     {
       "degree": "B.Tech in Computer Science and Engineering",
@@ -128,5 +124,20 @@
       { "name": "Tableau", "note": "Business intelligence visualization basics" },
       { "name": "Java", "note": "Academic object-oriented programming foundation" }
     ]
-  }
+  },
+  "achievements": [
+    {
+      "title": "Solved 150+ Data Structures and Algorithms Problems on LeetCode",
+      "link": "https://leetcode.com/u/Syyeda-Aamna/"
+    }
+  ],
+  "extracurricular": [
+    "Secretary, Verve — Cultural Club of SRMS CET&R",
+    "Organizer of Spandan Cultural & Tech Fest"
+  ],
+  "strengths": [
+    "Quick Learner",
+    "Leadership",
+    "Event Management"
+  ]
 }

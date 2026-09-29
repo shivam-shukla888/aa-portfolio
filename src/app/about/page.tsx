@@ -3,6 +3,9 @@ import Link from "next/link";
 import { profile } from "@/data/profile";
 import { educationList } from "@/data/education";
 import { technicalTraining } from "@/data/training";
+import { achievements } from "@/data/achievements";
+import { extracurricularList } from "@/data/extracurricular";
+import { strengths } from "@/data/strengths";
 import { PageBackground } from "@/components/PageBackground";
 
 export const metadata: Metadata = {
@@ -148,7 +151,79 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Section 5: Current Work */}
+        {/* Section 5: Achievements */}
+        <section className="mb-20">
+          <h2 className="font-display text-3xl sm:text-4xl font-normal text-[#111112] tracking-tight mb-6">
+            Achievements
+          </h2>
+          <div className="p-8 bg-[#F4F2EC] border border-[#E6E3DC]">
+            {achievements.map((item) => (
+              <div key={item.id} className="space-y-2">
+                <h3 className="font-display text-xl font-semibold text-[#111112]">
+                  {item.title}
+                </h3>
+                {item.link && (
+                  <div className="pt-1">
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-mono text-xs text-[#D45A2A] hover:underline inline-flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
+                    >
+                      <span>{item.linkText || item.link}</span>
+                      <svg className="w-3 h-3 stroke-current" fill="none" viewBox="0 0 24 24" strokeWidth="2" aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                      </svg>
+                    </a>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Section 6: Extracurricular */}
+        <section className="mb-20">
+          <h2 className="font-display text-3xl sm:text-4xl font-normal text-[#111112] tracking-tight mb-6">
+            Extracurricular
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {extracurricularList.map((item) => (
+              <div
+                key={item.id}
+                className="p-6 bg-[#F4F2EC] border border-[#E6E3DC]"
+              >
+                <span className="font-mono text-xs uppercase tracking-widest text-[#D45A2A] font-semibold">
+                  {item.role}
+                </span>
+                <h3 className="font-display text-lg font-semibold text-[#111112] mt-2">
+                  {item.organizationOrEvent}
+                </h3>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Section 7: Strengths */}
+        <section className="mb-20">
+          <h2 className="font-display text-3xl sm:text-4xl font-normal text-[#111112] tracking-tight mb-6">
+            Strengths
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {strengths.map((str) => (
+              <div
+                key={str}
+                className="p-6 bg-[#F4F2EC] border border-[#E6E3DC]"
+              >
+                <div className="font-display text-xl font-semibold text-[#111112]">
+                  {str}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Section 8: Current Work */}
         <section className="p-8 bg-[#121214] text-[#FAF9F6]">
           <h2 className="font-display text-2xl font-normal text-[#FAF9F6]">
             Current Work &mdash; Indraprastha Apollo Hospitals

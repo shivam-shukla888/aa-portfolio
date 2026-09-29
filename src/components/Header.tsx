@@ -135,7 +135,7 @@ export function Header() {
               <span>Resume</span>
             </a>
 
-            {/* Ask Aamna Assistant Button */}
+            {/* Aamna AI Assistant Button */}
             <button
               type="button"
               onClick={() => {
@@ -144,9 +144,9 @@ export function Header() {
                 }
               }}
               className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 border border-[#D45A2A] bg-transparent text-[#111112] text-xs font-medium hover:bg-[#D45A2A] hover:text-[#FAF9F6] transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
-              aria-label="Open Ask Aamna assistant"
+              aria-label="Open Aamna AI assistant"
             >
-              <span>Ask Aamna</span>
+              <span>Aamna AI</span>
             </button>
 
             {/* Mobile Menu Button */}
@@ -231,9 +231,9 @@ export function Header() {
                   window.dispatchEvent(new CustomEvent("open-ask-aamna"));
                 }
               }}
-              className="w-full text-center px-4 py-3 border border-[#D45A2A] text-xs font-medium text-[#111112] hover:bg-[#D45A2A] hover:text-[#FAF9F6] transition-colors"
+              aria-label="Open Aamna AI assistant"
             >
-              Ask Aamna
+              Aamna AI
             </button>
 
             <div className="pt-3 flex items-center justify-center gap-6 text-sm text-[#4A4944]">

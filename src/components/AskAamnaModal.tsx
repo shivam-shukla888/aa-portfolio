@@ -296,7 +296,7 @@ export function AskAamnaModal() {
             onClick={() => setIsOpen(true)}
             className="flex items-center gap-3 p-1.5 sm:px-4 sm:py-2.5 bg-[#FAF9F6] border border-[#111112] shadow-sm hover:border-[#D45A2A] transition-all group focus-visible:outline-none cursor-pointer"
             aria-expanded={isOpen}
-            aria-label="Open Ask Aamna portfolio guide"
+            aria-label="Open Aamna AI portfolio guide"
           >
             {/* Mascot in circle badge */}
             <div className="w-10 h-10 sm:w-8 sm:h-8 rounded-full bg-[#F4F2EC] border border-[#E6E3DC] flex items-center justify-center overflow-hidden shrink-0">
@@ -305,7 +305,7 @@ export function AskAamnaModal() {
 
             <div className="hidden sm:flex flex-col text-left">
               <div className="font-sans text-xs font-semibold text-[#111112] tracking-wide group-hover:text-[#D45A2A] transition-colors">
-                Ask Aamna
+                Aamna AI
               </div>
               <span className="font-mono text-[9px] uppercase tracking-wider text-[#6E6D68]">
                 Portfolio Guide
@@ -337,11 +337,11 @@ export function AskAamnaModal() {
           >
             <PageBackground variant="ask-aamna" />
 
-            {/* Header: Ask Aamna — Portfolio Guide */}
+            {/* Header: Aamna AI — Portfolio Guide */}
             <div className="px-5 py-3.5 bg-[#FAF9F6]/90 backdrop-blur-xs border-b border-[#E6E3DC] flex items-center justify-between relative z-10">
               <div className="flex items-center gap-2">
                 <h3 id="ask-aamna-title" className="font-sans text-sm font-semibold text-[#111112]">
-                  Ask Aamna <span className="font-normal text-xs text-[#6E6D68]">&mdash; Portfolio Guide</span>
+                  Aamna AI <span className="font-normal text-xs text-[#6E6D68]">&mdash; Portfolio Guide</span>
                 </h3>
               </div>
 
@@ -395,7 +395,7 @@ export function AskAamnaModal() {
                     {/* Right Greeting & description */}
                     <div className="flex-1">
                       <h4 className="font-sans text-lg font-bold text-[#111112] leading-snug flex items-center gap-1.5">
-                        <span>Hi! I&apos;m Ask Aamna</span>
+                        <span>Hi! I&apos;m Aamna AI</span>
                         <span aria-hidden="true">👋</span>
                       </h4>
                       <p className="mt-1.5 font-sans text-xs text-[#6E6D68] leading-relaxed">
@@ -438,7 +438,7 @@ export function AskAamnaModal() {
                           {m.role === "assistant" && (
                             <span className="w-1.5 h-1.5 bg-[#D45A2A] rounded-full inline-block" />
                           )}
-                          {m.role === "user" ? "Visitor" : "Ask Aamna"}
+                          {m.role === "user" ? "Visitor" : "Aamna AI"}
                         </span>
                         {m.time && <span>{m.time}</span>}
                       </div>
@@ -492,11 +492,11 @@ export function AskAamnaModal() {
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Ask about Aamna..."
+                placeholder="Message Aamna AI..."
                 disabled={isLoading}
                 maxLength={500}
                 className="flex-1 px-4 py-2.5 text-xs font-sans bg-white border border-[#E6E3DC] rounded-lg focus:border-[#111112] text-[#111112] placeholder:text-[#6E6D68] focus:outline-none shadow-2xs"
-                aria-label="Ask a question about Syyeda Aamna's portfolio"
+                aria-label="Message Aamna AI about Syyeda Aamna's portfolio"
               />
               <button
                 type="submit"

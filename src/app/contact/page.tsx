@@ -125,21 +125,13 @@ export default function ContactPage() {
           ))}
         </div>
 
-        {/* Location & Status Notice */}
+        {/* Location Notice */}
         <div className="mt-10 p-6 bg-[#FAF9F6] border border-[#E6E3DC]">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 font-mono text-xs text-[#6E6D68]">
-            <div>
-              <span className="block uppercase tracking-wider text-[#111112] font-semibold mb-1">
-                Location
-              </span>
-              <span>{profile.location}</span>
-            </div>
-            <div>
-              <span className="block uppercase tracking-wider text-[#111112] font-semibold mb-1">
-                Status
-              </span>
-              <span>{profile.relocationStatus}</span>
-            </div>
+          <div className="font-mono text-xs text-[#6E6D68]">
+            <span className="block uppercase tracking-wider text-[#111112] font-semibold mb-1">
+              Location
+            </span>
+            <span>{profile.location}</span>
           </div>
         </div>
       </div>

@@ -25,8 +25,7 @@ export function Footer() {
             </div>
 
             <div className="mt-8 font-mono text-xs text-[#4A4944]">
-              <div>Location: {profile.location}</div>
-              <div className="mt-1">Status: Open to Entry-Level AI/ML roles</div>
+              <div>{profile.location}</div>
             </div>
           </div>
 

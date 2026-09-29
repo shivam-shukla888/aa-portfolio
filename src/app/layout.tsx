@@ -105,8 +105,8 @@ export default function RootLayout({
         telephone: profile.phone,
         address: {
           "@type": "PostalAddress",
-          addressLocality: "Bareilly",
-          addressRegion: "Uttar Pradesh",
+          addressLocality: "New Delhi",
+          addressRegion: "Delhi",
           addressCountry: "India",
         },
         alumniOf: [
