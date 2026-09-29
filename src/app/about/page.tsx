@@ -13,24 +13,37 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="w-full py-16 sm:py-24 relative overflow-hidden">
-      <PageBackground variant="about" />
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Page Header matching Panel 02 */}
-        <div className="border-b border-[#111112] pb-8 mb-16">
-          <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-3 font-semibold">
-            <span>02 &mdash;</span>
+    <div className="w-full">
+      {/* Editorial Hero Header matching Panel 02 */}
+      <section className="relative min-h-[480px] lg:min-h-[520px] border-b border-[#E6E3DC] bg-[#FAF9F6] py-14 sm:py-20 overflow-hidden">
+        <PageBackground variant="about" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-xl">
+            <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-3 font-semibold">
+              <span>02 &mdash;</span>
+            </div>
+            <h1 className="font-display text-5xl sm:text-7xl font-normal tracking-tight text-[#111112]">
+              About
+            </h1>
+            <p className="mt-4 font-display text-xl sm:text-2xl text-[#111112] leading-snug">
+              A deeper look at my background, interests and the kind of work I enjoy building.
+            </p>
+            <p className="mt-3 font-mono text-xs sm:text-sm uppercase tracking-widest text-[#6E6D68]">
+              {profile.displayTitle} &bull; {profile.location}
+            </p>
+
+            {/* Bottom-Left Domain Tag Stack matching Panel 02 */}
+            <div className="mt-14 pt-2 font-mono text-xs uppercase tracking-widest text-[#6E6D68] space-y-1.5 border-l-2 border-[#D45A2A] pl-3.5">
+              <div>AI/ML</div>
+              <div>DATA SCIENCE</div>
+              <div>SOFTWARE</div>
+            </div>
           </div>
-          <h1 className="font-display text-5xl sm:text-7xl font-normal tracking-tight text-[#111112]">
-            About
-          </h1>
-          <p className="mt-4 font-display text-xl sm:text-2xl text-[#111112] max-w-2xl leading-snug">
-            A deeper look at my background, interests and the kind of work I enjoy building.
-          </p>
-          <p className="mt-3 font-mono text-xs sm:text-sm uppercase tracking-widest text-[#6E6D68]">
-            {profile.displayTitle} &bull; {profile.location}
-          </p>
         </div>
+      </section>
+
+      {/* Main Content Sections */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
 
         {/* Section 1: Professional Summary */}
         <section className="mb-20">

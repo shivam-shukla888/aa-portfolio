@@ -10,19 +10,43 @@ export const metadata: Metadata = {
 export default function TermsPage() {
   return (
     <div className="w-full py-16 sm:py-24 relative overflow-hidden">
-      <PageBackground variant="terms" />
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="border-b border-[#111112] pb-8 mb-12">
-          <h1 className="font-display text-5xl sm:text-7xl font-normal tracking-tight text-[#111112]">
+      {/* Panel 09 Editorial Hero Blueprint Section */}
+      <section className="relative min-h-[480px] lg:min-h-[540px] flex flex-col justify-between px-6 sm:px-12 lg:px-16 pt-8 pb-12 border-b border-[#E5E4DE] overflow-hidden">
+        <PageBackground variant="terms" />
+
+        <div className="relative z-10 max-w-xl">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="font-mono text-xs text-[#D45A2A] tracking-wider uppercase">08 —</span>
+            <span className="font-mono text-xs text-[#6E6D68] tracking-widest uppercase">Legal Conditions</span>
+          </div>
+          <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-normal tracking-tight text-[#111112] leading-[1.05]">
             Terms of Service
           </h1>
-          <p className="mt-4 font-display text-xl sm:text-2xl text-[#111112] max-w-xl leading-snug">
+          <p className="mt-5 font-sans text-base sm:text-lg text-[#4A4944] leading-relaxed">
             Terms and conditions for using this website.
           </p>
-          <p className="mt-3 font-mono text-xs text-[#6E6D68]">
-            Last updated: September 2026
-          </p>
+          <div className="mt-4 flex items-center gap-4 text-xs font-mono text-[#6E6D68]">
+            <span>LAST UPDATED: SEPTEMBER 2026</span>
+            <span>•</span>
+            <span>JURISDICTION: OPEN ACCESS</span>
+          </div>
         </div>
+
+        {/* Panel 09 Bottom Left Technical Guide Rail */}
+        <div className="relative z-10 mt-12 pt-4 border-t border-[#E5E4DE]/60 max-w-md">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-[10px] text-[#6E6D68] tracking-wider uppercase">
+            <span>CLARITY</span>
+            <span>/</span>
+            <span>FAIR USE</span>
+            <span>/</span>
+            <span>RESPONSIBLE ACCESS</span>
+            <span>/</span>
+            <span>OPEN INFORMATION</span>
+          </div>
+        </div>
+      </section>
+
+      <div className="max-w-4xl mx-auto px-6 sm:px-12 lg:px-16 pt-16 relative z-10">
 
         <div className="space-y-10 font-sans text-sm sm:text-base text-[#111112] leading-relaxed">
           <section>

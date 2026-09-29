@@ -47,24 +47,38 @@ export default function ContactPage() {
   ];
 
   return (
-    <div className="w-full py-12 sm:py-20 relative overflow-hidden">
-      <PageBackground variant="contact" />
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Page Header matching Panel 06 */}
-        <div className="border-b border-[#111112] pb-8 mb-12">
-          <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-3 font-semibold">
-            <span>05 &mdash;</span>
+    <div className="w-full">
+      {/* Editorial Hero Header matching Panel 06 */}
+      <section className="relative min-h-[480px] lg:min-h-[520px] border-b border-[#E6E3DC] bg-[#FAF9F6] py-14 sm:py-20 overflow-hidden">
+        <PageBackground variant="contact" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-xl">
+            <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-3 font-semibold">
+              <span>05 &mdash;</span>
+            </div>
+            <h1 className="font-display text-5xl sm:text-7xl font-normal tracking-tight text-[#111112]">
+              Let&apos;s Talk
+            </h1>
+            <p className="mt-4 font-display text-xl sm:text-2xl text-[#111112] leading-snug">
+              Open to opportunities, collaborations and interesting problems.
+            </p>
+            <p className="mt-3 font-sans text-sm text-[#6E6D68] leading-relaxed">
+              Reach out directly through verified channels. All professional inquiries receive prompt attention without intermediate marketing layers.
+            </p>
+
+            {/* Bottom-Left Values Rail matching Panel 06 */}
+            <div className="mt-14 pt-2 font-mono text-xs uppercase tracking-widest text-[#6E6D68] space-y-1.5 border-l-2 border-[#D45A2A] pl-3.5">
+              <div>IDEAS</div>
+              <div>COLLABORATION</div>
+              <div>OPPORTUNITIES</div>
+              <div>CONVERSATIONS</div>
+            </div>
           </div>
-          <h1 className="font-display text-5xl sm:text-7xl font-normal tracking-tight text-[#111112]">
-            Let&apos;s Talk
-          </h1>
-          <p className="mt-4 font-display text-xl sm:text-2xl text-[#111112] max-w-xl leading-snug">
-            Open to opportunities, collaborations and interesting problems.
-          </p>
-          <p className="mt-3 font-sans text-sm text-[#6E6D68] max-w-xl leading-relaxed">
-            Reach out directly through verified channels. All professional inquiries receive prompt attention without intermediate marketing layers.
-          </p>
         </div>
+      </section>
+
+      {/* Contact Grid */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
 
         {/* Contact Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

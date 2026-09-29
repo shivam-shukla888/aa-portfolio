@@ -50,60 +50,75 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
   const nextProject = projects[(currentIndex + 1) % projects.length];
 
   return (
-    <article className="w-full py-12 sm:py-20 relative overflow-hidden">
-      <PageBackground variant="project-detail" projectNumber={project.number} />
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Navigation Breadcrumb */}
-        <div className="mb-8 flex items-center justify-between font-mono text-xs text-[#6E6D68] border-b border-[#E6E3DC] pb-4">
-          <Link
-            href="/projects"
-            className="hover:text-[#111112] transition-colors inline-flex items-center gap-1.5"
-          >
-            &larr; Back to Projects Index
-          </Link>
-          <span>Project {project.number} of 0{projects.length}</span>
-        </div>
-
-        {/* Case Study Header matching Panel 04 */}
-        <header className="mb-12">
-          <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-3 font-semibold">
-            <span>{project.number} &mdash;</span>
-            <span className="text-[#6E6D68]">{project.category}</span>
+    <article className="w-full">
+      {/* Editorial Hero Header matching Panel 04 */}
+      <section className="relative min-h-[500px] lg:min-h-[540px] border-b border-[#E6E3DC] bg-[#FAF9F6] py-12 sm:py-16 overflow-hidden">
+        <PageBackground variant="project-detail" projectNumber={project.number} />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Navigation Breadcrumb */}
+          <div className="mb-8 flex items-center justify-between font-mono text-xs text-[#6E6D68] border-b border-[#E6E3DC] pb-4">
+            <Link
+              href="/projects"
+              className="hover:text-[#111112] transition-colors inline-flex items-center gap-1.5"
+            >
+              &larr; Back to Projects Index
+            </Link>
+            <span>Project {project.number} of 0{projects.length}</span>
           </div>
 
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-[#111112] leading-[1.05]">
-            {project.title}
-          </h1>
-
-          <p className="mt-4 font-display text-xl sm:text-2xl text-[#111112] leading-snug">
-            {project.oneLineDescription}
-          </p>
-
-          <div className="mt-8 pt-6 border-t border-[#E6E3DC] flex flex-wrap gap-4 items-center justify-between">
-            <div className="flex flex-wrap gap-1.5">
-              {project.technologies.map((t) => (
-                <span
-                  key={t}
-                  className="font-mono text-xs px-2.5 py-1 bg-[#F4F2EC] border border-[#E6E3DC] text-[#111112]"
-                >
-                  {t}
-                </span>
-              ))}
+          <div className="max-w-2xl">
+            {/* Case Study Header matching Panel 04 */}
+            <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-3 font-semibold">
+              <span>{project.number} &mdash;</span>
+              <span className="text-[#6E6D68]">{project.category}</span>
             </div>
 
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#111112] text-[#FAF9F6] font-mono text-xs uppercase tracking-wider hover:bg-[#D45A2A] transition-colors"
-            >
-              <span>GitHub Repository</span>
-              <svg className="w-3.5 h-3.5 stroke-current" fill="none" viewBox="0 0 24 24" strokeWidth="2" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-              </svg>
-            </a>
+            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-[#111112] leading-[1.05]">
+              {project.title}
+            </h1>
+
+            <p className="mt-4 font-display text-xl sm:text-2xl text-[#111112] leading-snug">
+              {project.oneLineDescription}
+            </p>
+
+            <div className="mt-8 pt-6 border-t border-[#E6E3DC] flex flex-wrap gap-4 items-center justify-between">
+              <div className="flex flex-wrap gap-1.5">
+                {project.technologies.map((t) => (
+                  <span
+                    key={t}
+                    className="font-mono text-xs px-2.5 py-1 bg-[#F4F2EC] border border-[#E6E3DC] text-[#111112]"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#111112] text-[#FAF9F6] font-mono text-xs uppercase tracking-wider hover:bg-[#D45A2A] transition-colors"
+              >
+                <span>GitHub Repository</span>
+                <svg className="w-3.5 h-3.5 stroke-current" fill="none" viewBox="0 0 24 24" strokeWidth="2" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                </svg>
+              </a>
+            </div>
+
+            {/* Left Step Index Rail matching Panel 04 */}
+            <div className="mt-10 pt-4 border-t border-[#E6E3DC] grid grid-cols-2 sm:grid-cols-4 gap-2 font-mono text-[10px] text-[#6E6D68] tracking-widest uppercase">
+              <div>01 / OVERVIEW</div>
+              <div>02 / CONTEXT</div>
+              <div>03 / DATA</div>
+              <div>04 / IMPLEMENTATION</div>
+            </div>
           </div>
-        </header>
+        </div>
+      </section>
+
+      {/* Main Case Study Content */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
 
         {/* Real Project Visual Evidence */}
         {project.visualAsset && (

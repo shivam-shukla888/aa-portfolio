@@ -11,24 +11,38 @@ export const metadata: Metadata = {
 
 export default function ExperiencePage() {
   return (
-    <div className="w-full py-16 sm:py-24 relative overflow-hidden">
-      <PageBackground variant="experience" />
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Page Header matching Panel 05 */}
-        <div className="border-b border-[#111112] pb-8 mb-16">
-          <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-3 font-semibold">
-            <span>04 &mdash;</span>
+    <div className="w-full">
+      {/* Editorial Hero Header matching Panel 05 */}
+      <section className="relative min-h-[480px] lg:min-h-[520px] border-b border-[#E6E3DC] bg-[#FAF9F6] py-14 sm:py-20 overflow-hidden">
+        <PageBackground variant="experience" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-xl">
+            <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-3 font-semibold">
+              <span>04 &mdash;</span>
+            </div>
+            <h1 className="font-display text-5xl sm:text-7xl font-normal tracking-tight text-[#111112]">
+              Experience
+            </h1>
+            <p className="mt-4 font-display text-xl sm:text-2xl text-[#111112] leading-snug">
+              My professional journey, roles, and key contributions.
+            </p>
+            <p className="mt-3 font-sans text-sm text-[#6E6D68] leading-relaxed">
+              Professional positions, internships, and specialized technical training strictly reflecting verified engineering responsibilities.
+            </p>
+
+            {/* Bottom-Left Pillars Rail matching Panel 05 */}
+            <div className="mt-14 pt-2 font-mono text-xs uppercase tracking-widest text-[#6E6D68] space-y-1.5 border-l-2 border-[#D45A2A] pl-3.5">
+              <div>PEOPLE</div>
+              <div>PROJECTS</div>
+              <div>PRACTICE</div>
+              <div>PROGRESS</div>
+            </div>
           </div>
-          <h1 className="font-display text-5xl sm:text-7xl font-normal tracking-tight text-[#111112]">
-            Experience
-          </h1>
-          <p className="mt-4 font-display text-xl sm:text-2xl text-[#111112] max-w-2xl leading-snug">
-            My professional journey, roles, and key contributions.
-          </p>
-          <p className="mt-3 font-sans text-sm text-[#6E6D68] max-w-2xl leading-relaxed">
-            Professional positions, internships, and specialized technical training strictly reflecting verified engineering responsibilities.
-          </p>
         </div>
+      </section>
+
+      {/* Experience Timeline */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
 
         {/* Experience Timeline */}
         <div className="space-y-16">

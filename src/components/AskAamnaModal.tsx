@@ -333,15 +333,15 @@ export function AskAamnaModal() {
             aria-hidden="true"
           />
 
-          {/* Modal Container */}
+          {/* Modal Container matching Panel 07 in image.png */}
           <div
             ref={modalRef}
-            className="relative z-10 w-full sm:max-w-lg bg-[#FAF9F6] border-t sm:border border-[#111112] shadow-xl max-h-[90vh] sm:max-h-[640px] flex flex-col overflow-hidden"
+            className="relative z-10 w-full sm:max-w-lg bg-[#FAF9F6] border-t sm:border border-[#111112] sm:rounded-2xl shadow-2xl max-h-[92vh] sm:max-h-[660px] flex flex-col overflow-hidden"
           >
             <PageBackground variant="ask-aamna" />
 
             {/* Header matching Panel 07: >_ ASK AAMNA - PORTFOLIO GUIDE with window controls */}
-            <div className="px-5 py-3.5 bg-[#FAF9F6] border-b border-[#E6E3DC] flex items-center justify-between relative z-10">
+            <div className="px-5 py-3.5 bg-[#FAF9F6]/90 backdrop-blur-xs border-b border-[#E6E3DC] flex items-center justify-between relative z-10">
               <div className="flex items-center gap-2">
                 <span className="font-mono text-xs font-bold text-[#D45A2A]" aria-hidden="true">
                   &gt;_
@@ -405,39 +405,36 @@ export function AskAamnaModal() {
               aria-label="Conversation messages"
             >
               {messages.length === 0 ? (
-                /* Welcome State exactly matching Panel 07 in image.png */
-                <div className="space-y-4 pt-1">
-                  <div className="p-4 bg-[#FAF9F6] border border-[#E6E3DC] relative overflow-hidden flex items-start gap-4">
+                /* Welcome State matching Panel 07 */
+                <div className="space-y-4 pt-2">
+                  <div className="py-2 px-1 relative flex items-center gap-4">
                     {/* Left Mascot with laptop & speech bubble */}
-                    <div className="shrink-0 pt-0.5">
-                      <HamsterMascot size={74} state={hamsterState} showSpeechBubble={true} />
+                    <div className="shrink-0">
+                      <HamsterMascot size={105} state={hamsterState} showSpeechBubble={true} />
                     </div>
 
                     {/* Right Greeting & description */}
                     <div className="flex-1">
-                      <h4 className="font-sans text-base font-semibold text-[#111112] leading-snug flex items-center gap-1.5">
+                      <h4 className="font-sans text-lg font-bold text-[#111112] leading-snug flex items-center gap-1.5">
                         <span>Hi! I&apos;m Ask Aamna</span>
                         <span aria-hidden="true">👋</span>
                       </h4>
-                      <p className="mt-1 font-sans text-xs text-[#6E6D68] leading-relaxed">
+                      <p className="mt-1.5 font-sans text-xs text-[#6E6D68] leading-relaxed">
                         Your guide to Syyeda Aamna&apos;s projects, experience, skills and more.
                       </p>
                     </div>
                   </div>
 
-                  {/* 4 Suggested Query Pills in 2-column or list matching Panel 07 */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+                  {/* 4 Suggested Query Pills matching Panel 07 */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
                     {SUGGESTED_QUERIES.map((q) => (
                       <button
                         key={q}
                         type="button"
                         onClick={() => handleSend(q)}
-                        className="text-left font-sans text-xs px-3.5 py-2.5 bg-[#FAF9F6] hover:bg-[#F4F2EC] border border-[#E6E3DC] hover:border-[#111112] text-[#111112] transition-colors rounded-full flex items-center justify-between group"
+                        className="text-center font-sans text-xs px-4 py-2.5 bg-[#FAF9F6] hover:bg-[#F4F2EC] border border-[#D45A2A]/50 hover:border-[#D45A2A] text-[#111112] transition-colors rounded-full"
                       >
                         <span className="line-clamp-1">{q}</span>
-                        <span className="font-mono text-xs text-[#6E6D68] group-hover:text-[#D45A2A] group-hover:translate-x-0.5 transition-all shrink-0 ml-1">
-                          &rarr;
-                        </span>
                       </button>
                     ))}
                   </div>
@@ -504,7 +501,7 @@ export function AskAamnaModal() {
                 e.preventDefault();
                 handleSend();
               }}
-              className="p-3 bg-[#FAF9F6] border-t border-[#E6E3DC] flex items-center gap-2"
+              className="p-4 bg-[#FAF9F6] border-t border-[#E6E3DC] flex items-center gap-3"
             >
               <input
                 ref={inputRef}
@@ -514,20 +511,20 @@ export function AskAamnaModal() {
                 placeholder="Ask about Aamna..."
                 disabled={isLoading}
                 maxLength={500}
-                className="flex-1 px-3.5 py-2 text-xs font-sans bg-[#FAF9F6] border border-[#E6E3DC] focus:border-[#111112] text-[#111112] placeholder:text-[#6E6D68] focus:outline-none"
+                className="flex-1 px-4 py-2.5 text-xs font-sans bg-white border border-[#E6E3DC] rounded-lg focus:border-[#111112] text-[#111112] placeholder:text-[#6E6D68] focus:outline-none shadow-2xs"
                 aria-label="Ask a question about Syyeda Aamna's portfolio"
               />
               <button
                 type="submit"
                 disabled={isLoading || !input.trim()}
-                className="w-8 h-8 flex items-center justify-center bg-[#D45A2A] disabled:bg-[#E6E3DC] disabled:text-[#6E6D68] text-[#FAF9F6] hover:bg-[#b8471c] transition-colors disabled:cursor-not-allowed shrink-0 focus-visible:outline-none"
+                className="w-10 h-10 flex items-center justify-center bg-[#D45A2A] rounded-lg disabled:bg-[#E6E3DC] disabled:text-[#6E6D68] text-white hover:bg-[#b8471c] transition-colors disabled:cursor-not-allowed shrink-0 focus-visible:outline-none shadow-2xs"
                 aria-label="Send message"
               >
                 <svg
                   className="w-4 h-4 stroke-current"
                   fill="none"
                   viewBox="0 0 24 24"
-                  strokeWidth="2"
+                  strokeWidth="2.5"
                   aria-hidden="true"
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />

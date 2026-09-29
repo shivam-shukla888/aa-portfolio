@@ -14,149 +14,121 @@ export default function HomePage() {
       <section className="relative border-b border-[#E6E3DC] pt-10 sm:pt-16 pb-12 sm:pb-20 bg-[#FAF9F6] overflow-hidden">
         <PageBackground variant="home" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-            {/* Left Editorial Content */}
-            <div className="lg:col-span-7 flex flex-col justify-between">
-              {/* Category tracker */}
-              <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#6E6D68] mb-4 sm:mb-6">
-                <span>AI/ML</span>
-                <span className="text-[#D45A2A] font-bold">&bull;</span>
-                <span>DATA SCIENCE</span>
-                <span className="text-[#D45A2A] font-bold">&bull;</span>
-                <span>SOFTWARE</span>
-              </div>
-
-              {/* Display Headline */}
-              <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] tracking-tight text-[#111112] font-normal leading-[0.98]">
-                Syyeda Aamna
-              </h1>
-
-              {/* Subheading / Ethos */}
-              <p className="mt-4 sm:mt-5 font-display text-xl sm:text-2xl text-[#111112] leading-snug max-w-xl">
-                Building practical AI/ML solutions with a focus on real-world impact.
-              </p>
-
-              {/* Bio summary */}
-              <p className="mt-4 font-sans text-sm sm:text-base text-[#6E6D68] leading-relaxed max-w-xl">
-                AI/ML-focused software professional with hands-on experience in Python, Machine Learning, Data Science, Generative AI and software development.
-              </p>
-
-              {/* Action Buttons & Handwritten Annotation */}
-              <div className="mt-8 pt-2 flex flex-col sm:flex-row sm:items-center gap-4">
-                <div className="flex flex-wrap gap-3">
-                  <a
-                    href="#featured-work"
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#D45A2A] text-[#FAF9F6] font-mono text-xs uppercase tracking-wider font-semibold hover:bg-[#b8471c] transition-colors"
-                  >
-                    <span>View My Work</span>
-                    <span aria-hidden="true">&rarr;</span>
-                  </a>
-                  <a
-                    href="/contact"
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-[#111112] text-[#111112] font-mono text-xs uppercase tracking-wider hover:bg-[#F4F2EC] transition-colors"
-                  >
-                    <span>Get in Touch</span>
-                    <span aria-hidden="true">&rarr;</span>
-                  </a>
-                </div>
-
-                {/* Editorial Handwritten Annotation Note */}
-                <div className="hidden xl:flex items-center gap-2 pl-4 text-[#D45A2A]">
-                  <svg
-                    className="w-7 h-7 stroke-current shrink-0 -rotate-12"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.5"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3"
-                    />
-                  </svg>
-                  <span className="font-display italic text-sm text-[#111112] leading-tight">
-                    Turning ideas into<br />useful solutions.
-                  </span>
-                </div>
-              </div>
-
-              {/* Metadata Indicators */}
-              <div className="mt-10 pt-6 border-t border-[#E6E3DC] flex flex-wrap gap-y-2 gap-x-6 font-mono text-xs text-[#6E6D68]">
-                <div className="flex items-center gap-1.5">
-                  <span className="text-[#D45A2A] font-bold">&raquo;</span>
-                  <span className="uppercase tracking-wider">BAREILLY, UTTAR PRADESH</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <span className="text-[#D45A2A] font-bold">&raquo;</span>
-                  <span className="uppercase tracking-wider">AVAILABLE FOR OPPORTUNITIES</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 bg-[#D45A2A] inline-block" aria-hidden="true" />
-                  <span className="uppercase tracking-wider text-[#111112]">OPEN TO COLLABORATION</span>
-                </div>
-              </div>
+          <div className="max-w-2xl pt-4 pb-8 sm:pb-16 flex flex-col justify-between">
+            {/* Category tracker */}
+            <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#6E6D68] mb-4 sm:mb-6">
+              <span>AI/ML</span>
+              <span className="text-[#D45A2A] font-bold">&bull;</span>
+              <span>DATA SCIENCE</span>
+              <span className="text-[#D45A2A] font-bold">&bull;</span>
+              <span>SOFTWARE</span>
             </div>
 
-            {/* Right Editorial Technical Composition (NO PORTRAIT PHOTO) */}
-            <div className="lg:col-span-5 w-full">
-              <div className="border border-[#E6E3DC] bg-[#F4F2EC] p-5 sm:p-6 relative">
-                {/* Technical Dossier Top Header */}
-                <div className="flex items-center justify-between border-b border-[#E6E3DC] pb-3 mb-4">
-                  <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-[#111112] font-semibold">
-                    <span className="w-2 h-2 rounded-full bg-[#D45A2A]" aria-hidden="true" />
-                    <span>SYSTEM NOTEBOOK // PIPELINE SUMMARY</span>
-                  </div>
-                  <span className="font-mono text-[10px] text-[#6E6D68] uppercase tracking-wider">
-                    FOLIO 2026
-                  </span>
+            {/* Display Headline */}
+            <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] tracking-tight text-[#111112] font-normal leading-[0.98]">
+              Syyeda Aamna
+            </h1>
+
+            {/* Subheading / Ethos */}
+            <p className="mt-4 sm:mt-5 font-display text-xl sm:text-2xl text-[#111112] leading-snug max-w-xl">
+              Building practical AI/ML solutions with a focus on real-world impact.
+            </p>
+
+            {/* Bio summary */}
+            <p className="mt-4 font-sans text-sm sm:text-base text-[#6E6D68] leading-relaxed max-w-xl">
+              AI/ML-focused software professional with hands-on experience in Python, Machine Learning, Data Science, Generative AI and software development.
+            </p>
+
+            {/* Action Buttons */}
+            <div className="mt-8 pt-2 flex flex-wrap gap-4 items-center">
+              <a
+                href="#featured-work"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#D45A2A] text-[#FAF9F6] font-mono text-xs uppercase tracking-wider font-semibold hover:bg-[#b8471c] transition-colors"
+              >
+                <span>View My Work</span>
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+              <a
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-[#D45A2A] text-[#111112] font-mono text-xs uppercase tracking-wider hover:bg-[#F4F2EC] transition-colors"
+              >
+                <span>Get in Touch</span>
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+
+            {/* Metadata Indicators */}
+            <div className="mt-12 pt-6 border-t border-[#E6E3DC] flex flex-wrap gap-y-2 gap-x-6 font-mono text-xs text-[#6E6D68]">
+              <div className="flex items-center gap-1.5">
+                <span className="text-[#D45A2A] font-bold">&raquo;</span>
+                <span className="uppercase tracking-wider">BAREILLY, UTTAR PRADESH</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <span className="text-[#D45A2A] font-bold">&raquo;</span>
+                <span className="uppercase tracking-wider">AVAILABLE FOR OPPORTUNITIES</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 bg-[#D45A2A] inline-block" aria-hidden="true" />
+                <span className="uppercase tracking-wider text-[#111112]">OPEN TO COLLABORATION</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. VERIFIED SYSTEM DOSSIER (ENGINEERING PIPELINE SUMMARY) */}
+      <section className="py-12 border-b border-[#E6E3DC] bg-[#F4F2EC]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="border border-[#E6E3DC] bg-[#FAF9F6] p-6 sm:p-8">
+            {/* Dossier Header */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#E6E3DC] pb-4 mb-6 gap-2">
+              <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-[#111112] font-semibold">
+                <span className="w-2 h-2 rounded-full bg-[#D45A2A]" aria-hidden="true" />
+                <span>SYSTEM NOTEBOOK // VERIFIED REPOSITORY PIPELINES</span>
+              </div>
+              <span className="font-mono text-[11px] text-[#6E6D68] uppercase tracking-wider">
+                100% REPRODUCIBLE &bull; GITHUB VERIFIED
+              </span>
+            </div>
+
+            {/* Schematic 3-Column Pipeline Overview */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Step 1: Real RAG Pipeline Overview */}
+              <div className="p-4 bg-[#F4F2EC] border border-[#E6E3DC]">
+                <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-[#D45A2A] font-semibold mb-2">
+                  <span>RAG PIPELINE // MULTI-MODAL</span>
+                  <span>LOCAL DISK</span>
                 </div>
-
-                {/* Schematic Flow Container */}
-                <div className="space-y-4">
-                  {/* Step 1: Real RAG Pipeline Overview */}
-                  <div className="p-3.5 bg-[#FAF9F6] border border-[#E6E3DC]">
-                    <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-[#D45A2A] font-semibold mb-1">
-                      <span>RAG PIPELINE // MULTI-MODAL</span>
-                      <span>LOCAL DISK</span>
-                    </div>
-                    <div className="font-mono text-xs text-[#111112] space-y-1">
-                      <div className="text-[11px] text-[#6E6D68]">PyPDFLoader &rarr; RecursiveSplitter</div>
-                      <div className="font-medium text-[#111112]">FAISS Vector Index (all-MiniLM-L6-v2)</div>
-                      <div className="text-[11px] text-[#D45A2A]">Gemini LLM Synthesis + Page Citations</div>
-                    </div>
-                  </div>
-
-                  {/* Step 2: Fraud Detection Hybrid Model */}
-                  <div className="p-3.5 bg-[#FAF9F6] border border-[#E6E3DC]">
-                    <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-[#D45A2A] font-semibold mb-1">
-                      <span>FRAUD DETECTION // HYBRID ENGINE</span>
-                      <span>FINTECH SIMULATION</span>
-                    </div>
-                    <div className="font-mono text-xs text-[#111112] space-y-1">
-                      <div className="text-[11px] text-[#6E6D68]">Scikit-Learn Logistic Regression</div>
-                      <div className="font-medium text-[#111112]">Deterministic Rule-Based Anomaly Scoring</div>
-                      <div className="text-[11px] text-[#6E6D68]">FastAPI REST Engine &bull; React Dashboard</div>
-                    </div>
-                  </div>
-
-                  {/* Step 3: Netflix Data Analysis */}
-                  <div className="p-3.5 bg-[#FAF9F6] border border-[#E6E3DC]">
-                    <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-[#D45A2A] font-semibold mb-1">
-                      <span>EXPLORATORY DATA ANALYSIS</span>
-                      <span>~9,800 MOVIES</span>
-                    </div>
-                    <div className="font-mono text-xs text-[#111112]">
-                      <span className="text-[#111112] font-medium">Pandas, NumPy, Matplotlib &amp; Seaborn</span>
-                      <div className="text-[11px] text-[#6E6D68] mt-0.5">Statistical distributions &amp; multi-attribute correlation</div>
-                    </div>
-                  </div>
+                <div className="font-mono text-xs text-[#111112] space-y-1.5">
+                  <div className="text-[11px] text-[#6E6D68]">PyPDFLoader &rarr; RecursiveSplitter</div>
+                  <div className="font-medium text-[#111112]">FAISS Vector Index (all-MiniLM-L6-v2)</div>
+                  <div className="text-[11px] text-[#D45A2A]">Gemini LLM Synthesis + Page Citations</div>
                 </div>
+              </div>
 
-                {/* Bottom Technical Telemetry Strip */}
-                <div className="mt-4 pt-3 border-t border-[#E6E3DC] flex items-center justify-between font-mono text-[10px] text-[#6E6D68]">
-                  <span className="uppercase tracking-wider">Verified Repository Artifacts</span>
-                  <span className="text-[#D45A2A] font-semibold">100% REPRODUCIBLE</span>
+              {/* Step 2: Fraud Detection Hybrid Model */}
+              <div className="p-4 bg-[#F4F2EC] border border-[#E6E3DC]">
+                <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-[#D45A2A] font-semibold mb-2">
+                  <span>FRAUD DETECTION // HYBRID</span>
+                  <span>FASTAPI REST</span>
+                </div>
+                <div className="font-mono text-xs text-[#111112] space-y-1.5">
+                  <div className="text-[11px] text-[#6E6D68]">Scikit-Learn Logistic Regression</div>
+                  <div className="font-medium text-[#111112]">Deterministic Rule-Based Anomaly Scoring</div>
+                  <div className="text-[11px] text-[#6E6D68]">FastAPI Engine &bull; React Analytics Dashboard</div>
+                </div>
+              </div>
+
+              {/* Step 3: Netflix Data Analysis */}
+              <div className="p-4 bg-[#F4F2EC] border border-[#E6E3DC]">
+                <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-[#D45A2A] font-semibold mb-2">
+                  <span>EXPLORATORY DATA ANALYSIS</span>
+                  <span>~9,800 MOVIES</span>
+                </div>
+                <div className="font-mono text-xs text-[#111112] space-y-1.5">
+                  <div className="font-medium text-[#111112]">Pandas &amp; NumPy Cleaning Pipelines</div>
+                  <div className="text-[11px] text-[#6E6D68]">Matplotlib &amp; Seaborn Visualizations</div>
+                  <div className="text-[11px] text-[#D45A2A]">Multi-Variable Rating &amp; Release Correlation</div>
                 </div>
               </div>
             </div>
