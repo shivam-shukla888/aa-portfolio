@@ -11,7 +11,7 @@ export const skillCategories: SkillCategory[] = [
     skills: ["Python", "Java", "C#"],
   },
   {
-    category: "AI / ML Core",
+    category: "Machine Learning & AI",
     description: "Machine learning, neural representations, and data science methodologies",
     skills: [
       "Machine Learning",
@@ -29,7 +29,7 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    category: "ML / AI Libraries",
+    category: "ML Libraries & Frameworks",
     description: "Specialized frameworks for computational modeling, deep learning, and retrieval",
     skills: [
       "Scikit-Learn",
