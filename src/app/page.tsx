@@ -19,13 +19,9 @@ export default function HomePage() {
         <PageBackground variant="home" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-2xl pt-4 pb-8 sm:pb-16 flex flex-col justify-between">
-            {/* Target Role & Scope Indicator */}
-            <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#4A4944] mb-4 sm:mb-6">
-              <span>AI/ML ENGINEER (ENTRY-LEVEL)</span>
-              <span className="text-[#D45A2A] font-bold">&bull;</span>
-              <span>PYTHON</span>
-              <span className="text-[#D45A2A] font-bold">&bull;</span>
-              <span>APPLIED ML</span>
+            {/* Discipline Eyebrow */}
+            <div className="font-mono text-xs uppercase tracking-widest text-[#6E6D68] mb-4 sm:mb-6">
+              Machine Learning &amp; Software
             </div>
 
             {/* Display Headline */}
@@ -33,24 +29,23 @@ export default function HomePage() {
               {profile.name}
             </h1>
 
-            {/* Primary One-Line Value Proposition (Requirement 6) */}
+            {/* Primary Value Proposition */}
             <p className="mt-4 sm:mt-5 font-display text-xl sm:text-2xl text-[#111112] leading-snug max-w-xl">
               {profile.positioningStatement}
             </p>
 
-            {/* Secondary Supporting Line (Requirement 6) */}
-            <p className="mt-3 font-sans text-sm sm:text-base text-[#4A4944] leading-relaxed max-w-xl">
+            {/* Secondary Supporting Line */}
+            <p className="mt-3 font-sans text-sm sm:text-base text-[#6E6D68] leading-relaxed max-w-xl">
               {profile.secondaryStatement}
             </p>
 
-            {/* Action Buttons & Resume Download (Requirement 9) */}
+            {/* Action Buttons */}
             <div className="mt-8 pt-2 flex flex-wrap gap-3.5 items-center">
               <a
                 href="#projects"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#D45A2A] text-[#FAF9F6] font-mono text-xs uppercase tracking-wider font-semibold hover:bg-[#b8471c] transition-colors focus-visible:outline-2 focus-visible:outline-[#111112]"
+                className="inline-flex items-center justify-center px-6 py-3 bg-[#D45A2A] text-[#FAF9F6] font-mono text-xs uppercase tracking-wider font-semibold hover:bg-[#b8471c] transition-colors focus-visible:outline-2 focus-visible:outline-[#111112]"
               >
                 <span>View Projects</span>
-                <span aria-hidden="true">&rarr;</span>
               </a>
 
               <a
@@ -67,15 +62,14 @@ export default function HomePage() {
 
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-5 py-3 border border-[#E6E3DC] text-[#111112] font-mono text-xs uppercase tracking-wider hover:bg-[#F4F2EC] transition-colors focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
+                className="inline-flex items-center justify-center px-5 py-3 border border-[#E6E3DC] text-[#111112] font-mono text-xs uppercase tracking-wider hover:bg-[#F4F2EC] transition-colors focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
               >
                 <span>Contact</span>
               </Link>
             </div>
 
-            {/* Social Channels in Hero (Requirement 9) */}
+            {/* Channels in Hero */}
             <div className="mt-8 flex items-center gap-4 text-xs font-mono text-[#111112]">
-              <span className="text-[#4A4944] text-[11px] uppercase tracking-wider font-semibold">Channels:</span>
               <a
                 href={profile.github}
                 target="_blank"
@@ -101,18 +95,16 @@ export default function HomePage() {
               <ObfuscatedEmail
                 className="inline-flex items-center gap-1.5 hover:text-[#D45A2A] transition-colors focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
                 showIcon={true}
-                label="Direct Email"
+                label="Email"
               />
             </div>
 
-            {/* Location & Relocation Indicator (Requirement 7) */}
-            <div className="mt-8 pt-6 border-t border-[#E6E3DC] flex flex-wrap gap-y-2 gap-x-6 font-mono text-xs text-[#4A4944]">
-              <div className="flex items-center gap-1.5">
-                <span className="text-[#D45A2A] font-bold">&raquo;</span>
-                <span className="uppercase tracking-wider">LOCATION: {profile.location}</span>
+            {/* Location & Status */}
+            <div className="mt-8 pt-6 border-t border-[#E6E3DC] flex flex-wrap gap-y-2 gap-x-6 font-mono text-xs text-[#6E6D68]">
+              <div>
+                <span className="uppercase tracking-wider">Location: {profile.location}</span>
               </div>
-              <div className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 bg-[#D45A2A] inline-block" aria-hidden="true" />
+              <div>
                 <span className="uppercase tracking-wider text-[#111112]">{profile.relocationStatus}</span>
               </div>
             </div>
@@ -121,30 +113,25 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          2. DEDUPLICATED PROJECTS SECTION (Requirement 3)
-          Merged System Notebook + Featured Work into one clean section.
+          2. PROJECTS SECTION
       ═══════════════════════════════════════════════ */}
       <section id="projects" className="py-16 sm:py-24 border-b border-[#E6E3DC] bg-[#FAF9F6]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 sm:mb-16 pb-4 border-b border-[#E6E3DC] gap-4">
             <div>
-              <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-2 font-semibold">
-                <span>01 &mdash; APPLIED SYSTEMS &amp; PROJECTS</span>
-              </div>
-              <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold text-[#111112] tracking-tight">
+              <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-normal text-[#111112] tracking-tight">
                 Projects
               </h2>
-              <p className="mt-2 font-sans text-sm sm:text-base text-[#4A4944] max-w-2xl leading-relaxed">
-                Applied machine learning pipelines, Retrieval-Augmented Generation workflows, and exploratory statistical analyses with public source repositories.
+              <p className="mt-2 font-sans text-sm sm:text-base text-[#6E6D68] max-w-2xl leading-relaxed">
+                Machine learning pipelines, Retrieval-Augmented Generation workflows, and exploratory statistical analyses with public source repositories.
               </p>
             </div>
             <Link
               href="/projects"
-              className="font-mono text-xs uppercase tracking-wider text-[#D45A2A] hover:text-[#111112] inline-flex items-center gap-1.5 group font-semibold shrink-0 focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
+              className="font-mono text-xs uppercase tracking-wider text-[#D45A2A] hover:text-[#111112] inline-flex items-center font-semibold shrink-0 focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
             >
-              <span>View All Case Studies</span>
-              <span className="group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
+              <span>View All Projects</span>
             </Link>
           </div>
 
@@ -172,9 +159,9 @@ export default function HomePage() {
 
                   {/* Card Content */}
                   <div className="p-6 sm:p-7">
-                    {/* Category & Project Number */}
-                    <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-wider text-[#D45A2A] pb-3 border-b border-[#E6E3DC] mb-4">
-                      <span>{project.number} &bull; {project.category}</span>
+                    {/* Category */}
+                    <div className="font-mono text-[11px] uppercase tracking-wider text-[#D45A2A] pb-3 border-b border-[#E6E3DC] mb-4">
+                      {project.category}
                     </div>
 
                     {/* Title */}
@@ -184,22 +171,22 @@ export default function HomePage() {
                       </Link>
                     </h3>
 
-                    {/* One-Line Problem (Requirement 3) */}
+                    {/* Problem */}
                     <div className="mt-3 pt-3 border-t border-[#E6E3DC]">
-                      <span className="block font-mono text-[10px] uppercase tracking-wider text-[#4A4944] font-semibold">
-                        Problem Statement
+                      <span className="block font-mono text-[10px] uppercase tracking-wider text-[#6E6D68] font-semibold">
+                        Problem
                       </span>
                       <p className="mt-1 font-sans text-xs sm:text-sm text-[#111112] leading-relaxed">
                         {project.oneLineProblem}
                       </p>
                     </div>
 
-                    {/* Outcome Bullets (Requirement 3) */}
+                    {/* Outcomes */}
                     <div className="mt-4 pt-3 border-t border-[#E6E3DC]">
-                      <span className="block font-mono text-[10px] uppercase tracking-wider text-[#4A4944] font-semibold mb-2">
-                        Key Engineering Outcomes
+                      <span className="block font-mono text-[10px] uppercase tracking-wider text-[#6E6D68] font-semibold mb-2">
+                        Key Outcomes
                       </span>
-                      <ul className="space-y-1.5 font-sans text-xs text-[#4A4944] leading-relaxed">
+                      <ul className="space-y-1.5 font-sans text-xs text-[#6E6D68] leading-relaxed">
                         {project.outcomeBullets.map((bullet, i) => (
                           <li key={i} className="flex items-start gap-2">
                             <span className="text-[#D45A2A] font-mono text-xs mt-0.5 shrink-0">&bull;</span>
@@ -211,7 +198,7 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                {/* Tech Tags & Action Buttons (Requirement 3) */}
+                {/* Tech Tags & Action Buttons */}
                 <div className="px-6 sm:px-7 pb-6 pt-0">
                   {/* Stack Tags */}
                   <div className="flex flex-wrap gap-1.5 py-3 border-t border-[#E6E3DC]">
@@ -225,34 +212,32 @@ export default function HomePage() {
                     ))}
                   </div>
 
-                  {/* Buttons: Case Study, GitHub, Live Demo (hidden if missing) */}
+                  {/* Buttons */}
                   <div className="pt-3 border-t border-[#E6E3DC] flex flex-wrap items-center gap-2">
                     <Link
                       href={`/projects/${project.slug}`}
-                      className="px-3 py-1.5 bg-[#111112] text-[#FAF9F6] font-mono text-xs uppercase tracking-wider hover:bg-[#D45A2A] transition-colors focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
+                      className="px-3.5 py-1.5 bg-[#111112] text-[#FAF9F6] font-mono text-xs uppercase tracking-wider hover:bg-[#D45A2A] transition-colors focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
                     >
-                      Case Study &rarr;
+                      Case Study
                     </Link>
 
                     <a
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-3 py-1.5 border border-[#111112] text-[#111112] font-mono text-xs uppercase tracking-wider hover:bg-[#F4F2EC] transition-colors inline-flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
+                      className="px-3.5 py-1.5 border border-[#111112] text-[#111112] font-mono text-xs uppercase tracking-wider hover:bg-[#F4F2EC] transition-colors focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
                     >
-                      <span>GitHub</span>
-                      <span aria-hidden="true">↗</span>
+                      GitHub
                     </a>
 
-                    {/* Live Demo button: ONLY shown if liveUrl exists (Requirement 3) */}
                     {project.liveUrl && (
                       <a
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-3 py-1.5 border border-[#D45A2A] text-[#D45A2A] font-mono text-xs uppercase tracking-wider hover:bg-[#D45A2A] hover:text-[#FAF9F6] transition-colors focus-visible:outline-2 focus-visible:outline-[#111112]"
+                        className="px-3.5 py-1.5 border border-[#D45A2A] text-[#D45A2A] font-mono text-xs uppercase tracking-wider hover:bg-[#D45A2A] hover:text-[#FAF9F6] transition-colors focus-visible:outline-2 focus-visible:outline-[#111112]"
                       >
-                        Live Demo ↗
+                        Live Demo
                       </a>
                     )}
                   </div>
@@ -264,22 +249,19 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          3. EXPERIENCE & SKILLS (Requirements 5 & 7)
+          3. EXPERIENCE & SKILLS
       ═══════════════════════════════════════════════ */}
       <section className="py-16 sm:py-24 border-b border-[#E6E3DC] bg-[#FAF9F6]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-            {/* Left Column: EXPERIENCE (Requirement 7) */}
+            {/* Left Column: EXPERIENCE */}
             <div className="lg:col-span-6">
               <div className="mb-8 pb-3 border-b border-[#E6E3DC]">
-                <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-2 font-semibold">
-                  <span>02 &mdash; CAREER TIMELINE</span>
-                </div>
-                <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#111112] tracking-tight">
+                <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-normal text-[#111112] tracking-tight">
                   Experience
                 </h2>
-                <p className="mt-2 font-sans text-xs sm:text-sm text-[#4A4944]">
-                  Professional positions, internships, and institutional engineering training.
+                <p className="mt-2 font-sans text-xs sm:text-sm text-[#6E6D68]">
+                  Professional positions, internships, and engineering responsibilities.
                 </p>
               </div>
 
@@ -296,13 +278,13 @@ export default function HomePage() {
                       <h3 className="font-sans text-sm sm:text-base font-semibold text-[#111112]">
                         {exp.role}
                       </h3>
-                      <span className="font-mono text-xs text-[#4A4944] shrink-0">
+                      <span className="font-mono text-xs text-[#6E6D68] shrink-0">
                         {exp.period}
                       </span>
                     </div>
 
                     <div className="font-sans text-xs text-[#D45A2A] font-medium mt-0.5">
-                      {exp.company} &bull; <span className="text-[#4A4944]">{exp.location}</span>
+                      {exp.company} &mdash; <span className="text-[#6E6D68]">{exp.location}</span>
                     </div>
 
                     <ul className="mt-2.5 space-y-1.5 font-sans text-xs sm:text-sm text-[#111112] leading-relaxed">
@@ -320,29 +302,25 @@ export default function HomePage() {
               <div className="mt-8 pt-4 border-t border-[#E6E3DC]">
                 <Link
                   href="/experience"
-                  className="font-mono text-xs uppercase tracking-wider text-[#D45A2A] hover:text-[#111112] inline-flex items-center gap-1 font-semibold focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
+                  className="font-mono text-xs uppercase tracking-wider text-[#D45A2A] hover:text-[#111112] inline-flex items-center font-semibold focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
                 >
-                  <span>View Full Timeline &amp; Credentials</span>
-                  <span aria-hidden="true">&rarr;</span>
+                  <span>View Experience Timeline</span>
                 </Link>
               </div>
             </div>
 
-            {/* Right Column: SKILLS (Requirement 5: Strong / Working / Familiar) */}
+            {/* Right Column: SKILLS */}
             <div className="lg:col-span-6">
               <div className="mb-8 pb-3 border-b border-[#E6E3DC]">
-                <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-2 font-semibold">
-                  <span>03 &mdash; TECHNICAL COMPETENCIES</span>
-                </div>
-                <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#111112] tracking-tight">
+                <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-normal text-[#111112] tracking-tight">
                   Skills
                 </h2>
-                <p className="mt-2 font-sans text-xs sm:text-sm text-[#4A4944]">
-                  Categorized by practical verification: Strong, Working, and Familiar.
+                <p className="mt-2 font-sans text-xs sm:text-sm text-[#6E6D68]">
+                  Technical competencies categorized by practical verification.
                 </p>
               </div>
 
-              {/* Tiered Skills Layout (Requirement 5) */}
+              {/* Tiered Skills Layout */}
               <div className="space-y-6">
                 {skillTiers.map((tier) => (
                   <div key={tier.tier} className="p-5 bg-[#F4F2EC] border border-[#E6E3DC]">
@@ -351,7 +329,7 @@ export default function HomePage() {
                         {tier.title}
                       </span>
                     </div>
-                    <p className="font-sans text-xs text-[#4A4944] mb-3 leading-relaxed">
+                    <p className="font-sans text-xs text-[#6E6D68] mb-3 leading-relaxed">
                       {tier.description}
                     </p>
 
@@ -362,10 +340,9 @@ export default function HomePage() {
                             key={skill.name}
                             href={`/projects/${skill.evidenceProjectSlug}`}
                             title={`View project using ${skill.name}: ${skill.evidenceProjectTitle}`}
-                            className="font-mono text-xs px-2.5 py-1 bg-[#FAF9F6] border border-[#111112] text-[#111112] hover:bg-[#111112] hover:text-[#FAF9F6] transition-colors inline-flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
+                            className="font-mono text-xs px-2.5 py-1 bg-[#FAF9F6] border border-[#111112] text-[#111112] hover:bg-[#111112] hover:text-[#FAF9F6] transition-colors inline-flex items-center focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
                           >
                             <span>{skill.name}</span>
-                            <span className="text-[#D45A2A] text-[10px]">↗</span>
                           </Link>
                         ) : (
                           <span
@@ -387,21 +364,18 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          4. EDUCATION & INSTITUTIONAL TRAINING (Requirement 8)
+          4. EDUCATION & INSTITUTIONAL TRAINING
       ═══════════════════════════════════════════════ */}
       <section className="py-16 sm:py-24 border-b border-[#E6E3DC] bg-[#FAF9F6]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
-            {/* Education (Requirement 8: CGPA & 10th Placeholders) */}
+            {/* Education */}
             <div className="lg:col-span-6">
               <div className="mb-8 pb-3 border-b border-[#E6E3DC]">
-                <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-2 font-semibold">
-                  <span>04 &mdash; ACADEMIC FOUNDATIONS</span>
-                </div>
-                <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#111112] tracking-tight">
+                <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-normal text-[#111112] tracking-tight">
                   Education
                 </h2>
-                <p className="mt-2 font-sans text-xs sm:text-sm text-[#4A4944]">
+                <p className="mt-2 font-sans text-xs sm:text-sm text-[#6E6D68]">
                   Formal academic degrees and qualifications.
                 </p>
               </div>
@@ -409,7 +383,7 @@ export default function HomePage() {
               <div className="space-y-4">
                 {educationList.map((edu) => (
                   <div key={edu.id} className="p-6 bg-[#F4F2EC] border border-[#E6E3DC]">
-                    <div className="flex items-center justify-between font-mono text-xs text-[#4A4944]">
+                    <div className="flex items-center justify-between font-mono text-xs text-[#6E6D68]">
                       <span>{edu.period}</span>
                       {edu.boardOrUniversity && (
                         <span>Board: {edu.boardOrUniversity}</span>
@@ -429,16 +403,13 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Technical Training & Workshops (Requirement 2: Neutral title) */}
+            {/* Technical Training */}
             <div className="lg:col-span-6">
               <div className="mb-8 pb-3 border-b border-[#E6E3DC]">
-                <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-2 font-semibold">
-                  <span>05 &mdash; TECHNICAL TRAINING</span>
-                </div>
-                <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#111112] tracking-tight">
-                  Institutional Workshops
+                <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-normal text-[#111112] tracking-tight">
+                  Technical Training
                 </h2>
-                <p className="mt-2 font-sans text-xs sm:text-sm text-[#4A4944]">
+                <p className="mt-2 font-sans text-xs sm:text-sm text-[#6E6D68]">
                   Structured computational and institutional programs.
                 </p>
               </div>
@@ -446,14 +417,14 @@ export default function HomePage() {
               <div className="space-y-4">
                 {technicalTraining.map((tr) => (
                   <div key={tr.id} className="p-6 bg-[#F4F2EC] border border-[#E6E3DC]">
-                    <div className="flex items-center justify-between font-mono text-xs text-[#4A4944]">
+                    <div className="flex items-center justify-between font-mono text-xs text-[#6E6D68]">
                       <span>{tr.type} &bull; {tr.year}</span>
                       <span className="text-[#D45A2A] font-semibold">{tr.institution}</span>
                     </div>
                     <h3 className="font-display text-xl font-semibold text-[#111112] mt-1.5">
                       {tr.title}
                     </h3>
-                    <p className="mt-2 text-xs font-sans text-[#4A4944] leading-relaxed">
+                    <p className="mt-2 text-xs font-sans text-[#6E6D68] leading-relaxed">
                       {tr.description}
                     </p>
                     <div className="mt-3.5 flex flex-wrap gap-1.5">
@@ -475,32 +446,29 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          5. CONTACT CTA (Direct Communication)
+          5. CONTACT
       ═══════════════════════════════════════════════ */}
       <section className="py-16 sm:py-20 bg-[#121214] text-[#FAF9F6]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-8">
-              <span className="font-mono text-xs uppercase tracking-widest text-[#D45A2A] font-semibold">
-                Direct Inquiry
-              </span>
-              <h2 className="font-display text-3xl sm:text-5xl font-normal tracking-tight mt-2 text-[#FAF9F6]">
-                Let&apos;s Connect.
+              <h2 className="font-display text-3xl sm:text-5xl font-normal tracking-tight text-[#FAF9F6]">
+                Contact
               </h2>
               <p className="mt-4 font-sans text-sm text-[#A5A49D] max-w-xl leading-relaxed">
-                Open to entry-level AI/ML engineering roles, technical discussions, and collaborative opportunities.
+                For work, collaboration, or questions, get in touch.
               </p>
             </div>
             <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3">
               <ObfuscatedEmail
                 className="inline-flex items-center justify-center px-6 py-3.5 bg-[#D45A2A] text-[#FAF9F6] font-mono text-xs uppercase tracking-widest hover:bg-[#b8471c] transition-colors focus-visible:outline-2 focus-visible:outline-[#FAF9F6]"
-                label="Send Direct Email"
+                label="Send Email"
               />
               <Link
                 href="/contact"
                 className="inline-flex items-center justify-center px-6 py-3.5 border border-[#3A3A40] text-[#FAF9F6] font-mono text-xs uppercase tracking-widest hover:bg-[#1A1A1E] transition-colors focus-visible:outline-2 focus-visible:outline-[#FAF9F6]"
               >
-                View Direct Channels
+                View Contact Details
               </Link>
             </div>
           </div>

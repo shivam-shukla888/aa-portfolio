@@ -18,22 +18,18 @@ export default function ProjectsPage() {
         <PageBackground variant="projects" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-xl">
-            <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-3 font-semibold">
-              <span>01 &mdash; PORTFOLIO INDEX</span>
+            <div className="font-mono text-xs uppercase tracking-widest text-[#6E6D68] mb-3 font-semibold">
+              Selected Work
             </div>
             <h1 className="font-display text-5xl sm:text-7xl font-normal tracking-tight text-[#111112]">
               Projects
             </h1>
             <p className="mt-4 font-display text-xl sm:text-2xl text-[#111112] leading-snug">
-              Applied machine learning systems, semantic retrieval, and statistical analyses.
+              Machine learning pipelines, Retrieval-Augmented Generation workflows, and exploratory statistical analyses.
             </p>
-            <p className="mt-3 font-sans text-sm text-[#4A4944] leading-relaxed">
-              In-depth technical case studies documenting problem definitions, dataset specifications, architecture designs, evaluation metrics, and source code.
+            <p className="mt-3 font-sans text-sm text-[#6E6D68] leading-relaxed">
+              Technical case studies documenting problem definitions, dataset specifications, architecture designs, evaluation metrics, and source code.
             </p>
-
-            <div className="mt-14 pt-2 font-mono text-xs uppercase tracking-widest text-[#4A4944]">
-              PROBLEM &bull; ARCHITECTURE &bull; EVALUATION &bull; CODE
-            </div>
           </div>
         </div>
       </section>
@@ -49,14 +45,11 @@ export default function ProjectsPage() {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 {/* Meta Column */}
                 <div className="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-[#E6E3DC] pb-6 lg:pb-0 lg:pr-8">
-                  <span className="font-mono text-xl font-bold text-[#D45A2A]">
-                    {project.number}
-                  </span>
-                  <span className="block font-mono text-xs uppercase tracking-widest text-[#4A4944] mt-1">
+                  <span className="block font-mono text-xs uppercase tracking-widest text-[#D45A2A] font-semibold">
                     {project.category}
                   </span>
 
-                  <h2 className="font-display text-2xl sm:text-3xl font-semibold text-[#111112] mt-4 leading-tight">
+                  <h2 className="font-display text-2xl sm:text-3xl font-semibold text-[#111112] mt-3 leading-tight">
                     {project.title}
                   </h2>
 
@@ -65,7 +58,7 @@ export default function ProjectsPage() {
                       href={`/projects/${project.slug}`}
                       className="inline-flex items-center justify-center px-4 py-2.5 bg-[#111112] text-[#FAF9F6] font-mono text-xs uppercase tracking-wider hover:bg-[#D45A2A] transition-colors focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
                     >
-                      Read Case Study &rarr;
+                      Read Case Study
                     </Link>
                     <a
                       href={project.githubUrl}
@@ -73,7 +66,7 @@ export default function ProjectsPage() {
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center px-4 py-2.5 border border-[#111112] text-[#111112] font-mono text-xs uppercase tracking-wider hover:bg-[#FAF9F6] transition-colors focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
                     >
-                      GitHub Repository ↗
+                      GitHub Repository
                     </a>
                     {project.liveUrl && (
                       <a
@@ -82,7 +75,7 @@ export default function ProjectsPage() {
                         rel="noopener noreferrer"
                         className="inline-flex items-center justify-center px-4 py-2.5 border border-[#D45A2A] text-[#D45A2A] font-mono text-xs uppercase tracking-wider hover:bg-[#D45A2A] hover:text-[#FAF9F6] transition-colors focus-visible:outline-2 focus-visible:outline-[#111112]"
                       >
-                        Live Demo ↗
+                        Live Demo
                       </a>
                     )}
                   </div>

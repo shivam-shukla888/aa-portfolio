@@ -304,16 +304,13 @@ export function AskAamnaModal() {
             </div>
 
             <div className="hidden sm:flex flex-col text-left">
-              <div className="flex items-center gap-1.5 font-mono text-xs font-semibold text-[#111112] tracking-wider uppercase group-hover:text-[#D45A2A] transition-colors">
-                <span className="text-[#D45A2A] font-bold">&gt;_</span>
-                <span>ASK AAMNA</span>
+              <div className="font-sans text-xs font-semibold text-[#111112] tracking-wide group-hover:text-[#D45A2A] transition-colors">
+                Ask Aamna
               </div>
               <span className="font-mono text-[9px] uppercase tracking-wider text-[#6E6D68]">
                 Portfolio Guide
               </span>
             </div>
-
-            <span className="hidden sm:inline-block w-1.5 h-1.5 bg-[#D45A2A] shrink-0" aria-hidden="true" />
           </button>
         </div>
       )}
@@ -333,27 +330,22 @@ export function AskAamnaModal() {
             aria-hidden="true"
           />
 
-          {/* Modal Container matching Panel 07 in image.png */}
+          {/* Modal Container */}
           <div
             ref={modalRef}
             className="relative z-10 w-full sm:max-w-lg bg-[#FAF9F6] border-t sm:border border-[#111112] sm:rounded-2xl shadow-2xl max-h-[92vh] sm:max-h-[660px] flex flex-col overflow-hidden"
           >
             <PageBackground variant="ask-aamna" />
 
-            {/* Header matching Panel 07: >_ ASK AAMNA - PORTFOLIO GUIDE with window controls */}
+            {/* Header: Ask Aamna — Portfolio Guide */}
             <div className="px-5 py-3.5 bg-[#FAF9F6]/90 backdrop-blur-xs border-b border-[#E6E3DC] flex items-center justify-between relative z-10">
               <div className="flex items-center gap-2">
-                <span className="font-mono text-xs font-bold text-[#D45A2A]" aria-hidden="true">
-                  &gt;_
-                </span>
-                <div className="flex items-center gap-1.5 font-mono text-xs font-semibold uppercase tracking-wider text-[#111112]">
-                  <h3 id="ask-aamna-title">ASK AAMNA</h3>
-                  <span className="text-[#6E6D68]">&ndash;</span>
-                  <span className="text-[10px] text-[#6E6D68] tracking-widest font-normal">PORTFOLIO GUIDE</span>
-                </div>
+                <h3 id="ask-aamna-title" className="font-sans text-sm font-semibold text-[#111112]">
+                  Ask Aamna <span className="font-normal text-xs text-[#6E6D68]">&mdash; Portfolio Guide</span>
+                </h3>
               </div>
 
-              {/* Window Controls: - [ ] X */}
+              {/* Controls */}
               <div className="flex items-center gap-2.5">
                 {messages.length > 0 && (
                   <button
@@ -364,19 +356,6 @@ export function AskAamnaModal() {
                     Reset
                   </button>
                 )}
-
-                {/* Minimize button */}
-                <button
-                  type="button"
-                  onClick={() => setIsOpen(false)}
-                  className="w-5 h-5 flex items-center justify-center text-[#6E6D68] hover:text-[#111112] focus:outline-none"
-                  aria-label="Minimize assistant"
-                >
-                  <span className="font-mono text-xs block leading-none">&mdash;</span>
-                </button>
-
-                {/* Expand / Maximize symbol */}
-                <span className="w-3 h-3 border border-[#6E6D68] block opacity-60" aria-hidden="true" />
 
                 {/* Close button */}
                 <button

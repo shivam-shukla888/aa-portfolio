@@ -5,10 +5,10 @@ export interface NavItem {
 }
 
 export const mainNavItems: NavItem[] = [
-  { label: "WORK", href: "/projects", description: "Selected AI/ML Projects" },
-  { label: "EXPERIENCE", href: "/experience", description: "Career & Education Timeline" },
-  { label: "ABOUT", href: "/about", description: "Background & Technical Focus" },
-  { label: "CONTACT", href: "/contact", description: "Direct Channels" },
+  { label: "Work", href: "/projects", description: "Selected Projects" },
+  { label: "Experience", href: "/experience", description: "Career & Education" },
+  { label: "About", href: "/about", description: "Background & Focus" },
+  { label: "Contact", href: "/contact", description: "Get in touch" },
 ];
 
 export const footerLinks: NavItem[] = [

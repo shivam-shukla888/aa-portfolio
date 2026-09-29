@@ -15,27 +15,27 @@ export interface Profile {
 }
 
 export const profile: Profile = {
-  name: "SYYEDA AAMNA",
-  displayTitle: "AI/ML ENGINEER (ENTRY-LEVEL)",
+  name: "Syyeda Aamna",
+  displayTitle: "Machine Learning & Software",
   location: "Bareilly, Uttar Pradesh, India",
   email: "syyedaaamna682@gmail.com",
   phone: "+91 9639252679",
   linkedin: "https://linkedin.com/in/syyedaaamna",
   github: "https://github.com/Syyeda-Aamna",
-  headline: "Entry-Level AI/ML Engineer",
+  headline: "Machine Learning & Software Engineer",
   positioningStatement:
-    "Entry-level AI/ML Engineer specializing in applied machine learning pipelines, RAG systems, and data-driven backend services.",
+    "I work with Python, machine learning, data analysis, and backend development.",
   secondaryStatement:
-    "B.Tech Computer Science graduate (2026) with hands-on experience building end-to-end ML classification, vector retrieval, and exploratory data workflows in Python.",
+    "B.Tech in Computer Science (2022–2026) with projects in fraud detection, retrieval-augmented generation, and exploratory data analysis.",
   shortBio:
-    "Syyeda Aamna is an entry-level AI/ML engineer based in Bareilly, Uttar Pradesh, India. Her work focuses on applied machine learning pipelines, semantic retrieval (RAG), exploratory data analysis, and backend engineering with Python, FastAPI, and C# / .NET.",
+    "Syyeda Aamna is a Computer Science student and software developer based in Bareilly, Uttar Pradesh, India. Her work focuses on applied machine learning, semantic retrieval, and backend development with Python, FastAPI, and .NET.",
   focusAreas: [
-    "Applied Machine Learning & Classification",
-    "Retrieval-Augmented Generation (RAG) & LangChain",
+    "Machine Learning & Classification",
+    "Retrieval-Augmented Generation & LangChain",
     "Data Preprocessing & Exploratory Analysis",
-    "Python, FastAPI & Backend Engineering",
-    "Vector Embeddings & FAISS Indexing",
-    "SQL Database Processing & .NET",
+    "Python & FastAPI Backend Development",
+    "Vector Search & FAISS Indexing",
+    "SQL Databases & .NET Services",
   ],
-  relocationStatus: "Open to Relocation & Remote Roles: [TODO_CONFIRM_RELOCATION_PREFERENCE: YES/NO]",
+  relocationStatus: "Open to relocation and remote opportunities [TODO_CONFIRM_RELOCATION_PREFERENCE: YES/NO]",
 };

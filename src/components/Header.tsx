@@ -27,7 +27,6 @@ export function Header() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -52,14 +51,14 @@ export function Header() {
             <span className="font-display text-xl sm:text-2xl tracking-tight text-[#111112] font-semibold group-hover:text-[#D45A2A] transition-colors">
               {profile.name}
             </span>
-            <span className="font-mono text-[10px] tracking-widest text-[#4A4944] uppercase -mt-0.5">
+            <span className="font-sans text-xs text-[#4A4944] -mt-0.5">
               {profile.displayTitle}
             </span>
           </Link>
 
           {/* Desktop Navigation */}
           <nav
-            className="hidden lg:flex items-center space-x-7"
+            className="hidden lg:flex items-center space-x-8"
             aria-label="Main Navigation"
           >
             {mainNavItems.map((item) => {
@@ -72,7 +71,7 @@ export function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`font-mono text-xs uppercase tracking-widest py-1.5 transition-all relative focus-visible:outline-2 focus-visible:outline-[#D45A2A] ${
+                  className={`text-sm py-1.5 transition-all relative focus-visible:outline-2 focus-visible:outline-[#D45A2A] ${
                     isActive
                       ? "text-[#111112] font-semibold"
                       : "text-[#4A4944] hover:text-[#111112]"
@@ -92,8 +91,8 @@ export function Header() {
 
           {/* Action, Social Channels & Mobile Toggle */}
           <div className="flex items-center space-x-2 sm:space-x-3">
-            {/* Social Icons in Sticky Nav (Requirement 9) */}
-            <div className="hidden sm:flex items-center space-x-1 border-r border-[#E6E3DC] pr-3 mr-1">
+            {/* Social Icons */}
+            <div className="hidden sm:flex items-center space-x-2 border-r border-[#E6E3DC] pr-3 mr-1">
               <a
                 href={profile.github}
                 target="_blank"
@@ -126,17 +125,14 @@ export function Header() {
               />
             </div>
 
-            {/* Resume Download Button in Nav (Requirement 9) */}
+            {/* Resume Button */}
             <a
               href="/resume.pdf"
               download="Syyeda_Aamna_Resume.pdf"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 border border-[#111112] bg-transparent text-[#111112] font-mono text-xs uppercase tracking-wider hover:bg-[#111112] hover:text-[#FAF9F6] transition-colors focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
-              aria-label="Download Syyeda Aamna's Resume (PDF)"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 border border-[#111112] bg-transparent text-[#111112] text-xs font-medium hover:bg-[#111112] hover:text-[#FAF9F6] transition-colors focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
+              aria-label="Download Resume (PDF)"
             >
-              <svg className="w-3.5 h-3.5 stroke-current" fill="none" viewBox="0 0 24 24" strokeWidth="2" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
-              </svg>
-              <span className="hidden sm:inline">Resume</span>
+              <span>Resume</span>
             </a>
 
             {/* Ask Aamna Assistant Button */}
@@ -147,12 +143,10 @@ export function Header() {
                   window.dispatchEvent(new CustomEvent("open-ask-aamna"));
                 }
               }}
-              className="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 border border-[#D45A2A] bg-transparent text-[#111112] font-mono text-xs uppercase tracking-wider hover:bg-[#D45A2A] hover:text-[#FAF9F6] transition-colors group cursor-pointer focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
-              aria-label="Open Ask Aamna portfolio assistant"
+              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 border border-[#D45A2A] bg-transparent text-[#111112] text-xs font-medium hover:bg-[#D45A2A] hover:text-[#FAF9F6] transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
+              aria-label="Open Ask Aamna assistant"
             >
-              <span className="font-bold text-[#D45A2A] group-hover:text-[#FAF9F6]">&gt;_</span>
               <span>Ask Aamna</span>
-              <span className="w-1.5 h-1.5 bg-[#D45A2A] group-hover:bg-[#FAF9F6]" aria-hidden="true" />
             </button>
 
             {/* Mobile Menu Button */}
@@ -191,17 +185,13 @@ export function Header() {
       {/* Mobile Navigation Drawer */}
       {mobileMenuOpen && (
         <div
-          className="fixed inset-0 top-16 z-50 bg-[#FAF9F6] lg:hidden flex flex-col border-t border-[#E6E3DC] px-6 py-8 overflow-y-auto animate-fadeIn"
+          className="fixed inset-0 top-16 z-50 bg-[#FAF9F6] lg:hidden flex flex-col border-t border-[#E6E3DC] px-6 py-8 overflow-y-auto"
           role="dialog"
           aria-modal="true"
           aria-label="Mobile Navigation"
         >
-          <div className="font-mono text-[11px] uppercase tracking-widest text-[#4A4944] mb-6">
-            Navigation Index
-          </div>
-
-          <nav className="flex flex-col space-y-6">
-            {mainNavItems.map((item, idx) => {
+          <nav className="flex flex-col space-y-4">
+            {mainNavItems.map((item) => {
               const isActive =
                 item.href === "/"
                   ? pathname === "/"
@@ -212,44 +202,27 @@ export function Header() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-baseline justify-between border-b border-[#E6E3DC] pb-4 group"
+                  className={`text-xl font-display py-2 border-b border-[#E6E3DC] ${
+                    isActive
+                      ? "text-[#D45A2A] font-semibold"
+                      : "text-[#111112] hover:text-[#D45A2A]"
+                  }`}
                 >
-                  <div className="flex items-baseline space-x-3">
-                    <span className="font-mono text-xs text-[#4A4944]">
-                      0{idx + 1}
-                    </span>
-                    <span
-                      className={`font-display text-2xl tracking-tight ${
-                        isActive
-                          ? "text-[#D45A2A] font-semibold"
-                          : "text-[#111112] group-hover:text-[#D45A2A]"
-                      }`}
-                    >
-                      {item.label}
-                    </span>
-                  </div>
-                  {item.description && (
-                    <span className="font-mono text-[11px] text-[#4A4944]">
-                      {item.description}
-                    </span>
-                  )}
+                  {item.label}
                 </Link>
               );
             })}
           </nav>
 
           <div className="mt-8 pt-6 border-t border-[#E6E3DC] flex flex-col space-y-4">
-            {/* Resume button in mobile menu */}
             <a
               href="/resume.pdf"
               download="Syyeda_Aamna_Resume.pdf"
-              className="w-full flex items-center justify-between px-4 py-3 border border-[#111112] bg-[#FAF9F6] text-[#111112] font-mono text-xs uppercase tracking-wider hover:bg-[#111112] hover:text-[#FAF9F6] transition-colors"
+              className="w-full text-center px-4 py-3 border border-[#111112] text-xs font-medium text-[#111112] hover:bg-[#111112] hover:text-[#FAF9F6] transition-colors"
             >
-              <span>Download Resume (PDF)</span>
-              <span aria-hidden="true">&darr;</span>
+              Download Resume (PDF)
             </a>
 
-            {/* Ask Aamna in mobile menu */}
             <button
               type="button"
               onClick={() => {
@@ -258,36 +231,31 @@ export function Header() {
                   window.dispatchEvent(new CustomEvent("open-ask-aamna"));
                 }
               }}
-              className="w-full flex items-center justify-between px-4 py-3 border border-[#D45A2A] bg-[#FAF9F6] text-[#111112] font-mono text-xs uppercase tracking-wider hover:bg-[#D45A2A] hover:text-[#FAF9F6] transition-colors"
+              className="w-full text-center px-4 py-3 border border-[#D45A2A] text-xs font-medium text-[#111112] hover:bg-[#D45A2A] hover:text-[#FAF9F6] transition-colors"
             >
-              <div className="flex items-center gap-2">
-                <span className="font-bold text-[#D45A2A]">&gt;_</span>
-                <span>ASK AAMNA</span>
-              </div>
-              <span className="text-[10px] text-[#4A4944]">Portfolio Guide &rarr;</span>
+              Ask Aamna
             </button>
 
-            {/* Social channels in mobile menu */}
-            <div className="pt-2 flex items-center gap-4 text-xs font-mono text-[#111112]">
+            <div className="pt-3 flex items-center justify-center gap-6 text-sm text-[#4A4944]">
               <a
                 href={profile.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-[#D45A2A] transition-colors"
+                className="hover:text-[#111112] transition-colors"
               >
-                GitHub ↗
+                GitHub
               </a>
               <a
                 href={profile.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-[#D45A2A] transition-colors"
+                className="hover:text-[#111112] transition-colors"
               >
-                LinkedIn ↗
+                LinkedIn
               </a>
               <ObfuscatedEmail
-                className="hover:text-[#D45A2A] transition-colors"
-                label="Email ↗"
+                className="hover:text-[#111112] transition-colors"
+                label="Email"
               />
             </div>
           </div>

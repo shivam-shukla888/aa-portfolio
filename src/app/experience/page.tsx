@@ -21,8 +21,8 @@ export default function ExperiencePage() {
         <PageBackground variant="experience" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-xl">
-            <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] mb-3 font-semibold">
-              <span>02 &mdash; CAREER &amp; CREDENTIALS</span>
+            <div className="font-mono text-xs uppercase tracking-widest text-[#6E6D68] mb-3 font-semibold">
+              Professional Background
             </div>
             <h1 className="font-display text-5xl sm:text-7xl font-normal tracking-tight text-[#111112]">
               Experience
@@ -30,12 +30,11 @@ export default function ExperiencePage() {
             <p className="mt-4 font-display text-xl sm:text-2xl text-[#111112] leading-snug">
               Professional positions, internships, and technical competencies.
             </p>
-            <p className="mt-3 font-sans text-sm text-[#4A4944] leading-relaxed">
-              Documenting engineering responsibilities across applied AI/ML systems, data processing pipelines, and software development.
+            <p className="mt-3 font-sans text-sm text-[#6E6D68] leading-relaxed">
+              Engineering responsibilities across applied machine learning, data processing workflows, and backend software development.
             </p>
 
             <div className="mt-8 pt-4 border-t border-[#E6E3DC] font-mono text-xs text-[#111112]">
-              <span className="text-[#D45A2A] font-bold">&raquo; </span>
               <span>{profile.relocationStatus}</span>
             </div>
           </div>
@@ -46,40 +45,38 @@ export default function ExperiencePage() {
         {/* SECTION 1 — EXPERIENCE */}
         <section className="py-16 sm:py-20 border-b border-[#E6E3DC]">
           <div className="mb-10 sm:mb-12">
-            <h2 className="font-display text-5xl sm:text-6xl font-semibold text-[#111112] tracking-tight">
+            <h2 className="font-display text-5xl sm:text-6xl font-normal text-[#111112] tracking-tight">
               Experience
             </h2>
-            <p className="mt-3 font-sans text-sm sm:text-base text-[#4A4944]">
+            <p className="mt-3 font-sans text-sm sm:text-base text-[#6E6D68]">
               Professional positions, internships, and engineering responsibilities.
             </p>
           </div>
 
           <div className="space-y-10">
-            {experiences.map((exp, idx) => (
+            {experiences.map((exp) => (
               <div
                 key={exp.id}
-                className="p-8 sm:p-10 bg-[#F4F2EC] border border-[#E6E3DC] hover:border-[#111112] transition-colors"
+                className="p-5 sm:p-8 lg:p-10 bg-[#F4F2EC] border border-[#E6E3DC] hover:border-[#111112] transition-colors"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                   {/* Meta column */}
                   <div className="lg:col-span-5 border-b lg:border-b-0 lg:border-r border-[#E6E3DC] pb-6 lg:pb-0 lg:pr-8">
-                    <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D45A2A] font-semibold">
-                      <span>0{idx + 1}</span>
-                      <span>&bull;</span>
-                      <span>{exp.type}</span>
-                    </div>
+                    <span className="font-mono text-xs uppercase tracking-widest text-[#D45A2A] font-semibold">
+                      {exp.type}
+                    </span>
                     <h3 className="font-display text-2xl sm:text-3xl font-semibold text-[#111112] mt-3">
                       {exp.company}
                     </h3>
                     <div className="font-mono text-sm text-[#111112] font-medium mt-1">
                       {exp.role}
                     </div>
-                    <div className="mt-4 space-y-1 font-mono text-xs text-[#4A4944]">
+                    <div className="mt-4 space-y-1 font-mono text-xs text-[#6E6D68]">
                       <div>{exp.period}</div>
                       <div>{exp.location}</div>
                     </div>
                     <div className="mt-6 pt-6 border-t border-[#E6E3DC]">
-                      <span className="block font-mono text-[10px] uppercase tracking-wider text-[#4A4944] mb-2 font-semibold">
+                      <span className="block font-mono text-[10px] uppercase tracking-wider text-[#6E6D68] mb-2 font-semibold">
                         Technologies
                       </span>
                       <div className="flex flex-wrap gap-1.5">
@@ -97,10 +94,10 @@ export default function ExperiencePage() {
 
                   {/* Responsibilities column */}
                   <div className="lg:col-span-7">
-                    <h4 className="font-mono text-xs uppercase tracking-widest text-[#4A4944] mb-4 font-semibold">
-                      Engineering Deliverables (Action &bull; Tech &bull; Outcome)
+                    <h4 className="font-mono text-xs uppercase tracking-widest text-[#6E6D68] mb-4 font-semibold">
+                      Responsibilities
                     </h4>
-                    <ul className="space-y-3.5 font-sans text-sm sm:text-base text-[#111112] leading-relaxed">
+                    <ul className="space-y-3.5 font-sans text-sm sm:text-base text-[#111112] leading-relaxed break-words">
                       {exp.responsibilities.map((resp, i) => (
                         <li key={i} className="flex items-start gap-3">
                           <span className="text-[#D45A2A] font-mono text-xs mt-1 shrink-0">
@@ -120,10 +117,10 @@ export default function ExperiencePage() {
         {/* SECTION 2 — SKILLS (Requirement 5: Strong / Working / Familiar) */}
         <section className="py-16 sm:py-20 border-b border-[#E6E3DC]">
           <div className="mb-10 sm:mb-12">
-            <h2 className="font-display text-5xl sm:text-6xl font-semibold text-[#111112] tracking-tight">
+            <h2 className="font-display text-5xl sm:text-6xl font-normal text-[#111112] tracking-tight">
               Skills
             </h2>
-            <p className="mt-3 font-sans text-sm sm:text-base text-[#4A4944]">
+            <p className="mt-3 font-sans text-sm sm:text-base text-[#6E6D68]">
               Grouped by practical evidence: Strong, Working, and Familiar.
             </p>
           </div>
@@ -132,14 +129,14 @@ export default function ExperiencePage() {
             {skillTiers.map((tier) => (
               <div
                 key={tier.tier}
-                className="p-8 bg-[#F4F2EC] border border-[#E6E3DC] hover:border-[#111112] transition-colors"
+                className="p-5 sm:p-8 bg-[#F4F2EC] border border-[#E6E3DC] hover:border-[#111112] transition-colors"
               >
                 <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#E6E3DC]">
                   <h3 className="font-mono text-sm uppercase tracking-widest text-[#D45A2A] font-bold">
                     {tier.title}
                   </h3>
                 </div>
-                <p className="font-sans text-xs text-[#4A4944] mb-5 leading-relaxed">
+                <p className="font-sans text-xs text-[#6E6D68] mb-5 leading-relaxed">
                   {tier.description}
                 </p>
 
@@ -150,10 +147,9 @@ export default function ExperiencePage() {
                         key={skill.name}
                         href={`/projects/${skill.evidenceProjectSlug}`}
                         title={`Project: ${skill.evidenceProjectTitle}`}
-                        className="font-mono text-xs px-3 py-1.5 bg-[#FAF9F6] border border-[#111112] text-[#111112] hover:bg-[#111112] hover:text-[#FAF9F6] transition-colors inline-flex items-center gap-1.5 focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
+                        className="font-mono text-xs px-3 py-1.5 bg-[#FAF9F6] border border-[#111112] text-[#111112] hover:bg-[#111112] hover:text-[#FAF9F6] transition-colors inline-flex items-center focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
                       >
                         <span className="font-semibold">{skill.name}</span>
-                        <span className="text-[#D45A2A] text-[11px]">↗</span>
                       </Link>
                     ) : (
                       <span
@@ -174,11 +170,11 @@ export default function ExperiencePage() {
         {/* SECTION 3 — TECHNICAL TRAINING */}
         <section className="py-16 sm:py-20 border-b border-[#E6E3DC]">
           <div className="mb-10 sm:mb-12">
-            <h2 className="font-display text-5xl sm:text-6xl font-semibold text-[#111112] tracking-tight">
+            <h2 className="font-display text-5xl sm:text-6xl font-normal text-[#111112] tracking-tight">
               Technical Training
             </h2>
-            <p className="mt-3 font-sans text-sm sm:text-base text-[#4A4944]">
-              Structured institutional workshops and foundational computing programs.
+            <p className="mt-3 font-sans text-sm sm:text-base text-[#6E6D68]">
+              Structured institutional workshops and computational programs.
             </p>
           </div>
 
@@ -186,7 +182,7 @@ export default function ExperiencePage() {
             {technicalTraining.map((item) => (
               <div
                 key={item.id}
-                className="p-8 bg-[#F4F2EC] border border-[#E6E3DC] hover:border-[#111112] transition-colors"
+                className="p-5 sm:p-8 bg-[#F4F2EC] border border-[#E6E3DC] hover:border-[#111112] transition-colors"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                   <div className="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-[#E6E3DC] pb-6 lg:pb-0 lg:pr-8">
@@ -196,14 +192,14 @@ export default function ExperiencePage() {
                     <h3 className="font-display text-xl sm:text-2xl font-semibold text-[#111112] mt-2">
                       {item.title}
                     </h3>
-                    <div className="mt-2 font-mono text-xs text-[#4A4944]">{item.institution}</div>
-                    <div className="font-mono text-xs text-[#4A4944]">{item.year}</div>
+                    <div className="mt-2 font-mono text-xs text-[#6E6D68]">{item.institution}</div>
+                    <div className="font-mono text-xs text-[#6E6D68]">{item.year}</div>
                   </div>
                   <div className="lg:col-span-8">
                     <p className="font-sans text-sm text-[#111112] leading-relaxed mb-5">
                       {item.description}
                     </p>
-                    <span className="block font-mono text-[10px] uppercase tracking-wider text-[#4A4944] mb-2 font-semibold">
+                    <span className="block font-mono text-[10px] uppercase tracking-wider text-[#6E6D68] mb-2 font-semibold">
                       Curriculum Competencies
                     </span>
                     <div className="flex flex-wrap gap-1.5">
@@ -223,35 +219,32 @@ export default function ExperiencePage() {
           </div>
         </section>
 
-        {/* SECTION 4 — EDUCATION (Requirement 8) */}
+        {/* SECTION 4 — EDUCATION */}
         <section className="py-16 sm:py-20">
           <div className="mb-10 sm:mb-12">
-            <h2 className="font-display text-5xl sm:text-6xl font-semibold text-[#111112] tracking-tight">
+            <h2 className="font-display text-5xl sm:text-6xl font-normal text-[#111112] tracking-tight">
               Education
             </h2>
-            <p className="mt-3 font-sans text-sm sm:text-base text-[#4A4944]">
+            <p className="mt-3 font-sans text-sm sm:text-base text-[#6E6D68]">
               Formal academic degrees and qualifications.
             </p>
           </div>
 
           <div className="space-y-6">
-            {educationList.map((edu, idx) => (
+            {educationList.map((edu) => (
               <div
                 key={edu.id}
-                className="p-8 bg-[#F4F2EC] border border-[#E6E3DC] hover:border-[#111112] transition-colors"
+                className="p-5 sm:p-8 bg-[#F4F2EC] border border-[#E6E3DC] hover:border-[#111112] transition-colors"
               >
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
                   <div>
-                    <span className="font-mono text-[10px] uppercase tracking-wider text-[#D45A2A] font-semibold">
-                      0{idx + 1}
-                    </span>
-                    <h3 className="font-display text-xl sm:text-2xl font-semibold text-[#111112] mt-1">
+                    <h3 className="font-display text-xl sm:text-2xl font-semibold text-[#111112]">
                       {edu.degree}
                     </h3>
-                    <div className="mt-2 font-mono text-xs text-[#4A4944]">{edu.institution}</div>
-                    <div className="font-mono text-xs text-[#4A4944]">{edu.location}</div>
+                    <div className="mt-2 font-mono text-xs text-[#6E6D68]">{edu.institution}</div>
+                    <div className="font-mono text-xs text-[#6E6D68]">{edu.location}</div>
                     {edu.boardOrUniversity && (
-                      <div className="mt-1 font-mono text-[10px] text-[#4A4944] uppercase tracking-wider">
+                      <div className="mt-1 font-mono text-[10px] text-[#6E6D68] uppercase tracking-wider">
                         Board: {edu.boardOrUniversity}
                       </div>
                     )}
@@ -259,7 +252,7 @@ export default function ExperiencePage() {
                       {edu.gradePlaceholder}
                     </div>
                   </div>
-                  <div className="shrink-0 font-mono text-xs text-[#4A4944] sm:text-right">
+                  <div className="shrink-0 font-mono text-xs text-[#6E6D68] sm:text-right">
                     {edu.period}
                   </div>
                 </div>
@@ -274,15 +267,15 @@ export default function ExperiencePage() {
             <h3 className="font-display text-xl font-semibold text-[#111112]">
               Interested in discussing engineering roles or reviewing code?
             </h3>
-            <p className="mt-1 font-sans text-xs text-[#4A4944]">
-              Connect directly via public channels or reach out via email.
+            <p className="mt-1 font-sans text-xs text-[#6E6D68]">
+              For work, collaboration, or questions, get in touch.
             </p>
           </div>
           <Link
             href="/contact"
             className="inline-flex items-center px-5 py-2.5 bg-[#111112] text-[#FAF9F6] font-mono text-xs uppercase tracking-wider hover:bg-[#D45A2A] transition-colors shrink-0 focus-visible:outline-2 focus-visible:outline-[#D45A2A]"
           >
-            Direct Contact &rarr;
+            Contact
           </Link>
         </div>
       </div>
