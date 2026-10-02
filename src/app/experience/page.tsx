@@ -13,7 +13,7 @@ import { PageBackground } from "@/components/PageBackground";
 export const metadata: Metadata = {
   title: "Experience",
   description:
-    "Professional trajectory, technical competencies, and academic background of Syyeda Aamna — Entry-Level AI/ML Engineer.",
+    "Professional trajectory, technical competencies, and academic background of Syyeda Aamna — Machine Learning & Software Engineer.",
 };
 
 export default function ExperiencePage() {

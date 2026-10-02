@@ -17,7 +17,7 @@ export default function HomePage() {
   return (
     <div className="w-full">
       {/* ═══════════════════════════════════════════════
-          1. HERO SECTION (Fresher AI/ML Engineer Positioning)
+          1. HERO SECTION (Machine Learning & Software Positioning)
       ═══════════════════════════════════════════════ */}
       <section className="relative border-b border-[#E6E3DC] pt-10 sm:pt-16 pb-14 sm:pb-20 bg-[#FAF9F6] overflow-hidden">
         <PageBackground variant="home" />

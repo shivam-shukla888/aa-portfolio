@@ -32,14 +32,15 @@ export const metadata: Metadata = {
     canonical: "./",
   },
   title: {
-    default: "Syyeda Aamna — Entry-Level AI/ML Engineer",
+    default: "Syyeda Aamna — Machine Learning & Software Engineer",
     template: "%s | Syyeda Aamna",
   },
   description:
-    "Portfolio of Syyeda Aamna, entry-level AI/ML Engineer. Applied machine learning classification, Retrieval-Augmented Generation (RAG) pipelines, exploratory data analysis, and software engineering with Python, FastAPI, and .NET.",
+    "Portfolio of Syyeda Aamna, Machine Learning & Software Engineer. Applied machine learning classification, Retrieval-Augmented Generation (RAG) pipelines, exploratory data analysis, and software engineering with Python, FastAPI, and .NET.",
   keywords: [
     "Syyeda Aamna",
-    "AI/ML Engineer",
+    "Machine Learning Engineer",
+    "Software Engineer",
     "Machine Learning",
     "Python",
     "Data Science",
@@ -56,7 +57,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: SITE_URL,
-    title: "Syyeda Aamna — Entry-Level AI/ML Engineer",
+    title: "Syyeda Aamna — Machine Learning & Software Engineer",
     description:
       "Personal portfolio of Syyeda Aamna. Machine learning classification, Retrieval-Augmented Generation (RAG) pipelines, exploratory data analysis, and software engineering with Python.",
     siteName: "Syyeda Aamna Portfolio",
@@ -65,13 +66,13 @@ export const metadata: Metadata = {
         url: "/projects/fraud-dashboard.png",
         width: 1200,
         height: 630,
-        alt: "Syyeda Aamna — Entry-Level AI/ML Engineer Portfolio",
+        alt: "Syyeda Aamna — Machine Learning & Software Engineer Portfolio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Syyeda Aamna — Entry-Level AI/ML Engineer",
+    title: "Syyeda Aamna — Machine Learning & Software Engineer",
     description:
       "Personal portfolio of Syyeda Aamna. Machine learning classification, Retrieval-Augmented Generation (RAG) pipelines, exploratory data analysis, and software engineering with Python.",
     images: ["/projects/fraud-dashboard.png"],
@@ -100,7 +101,7 @@ export default function RootLayout({
       {
         "@type": "Person",
         name: profile.name,
-        jobTitle: "Entry-Level AI/ML Engineer",
+        jobTitle: "Machine Learning & Software Engineer",
         email: profile.email,
         telephone: profile.phone,
         address: {

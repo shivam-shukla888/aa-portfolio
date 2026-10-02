@@ -1,6 +1,8 @@
 {
   "name": "Syyeda Aamna",
-  "targetRole": "Entry-Level AI/ML Engineer",
+  "targetRole": "Machine Learning & Software Engineer",
+  "positioning": "Machine Learning & Software professional",
+  "status": "Working professional based in New Delhi. B.Tech completed in 2026. Currently working as a Software Engineering Trainee at Indraprastha Apollo Hospitals.",
   "location": "New Delhi, India",
   "email": "syyedaaamna682@gmail.com",
   "phone": "+91 9639252679",
@@ -11,7 +13,8 @@
       "degree": "B.Tech in Computer Science and Engineering",
       "institution": "SRMS Engineering College",
       "location": "Bareilly, Uttar Pradesh, India",
-      "period": "2022 — 2026"
+      "period": "2022 — 2026",
+      "status": "Completed"
     },
     {
       "degree": "Senior Secondary (12th Grade)",
@@ -34,96 +37,51 @@
       "company": "Indraprastha Apollo Hospitals",
       "location": "New Delhi, India",
       "period": "September 2026 — Present",
-      "type": "employment",
-      "summary": "Working on data processing scripts and backend services using Python, SQL, and C#/.NET to automate internal clinical data workflows.",
-      "technologies": ["Python", "SQL", "C#", ".NET", "Data Processing"]
+      "status": "Current employment",
+      "work": "Python, SQL, data processing, C#, .NET, backend/software development, and AI/ML-related integration workflows."
     },
     {
       "role": "GEN AI Intern",
       "company": "The Codevamp Technologies",
       "location": "Bareilly, Uttar Pradesh, India",
       "period": "November 2025 — April 2026",
-      "type": "internship",
-      "summary": "Engineered Generative AI and retrieval workflows using Python, LangChain, and LLM APIs for automated document question answering; cleaned and preprocessed datasets for classification models.",
-      "technologies": ["Python", "Data Science", "Machine Learning", "Generative AI", "LLMs", "LangChain"]
+      "status": "Completed internship",
+      "work": "Python, Data Science, Machine Learning, Generative AI, LLMs, LangChain, data cleaning/preprocessing, and model-related workflows."
     },
     {
       "role": "Summer Trainee — Python for Data Science",
       "company": "IIT Kanpur",
       "location": "Kanpur, Uttar Pradesh, India",
       "period": "Summer 2025",
-      "type": "training",
-      "summary": "Completed structured summer training covering Python programming, object-oriented design, algorithmic data structures, and exploratory data analysis using NumPy, Pandas, and Matplotlib.",
-      "technologies": ["Python", "OOP", "Data Structures", "NumPy", "Pandas", "Matplotlib"]
+      "status": "Completed training program (not employment)",
+      "work": "Python, OOP, data structures, NumPy, Pandas, Matplotlib, and exploratory data analysis."
     }
   ],
   "projects": [
     {
       "title": "AI Powered Fraud Detection Dashboard",
-      "slug": "ai-fraud-detection-system",
-      "problem": "Detecting fraudulent banking transactions from high-volume streaming flows while maintaining explainability and low false-negative rates.",
-      "stack": ["Python", "FastAPI", "Scikit-Learn", "React.js", "Recharts", "Pandas", "NumPy"],
-      "outcomes": [
-        "Constructed a dual-stage fraud engine combining Logistic Regression with rule-based heuristics to score anomaly risk.",
-        "Built a real-time analytics frontend in React with Recharts for visual transaction monitoring and CSV report export.",
-        "Evaluated classification performance on held-out transaction test sets to optimize precision and recall."
-      ],
-      "github": "https://github.com/Syyeda-Aamna/fraud-detection-project",
-      "liveDemo": null
+      "technologies": ["Python", "FastAPI", "Scikit-Learn", "React.js", "Recharts", "Pandas", "NumPy"],
+      "keyWork": "Logistic Regression, rule-based fraud/anomaly scoring, transaction monitoring dashboard, data processing, React/Recharts visualization.",
+      "github": "https://github.com/Syyeda-Aamna/fraud-detection-project"
     },
     {
       "title": "RAG Voice Chatbot",
-      "slug": "rag-voice-chatbot",
-      "problem": "Answering targeted questions over private PDF reference documents with accurate source citations and hands-free speech input.",
-      "stack": ["Python 3.10+", "LangChain", "FAISS", "HuggingFace (all-MiniLM-L6-v2)", "Google Gemini LLM", "SpeechRecognition", "PyPDFLoader"],
-      "outcomes": [
-        "Implemented document extraction and chunking via RecursiveCharacterTextSplitter and dense embeddings into FAISS.",
-        "Grounded LLM synthesis via Google Gemini with verified page-level source citations to eliminate hallucinations.",
-        "Integrated microphone voice capture and audio transcription for interactive voice-driven question answering."
-      ],
-      "github": "https://github.com/Syyeda-Aamna/rag-voice-chatbot",
-      "liveDemo": null
+      "technologies": ["Python", "LangChain", "FAISS", "HuggingFace all-MiniLM-L6-v2", "Google Gemini", "SpeechRecognition", "PyPDFLoader"],
+      "keyWork": "PDF document processing, RecursiveCharacterTextSplitter, embeddings, FAISS vector search, Gemini synthesis, page-level citations, voice input.",
+      "github": "https://github.com/Syyeda-Aamna/rag-voice-chatbot"
     },
     {
       "title": "Netflix Movie Data Analysis",
-      "slug": "netflix-movie-data-analysis",
-      "problem": "Analyzing catalog composition, rating patterns, genre evolution, and international distribution trends across ~9,800 movie titles.",
-      "stack": ["Python", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Jupyter Notebook"],
-      "outcomes": [
-        "Engineered data cleaning and missing value resolution across ~9,800 Netflix movie titles.",
-        "Mapped statistical distributions of release years, vote counts, and audience rating metrics.",
-        "Produced multi-variable correlation heatmaps revealing audience popularity and release timeline patterns."
-      ],
-      "github": "https://github.com/Syyeda-Aamna/netflix-movie-data-analysis",
-      "liveDemo": null
+      "technologies": ["Python", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Jupyter Notebook"],
+      "scope": "~9,800 movie records",
+      "keyWork": "Data cleaning, exploratory data analysis, distributions, rating analysis, release-year analysis, visualizations, correlation analysis.",
+      "github": "https://github.com/Syyeda-Aamna/netflix-movie-data-analysis"
     }
   ],
   "skills": {
-    "strong": [
-      { "name": "Python", "project": "All Projects (Fraud Detection, RAG Chatbot, Netflix Analysis)" },
-      { "name": "Machine Learning (Scikit-Learn)", "project": "AI Fraud Detection Dashboard" },
-      { "name": "LangChain", "project": "RAG Voice Chatbot" },
-      { "name": "FAISS & Vector Search", "project": "RAG Voice Chatbot" },
-      { "name": "Pandas & NumPy", "project": "Netflix Movie Data Analysis & Fraud Detection" },
-      { "name": "Matplotlib & Seaborn", "project": "Netflix Movie Data Analysis" },
-      { "name": "FastAPI", "project": "AI Fraud Detection Dashboard" },
-      { "name": "SQL", "project": "Apollo Hospitals Experience" }
-    ],
-    "working": [
-      { "name": "React.js", "evidence": "Fraud Detection Frontend" },
-      { "name": "Generative AI & LLMs", "evidence": "RAG Voice Chatbot & Codevamp" },
-      { "name": "REST APIs", "evidence": "FastAPI & .NET Services" },
-      { "name": "C# & .NET", "evidence": "Apollo Hospitals" },
-      { "name": "Git & GitHub", "evidence": "Version control across all project repositories" }
-    ],
-    "familiar": [
-      { "name": "PyTorch", "note": "Coursework / Foundational" },
-      { "name": "Deep Learning", "note": "Coursework / Foundational" },
-      { "name": "Docker", "note": "Basic containerization concepts" },
-      { "name": "MongoDB", "note": "NoSQL document storage fundamentals" },
-      { "name": "Tableau", "note": "Business intelligence visualization basics" },
-      { "name": "Java", "note": "Academic object-oriented programming foundation" }
-    ]
+    "strong": ["Python", "Machine Learning (Scikit-Learn)", "LangChain", "FAISS & Vector Search", "Pandas & NumPy", "Matplotlib & Seaborn", "FastAPI", "SQL"],
+    "working": ["React.js", "Generative AI & LLMs", "REST APIs", "C# & .NET", "Git & GitHub"],
+    "familiar": ["PyTorch", "Deep Learning", "Docker", "MongoDB", "Tableau", "Java"]
   },
   "achievements": [
     {

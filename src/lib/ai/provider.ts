@@ -45,8 +45,11 @@ export async function callGroqChat(
 
     if (!res.ok) {
       if (res.status === 429) {
-        // Automatic single retry with brief backoff for rapid queries
-        await new Promise((r) => setTimeout(r, 1000));
+        const retryAfterHeader = res.headers.get("retry-after");
+        const backoffMs = retryAfterHeader
+          ? Math.min(Math.max(parseFloat(retryAfterHeader) * 1000, 2000), 5000)
+          : 2500;
+        await new Promise((r) => setTimeout(r, backoffMs));
         const retryRes = await fetch(GROQ_ENDPOINT, {
           method: "POST",
           headers: {
@@ -57,7 +60,7 @@ export async function callGroqChat(
             model,
             messages,
             temperature: 0.3,
-            max_tokens: 500,
+            max_tokens: 350,
           }),
         });
 

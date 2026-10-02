@@ -25,9 +25,9 @@ export const profile: Profile = {
   positioningStatement:
     "I work with Python, machine learning, data analysis, and backend development.",
   secondaryStatement:
-    "B.Tech in Computer Science (2022–2026) with projects in fraud detection, retrieval-augmented generation, and exploratory data analysis.",
+    "B.Tech in Computer Science and Engineering from SRMS Engineering College (2022–2026).",
   shortBio:
-    "Syyeda Aamna is a Computer Science student and software developer based in New Delhi, India. Her work focuses on applied machine learning, semantic retrieval, and backend development with Python, FastAPI, and .NET.",
+    "Syyeda Aamna is a Machine Learning & Software professional based in New Delhi, India. Her work spans Python, machine learning, data analysis, backend development, and Generative AI, with current software engineering experience at Indraprastha Apollo Hospitals.",
   focusAreas: [
     "Machine Learning & Classification",
     "Retrieval-Augmented Generation & LangChain",
